@@ -1,6 +1,6 @@
 # Decentralised-Shopping-Cart
 
-One Paragraph of project description goes here
+This Project is to implement a decentralised shopping cart. Similar to a classical shopping cart application, the decentralised shopping cart supports operations such as adding items, removing items, calculating prices, searching items, purchasing etc. However, typical online shopping systems may contain extra charge from sellers. More than that, traditional online shopping applications suffer security issues such as DDoS, SQL injection and cross-site scripting attack. One solution is to make the application decentralised. In a decentralised shopping application, all trades happen directly between buyers and sellers with no middleman to take a cut from each sale. In terms of security, essential components have been distributed using the blockchain. Such property makes it practically impossible and expensive to attack.
 
 ## Getting Started
 
