@@ -60,6 +60,8 @@ Add additional notes about how to deploy this on a live system
 
 * [HTML/CSS/Javascript](https://www.w3schools.com/) - The web framework used
 * [boostrap](https://getbootstrap.com/) - UI design used
+* [java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
+* [blockchain](https://en.wikipedia.org/wiki/Blockchain)
 
 ## Versioning
 
@@ -81,6 +83,10 @@ Please read the following files for details on each team member's weekly contrib
 * **Yufei Zhang** - [z5121128.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5121128.txt)
 * **Minzhen Ye** - [z5042116.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5042116.txt)
 
+## Documentations
+
+You can check [Wiki](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki) for more documents of this project.
+
 ## License
 
 This project is licensed under the GNU GPL License - see the [LICENSE.md](LICENSE.md) file for details
@@ -90,3 +96,4 @@ This project is licensed under the GNU GPL License - see the [LICENSE.md](LICENS
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
+* [Creating Your First Blockchain with Java Part I](https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa)
