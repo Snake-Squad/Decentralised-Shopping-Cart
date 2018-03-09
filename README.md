@@ -73,7 +73,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Yufei Zhang** - *Initial work* - [DSC](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/contributors) who participated in this project.
 
 ## License
 
