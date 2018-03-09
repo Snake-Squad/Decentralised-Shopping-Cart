@@ -61,10 +61,6 @@ Add additional notes about how to deploy this on a live system
 * [HTML/CSS/Javascript](https://www.w3schools.com/) - The web framework used
 * [boostrap](https://getbootstrap.com/) - UI design used
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/Snake-Squad/Decentralised-Shopping-Cart/Contribute-Diaries/) for details on each team member's weekly contributions.
-
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/). 
@@ -78,7 +74,12 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [contributors](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/contributors) who participated in this project.
 
-See also the diary of each team member [Diaries](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries)
+## Contributing
+
+Please read the following files for details on each team member's weekly contributions.
+
+* **Yufei Zhang** - [z5121128.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5121128.txt)
+* **Minzhen Ye** - [z5042116.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5042116.txt)
 
 ## License
 
