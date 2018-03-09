@@ -60,8 +60,8 @@ Add additional notes about how to deploy this on a live system
 
 * [HTML/CSS/Javascript](https://www.w3schools.com/) - The web framework used
 * [boostrap](https://getbootstrap.com/) - UI design used
-* [java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
-* [blockchain](https://en.wikipedia.org/wiki/Blockchain)
+* [java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) - Server code running used
+* [blockchain](https://en.wikipedia.org/wiki/Blockchain) - Etherum Vertual Machine used
 
 ## Versioning
 
