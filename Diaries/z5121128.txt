@@ -1,2 +1,8 @@
 Week 2
-Croup formed. As a Scrum master, I created the GitHub and Trello team for the group and invited all group member to it. Together with Minzhen Ye, Wenjie Gao and Yanjie Hu, I found a pile of softwares and programming languages that we are going to use for the project. Lastly, I started to write the Epic section of proposal.
+
+Croup formed. As a Scrum master, I created the GitHub and Trello team for the group and invited all group member to it. 
+
+Together with Minzhen Ye, Wenjie Gao and Yanjie Hu, I found a pile of softwares and programming languages that we are going to use for the project. 
+
+Lastly, I started to write the Epic section of proposal.
+

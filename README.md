@@ -78,7 +78,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 See also the list of [contributors](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/contributors) who participated in this project.
 
-See also the diary of each team member [Diaries](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/Diaries)
+See also the diary of each team member [Diaries](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries)
 
 ## License
 
