@@ -80,7 +80,7 @@ See also the list of [contributors](https://github.com/Snake-Squad/Decentralised
 
 Please read the following files for details on each team member's weekly contributions.
 
-* **Wenjie Gao** - [z5.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5.txt)
+* **Wenjie Gao** - [z5045361.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5045361.txt)
 * **Yanjie Hu** - [z5042116.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5097732.txt)
 * **Minzhen Ye** - [z5042116.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5042116.txt)
 * **Yufei Zhang** - [z5121128.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5121128.txt)
@@ -99,3 +99,4 @@ This project is licensed under the GNU GPL License - see the [LICENSE.md](LICENS
 * Inspiration
 * etc
 * [Creating Your First Blockchain with Java Part I](https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa)
+* [A Decentralized Online Grocery Marketplace: How it Works for Consumers](https://blog.ins.world/a-decentralized-online-grocery-marketplace-how-it-works-for-consumers-290702184f40)
