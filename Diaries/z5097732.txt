@@ -1,0 +1,2 @@
+Week 2:
+Our team formed and introduce with each other. And then, we read the topics of the project and decided Topic 2 as our project. Finally, I try to find some references about Blockchain and Database System such as paper and video to understand topic and create the blueprints of the software.
