@@ -70,8 +70,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Yufei Zhang** - *Initial work* - [DSC](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/)
-* **Yanjie Hu** - *Initial work* - [DSC](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/)
 * **Minzhen Ye** - *Initial work* - [DSC](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/)
+* **Yanjie Hu** - *Initial work* - [DSC](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/)
 * **Wenjie Gao** - *Initial work* - [DSC](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/)
 
 See also the list of [contributors](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/contributors) who participated in this project.
@@ -80,8 +80,10 @@ See also the list of [contributors](https://github.com/Snake-Squad/Decentralised
 
 Please read the following files for details on each team member's weekly contributions.
 
-* **Yufei Zhang** - [z5121128.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5121128.txt)
+* **Wenjie Gao** - [z5121128.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5.txt)
+* **Yanjie Hu** - [z5042116.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5097732.txt)
 * **Minzhen Ye** - [z5042116.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5042116.txt)
+* **Yufei Zhang** - [z5121128.txt](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/tree/master/Diaries/z5121128.txt)
 
 ## Documentations
 
