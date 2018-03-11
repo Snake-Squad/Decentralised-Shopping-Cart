@@ -6,7 +6,7 @@ This Project is to implement a decentralised shopping cart. Similar to a classic
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## Prerequisites and Installations
 
 Before using this APP, you need to install a plie of things on your machine:
 
@@ -20,9 +20,11 @@ Before using this APP, you need to install a plie of things on your machine:
 
 * MetaMask
 
-### Installing
+As there are a pile of things you need to install, you can check [Installations](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Installations) in Wiki to help you install all prerequsits step by step.
 
-As there are a pile of things you need to install, you can check [Installations](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Installations) to help you install all prerequsits step by step.
+## Environment Setting Up
+
+As the the whole project has mainly three layer and the way to link these layers are not that simple, you can check [Environment Setting Up](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Environment-Setting-Up) in Wiki to get clear guidelines. 
 
 ## Running the tests
 
