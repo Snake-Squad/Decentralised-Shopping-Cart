@@ -8,29 +8,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Before using this APP, you need to install a plie of things on your machine:
 
-```
-Give examples
-```
+* Node.js and npm
+
+* web3.js
+
+* testrpc
+
+* Solidity
+
+* MetaMask
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+As there are a pile of things you need to install, you can check [Installations](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Installations) to help you install all prerequsits step by step.
 
 ## Running the tests
 
@@ -100,3 +92,4 @@ This project is licensed under the GNU GPL License - see the [LICENSE.md](LICENS
 * etc
 * [Creating Your First Blockchain with Java Part I](https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa)
 * [A Decentralized Online Grocery Marketplace: How it Works for Consumers](https://blog.ins.world/a-decentralized-online-grocery-marketplace-how-it-works-for-consumers-290702184f40)
+* [Developing Ethereum Smart Contracts for Beginners](https://coursetro.com/courses/20/Developing-Ethereum-Smart-Contracts-for-Beginners)
