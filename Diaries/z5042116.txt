@@ -2,5 +2,7 @@ Week2
 We have formed a group and I created the Trello and Bitbucket accounts for the team. 
 But later, we decided to use github for this project so that we created github account for it. 
 Besides I discussed with team member about all topic of the project and had a rough idea.
-week3
 
+week 3
+
+I have drawn an ER diagram with Wenjie.
