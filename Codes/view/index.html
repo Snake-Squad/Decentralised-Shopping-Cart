@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 
-    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="./../../Modules/web3/node_modules/web3/dist/web3.min.js"></script>
 
 </head>
 <body>
@@ -42,45 +42,45 @@
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
         var CoursetroContract = web3.eth.contract([
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_fName",
-        "type": "string"
-      },
-      {
-        "name": "_age",
-        "type": "uint256"
-      }
-    ],
-    "name": "setInstructor",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "getInstructor",
-    "outputs": [
-      {
-        "name": "",
-        "type": "string"
-      },
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-  }
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getInstructor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_fName",
+				"type": "string"
+			},
+			{
+				"name": "_age",
+				"type": "uint256"
+			}
+		],
+		"name": "setInstructor",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
 ]);
 
-        var Coursetro = CoursetroContract.at('0x6c2f97da5848c35f38030e24ef64876fe1a66e70');
+        var Coursetro = CoursetroContract.at('0x3c11e81bae13f7ea18439f6311be6ff8173f9555');
 
         console.log(Coursetro);
 
