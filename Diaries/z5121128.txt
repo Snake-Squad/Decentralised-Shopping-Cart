@@ -8,3 +8,8 @@ Lastly, I started to write the Epic section of proposal.
 
 
 Week 3
+
+We discussed what should we write in the proposal and I wrote the Title Page, Basic Schedules, System Structures, Prerequisites and Implementation, Project User Stories (3 Examples), Project Status Tracking and Project Schedule sections in the proposal.
+I start to draw Storyboard with Minzhen Ye and posted some samples on Trello.
+I installed all prerequisites  and set up the coding environment. 
+I added bootstrap modules and added two sample html files for checking that module can be used successfully. 
