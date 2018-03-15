@@ -5,4 +5,4 @@ Besides I discussed with team member about all topic of the project and had a ro
 
 week 3
 
-This week, we have written the proposal and I am responsible for background and motivitations of it. Besides, I have a basic understanding of solidity and the whole function and structure of the project. What's more, I have drawn an ER diagram with Wenjie. Lastly, I have draw several web page design with yufei and upload the images in the trello.
+This week, we have written the proposal and I am responsible for background and motivitations of it. Besides, I have a basic understanding of solidity and the whole function and structure of the project. What's more, I have drawn an ER diagram with Wenjie. Lastly, I have draw several web page design with yufei and upload the images in the trello. And I prepare for learning javascript.
