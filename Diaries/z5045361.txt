@@ -4,3 +4,12 @@ Our group formed on Tuesday. My group members are Minzhen Ye, Wenjie Gao, Yanjie
 We created the Trello & Bitbucket accounts for the team(After class, we replaced Bitbucket by GitHub).
 I skimmed through the tutorials and understood a little of the Ethereum Blockchain. 
 In addition, we are going to consult tutor Huang and get some useful knowledge on Sunday.
+
+week 3
+
+I wrote the aim part of proposal with a ER diagram with Minzhen and i found a problem about permissions. 
+I discussed it with scrum master and the final decision is to use buyers and sellers, because all trades 
+happen directly between buyers and sellers with no middleman to take a cut from each sale.
+Later i installed all prerequisites, set up the coding environment and also learned javascript and solidity. 
+However, i think i need one more week to learn them.
+
