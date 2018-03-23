@@ -15,11 +15,18 @@
     <link href="css/signin.css" rel="stylesheet">
     <!-- web3.js core-->
     <script src="Modules/web3/node_modules/web3/dist/web3.min.js"></script>
+	<script type="text/javascript">
+		function submitBtnClick(){
+		var email = document.getElementById("inputEmail").value;
+		var password = document.getElementById("inputPassword").value;
+		document.getElementById("formid").submit();
+		}
+	</script>
 
   </head>
 
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" id="formid" method="post" action="index.html">
       <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
@@ -31,7 +38,7 @@
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="submitBtn" onclick="submitBtnClick()">Sign in</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
   </body>
