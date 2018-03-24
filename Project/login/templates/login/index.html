@@ -11,12 +11,12 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template -->
-    <link href="{% static 'login.css'%}" rel="stylesheet" type="text/css">
-    {% include "login/includes/script_get_info.js" %}  
+    <link href="{% static 'login/login.css'%}" rel="stylesheet" type="text/css">
+    <!-- Load javascripts -->
+    <script src="{% static 'login/script_get_info.js'%}"></script>
   </head>
 
   <body class="text-center">
-    {% block content %} 
-    {% endblock %}
+  {% include "login/includes/login.html" %}
   </body>
 </html>
