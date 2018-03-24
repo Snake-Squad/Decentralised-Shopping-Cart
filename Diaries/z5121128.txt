@@ -13,3 +13,12 @@ We discussed what should we write in the proposal and I wrote the Title Page, Ba
 I start to draw Storyboard with Minzhen Ye and posted some samples on Trello.
 I installed all prerequisites  and set up the coding environment. 
 I added bootstrap modules and added two sample html files for checking that module can be used successfully. 
+
+
+Week 4
+
+Together with all group members, we give each person some specific missions.
+Together with Minzhen, we almost finished the UIs of login and choose a role page. Then rest part is to find a logo for our App.
+I also registered an online cloud Mongodb database as our local database.
+I searched a pile of references and watched a great number of videos; and finally started coding using python 3 and Django.
+I posted the way to login to the online database and the video tutorial link of python3/Django/html/css on Trello.
