@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Security Questions</title>
+</head>
+<body>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+    <tbody><tr>
+        <td class="formevenrow" align="right" width="120"><label for="Question">Question</label>
+</td>
+        <td class="formevenrow">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="formevenrow" nowrap="nowrap">
+                        <input type="text" name="Question" id="Question" size="32" maxlength="128" onfocus="this.select();" tabindex="1000" onkeypress="return dontSubmitOnEnter(event);">
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr>
+        <td class="formevenrow" align="right" width="120"><label for="password">Answer</label>
+</td>
+        <td class="formevenrow">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="formevenrow" nowrap="nowrap">
+                        <input type="text" name="Answer" id="Answer" size="32" maxlength="128" onfocus="this.select();" onkeydown="selectIfFake(this);" onkeyup="selectIfFake(this);" onmousedown="selectIfFake(this);" onmouseup="selectIfFake(this);" tabindex="1001" onkeypress="return submitOnEnter(event, this.form, 'login');">
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr>
+        <td class="formevenrow" align="right" width="120">
+</td>
+        <td class="formevenrow">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="formevenrow" nowrap="nowrap">
+                        <label for="Next"></label>
+                        <input type="button" class="formtxt" tabindex="1002" value="Next" id="Next" onclick="submitCommand(this.form, 'submit');">
+                    </td>
+                  
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody>
+</table>
+</body>
+</html>
