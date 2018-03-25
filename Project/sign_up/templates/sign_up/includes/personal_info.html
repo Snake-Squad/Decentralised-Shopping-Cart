@@ -1,8 +1,9 @@
 
     <center>
     <div class="container">
-      <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="http://rs143.pbsrc.com/albums/r135/danozano/Screenshot2012-03-10at75753PM.jpg~c200" alt="" width="72" height="72">
+      <div class="py-3 text-center">
+        {% load static %}
+        <img class="d-block mx-auto mb-1" src="{% static 'img/SnakeSquad-DSC-Logo.png' %}" alt="" width="auto" height="108">
       </div>
 
         <div class="col-md-8 order-md-1">
@@ -81,17 +82,20 @@
                 <input type="text" class="form-control" id="zip" placeholder="">
               </div>
             </div>
-
-            <hr class="mb-4">
      
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            
+            {% include "sign_up/includes/set_sq.html" %}
+
+            <hr class="mb-4">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Set Security Questions</button>
+
+            <footer class="my-1 pt-5 text-muted text-center text-small">
+              <p class="mb-1">&copy; 2018-2019 Snake Squad</p>
+            </footer>
           </form>
         </div>
       </div>
-
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2018-2019 Snake Squad</p>
-      </footer>
     </div>
     </center>

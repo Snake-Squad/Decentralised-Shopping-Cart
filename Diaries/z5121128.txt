@@ -22,3 +22,4 @@ Together with Minzhen, we almost finished the UIs of login and choose a role pag
 I also registered an online cloud Mongodb database as our local database.
 I searched a pile of references and watched a great number of videos; and finally started coding using python 3 and Django.
 I posted the way to login to the online database and the video tutorial link of python3/Django/html/css on Trello.
+Together with Minzhen, we finished the UIs of Sign_up page and added some check for the required inputs we need. Besides, we found our logo.
