@@ -13,3 +13,9 @@ happen directly between buyers and sellers with no middleman to take a cut from 
 Later i installed all prerequisites, set up the coding environment and also learned javascript and solidity. 
 However, i think i need one more week to learn them.
 
+week 4
+
+Firstly, Yufei gave me some missions. Secondly, I learned MongoDB this week, because we need to store data in 
+a centralised server. After we took a long time to study MongoDB, our scrum master decided to use python 
+instead of java. Then, Yanjie and i design parts of login system(code some htmls and css). I also keep 
+studying javascript and solidity. Finally, i didn't finish the missions, but i will finish it in two days.
