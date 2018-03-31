@@ -13,10 +13,12 @@ def index(request):
     # we need to retrive data from html file and call checking functions in models
     username = "admin"
     password = "createsuperuser"
-    print(request.POST.all())
+    
     # after getting username and password, we need to check its validation
-    # role = ml.check(username, password)
-    role = 'B'
+    ml = LoginModel()
+    role = ml.check_valid(username, password)
+    print(" ------> ", role, " <--------")
+    #role = 'B'
 
     if role is not None:
       return HttpResponseRedirect('/')
