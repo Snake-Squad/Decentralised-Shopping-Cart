@@ -4,13 +4,10 @@ from django.db import models
 class LoginModel(models.Model):
   username = models.CharField(max_length=40)
   password = models.CharField(max_length=40)
-  is_buyer = models.BooleanField()
+  role = models.CharField(max_length=1)
 
-  # def __init__():
-  #   print("call models.__init__")
-  #   self.username = None
-  #   self.password = None
-  #   self.is_buyer = True
+  def __str__(self):
+    return self.username
   
   def get_username(self):
     return self.username
@@ -18,14 +15,20 @@ class LoginModel(models.Model):
   def get_password(self):
     return self.password
 
-  def is_buyer(self):
-    return self.is_buyer
+  def get_role(self):
+    return self.role
 
-  def set_username(username):
-    self.username = username
+  # def check(self, username, password):
+  #   # here we need to link to cloud database
 
-  def set_password(password):
-    self.password = password
 
-  def set_is_buyer(is_buyer):
-    self.is_buyer = is_buyer
+  #   # then we gonna retrive check wheter that user exitst
+  #   # then we gonna get the corresponding password
+  #   pswd, role = "createsuperuser", 'B' # this supose to be the password select from the database
+  #   if target is not None:
+  #     if password == pswd:
+  #       # if them match, it is allowed to login as a role
+  #       return role
+  #   return None
+
+
