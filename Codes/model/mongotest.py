@@ -1,4 +1,5 @@
 import pymongo
+import base64
 from pymongo import MongoClient
 
 #Connect with Authentication Credentials
@@ -35,3 +36,27 @@ elif un.count() == 0:
 else:
   print(" This username already exists. ")
 
+
+# ------------------------ upload image and retrieve image -------------------
+
+image_db = db.Images
+
+
+# insert an image to cloud db
+with open("testpng.png", "rb") as image_file:
+  encoded_string = base64.b64encode(image_file.read())
+  image_db.insert({"testpng": encoded_string})
+
+
+# retrive an image from db
+data = image_db.find()
+img_bi = data[0]['testpng']
+img = base64.b64decode(img_bi)
+
+
+# write an image to a file
+outfilename = "get_testpng.png"
+output= open(outfilename, "wb")
+output.write(img)
+output.close()
+    

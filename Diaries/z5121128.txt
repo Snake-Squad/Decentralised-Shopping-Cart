@@ -23,3 +23,13 @@ I also registered an online cloud Mongodb database as our local database.
 I searched a pile of references and watched a great number of videos; and finally started coding using python 3 and Django.
 I posted the way to login to the online database and the video tutorial link of python3/Django/html/css on Trello.
 Together with Minzhen, we finished the UIs of Sign_up page and added some check for the required inputs we need. Besides, we found our logo.
+
+Week 5
+
+As we have a pile of assignments to due, this week we did not complete so many missions.
+With Minzhen, we find a suitable theme for our project.
+With Minzhen, I write a different way (compare to Minzhen's) to upload image to cloud database and retrieve data from it.
+Also, I can retrieve data from UIs and pass variables to UIs.
+In addition, I connect the cloud db via python in models while I get a POST request.
+Generally, the front-end and backend are fully connected.
+By the way, I posted a pile of toturial videos about Django on Trello.
