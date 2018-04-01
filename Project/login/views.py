@@ -12,30 +12,24 @@ def index(request):
 
   if request.method == "POST":
     print("        ----------- in Post -----------          ")
-    # we need to retrive data from html file and call checking functions in models
-    username = "admin"
-    password = "createsuperuser"
-    
-    # initialize data in loginModel
-    # data = LoginModel(username=None, password=None, role="B")
-    # after getting username and password, we need to check its validation
-    ml = LoginModel()
-    #role = ml.check_valid(username, password)
-    role = None
-    # print(" ------> ", role, " <--------")
 
+    # initialize the model so that we can use functions init
+    ml = LoginModel()
+
+    # get form from the UI
     form = LoginForm(request.POST)
-    #form = LoginForm()
+    
     if form.is_valid():
       print("form is good !!!!! ")
-      print(request.POST['username'])
-      print()
-    else:
-      print("form is bad T^T")
-    if role is not None:
-      return HttpResponseRedirect('/')
-    else:
-      return render(request, 'login/test.html', {'form': form})
+      username = request.POST['username']
+      password = request.POST['password']
+      role = ml.check_valid(username, password)
+      print(username, password, role)
+
+      if role is not None:
+        return HttpResponseRedirect('/')
+      else:
+        return render(request, 'login/test.html', {'form': form})
   else:
     print("        ----------- in Get -----------          ")
     form = LoginForm()
