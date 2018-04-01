@@ -1,2 +1,10 @@
 Week 2:
 Our team formed and introduce with each other. And then, we read the topics of the project and decided Topic 2 as our project. Finally, I try to find some references about Blockchain and Database System such as paper and video to understand topic and create the blueprints of the software.
+
+Week 3:
+I designed the outline of system in the proposal based on the traditional shopping website like ebay and taobao. And also adding blockchain to control the cash flow for the users to provide the safe environment for trading.
+I learned how to use django and mongo database to store the data in the cloud.
+
+
+Week4:
+Based on the tutor's advice, I update the blueprint of the system. I began to write the forget password html file and the css file for the case that the user want to reset their password. I learned how to collect security questions from the cloud database and grab the input data to compare whether the information in the database and inputting data is the same or not. And then, I wanted to do some method to update the password in the cloud.
