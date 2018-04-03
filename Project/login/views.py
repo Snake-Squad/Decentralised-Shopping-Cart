@@ -6,8 +6,8 @@ from .forms import LoginForm
 
 # Create your views here.
 def index(request):
-  print(request.method)
-  print(request)
+  # print(request.method)
+  # print(request)
   # lm = LoginModel()
 
   if request.method == "POST":
@@ -17,21 +17,21 @@ def index(request):
     ml = LoginModel()
 
     # get form from the UI
-    form = LoginForm(request.POST)
+    #form = LoginForm(request.POST)
     
-    if form.is_valid():
-      print("form is good !!!!! ")
-      username = request.POST['username']
-      password = request.POST['password']
-      role = ml.check_valid(username, password)
-      print(username, password, role)
+    # if form.is_valid():
+    #   print("form is good !!!!! ")
+    #   username = request.POST['username']
+    #   password = request.POST['password']
+    #   role = ml.check_valid(username, password)
+    #   print(username, password, role)
 
-      if role is not None:
-        return HttpResponseRedirect('/')
-      else:
-        return render(request, 'login/test.html', {'form': form})
+    #   if role is not None:
+    #     return HttpResponseRedirect('/')
+    #   else:
+    #     return render(request, 'login/test.html', {'form': form})
   else:
     print("        ----------- in Get -----------          ")
-    form = LoginForm()
-    #return render(request, 'login/index.html')
-    return render(request, 'login/test.html', {'form': form})
+    #form = LoginForm()
+    return render(request, 'login/index.html')
+    #return render(request, 'login/test.html', {'form': form})
