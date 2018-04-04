@@ -9,3 +9,6 @@ This week, we have written the proposal and I am responsible for background and 
 
 week 4
  This week, we decide to use MongoDB as the centralised Database to store data and we have tried several ways to connect to MongoDB. Finally, we decide to use python instead of java. So I install Django and now we can connect the python with the mango. Besides, I and yufei design and complete the UI of sign_up and sign_in with css and js. In the sign_up, we need the user to input the basic information and answer several security questions.
+
+week 5
+This week, we connect the mango and python and python is connected to UI. Besides, we find a free them of our project and we continue complete the web pages and then we need to revise the model and design more pages. Finally, I have created several users in the mongoDB and I have completed that upload images to the MongoDB and then write into a new jpg.

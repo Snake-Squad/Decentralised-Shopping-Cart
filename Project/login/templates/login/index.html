@@ -16,7 +16,11 @@
     <script src="{% static 'login/js/script_get_info.js'%}"></script>
   </head>
 
-  <body class="text-center">
+  <body>
+  <!-- Include navigation bar -->
+  {% include "login/includes/navbar.html" %}
+
+  <!-- Include login module -->
   {% include "login/includes/login.html" %}
   </body>
 </html>
