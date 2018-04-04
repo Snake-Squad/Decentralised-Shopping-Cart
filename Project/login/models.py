@@ -4,19 +4,6 @@ from pymongo import MongoClient
 
 # Create your models here.
 class LoginModel(models.Model):
-  # username = models.CharField(max_length=40)
-  # password = models.CharField(max_length=40)
-  # role = models.CharField(max_length=1)
-  
-  # def get_username(self):
-  #   return self.username
-
-  # def get_password(self):
-  #   return self.password
-
-  # def get_role(self):
-  #   return self.role
-
   def check_valid(self, username, password):
     pswd, role = None, None
 
@@ -37,6 +24,5 @@ class LoginModel(models.Model):
       print(" ====== check ======", password, "  <---->  ", pswd)
       print(role)
       if password == pswd:
-        # if them match, it is allowed to login as a role
         return role
     return None

@@ -1,9 +1,18 @@
 <form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <!--
+    {{ form.username }}
+    {{ form.password }}
+    -->
     <input type="submit" value="Submit" />
 </form>
 
-<h2>{{ form.username }}</h2>
-<h2>{{ form.password }}</h2>
-<h2>{{ form.role }}</h2>
+<h1>{{ context.username.value }}</h1>
+<h2>{{ context.password.value }}</h2>
+{% if context.role.value == 'B' %}
+  <H1>buyer</H1>
+{% elif context.role.value == 'S' %}
+  <h1>Seller</h1>
+{% endif %}
+
+<h3>{{ nav_search.search_target.value }}</h3>

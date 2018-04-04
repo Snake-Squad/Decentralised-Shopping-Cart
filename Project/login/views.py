@@ -2,14 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .models import LoginModel
-from .forms import LoginForm
+from .forms import LoginForm, NavbarFormOut
 
 # Create your views here.
 def index(request):
-  # print(request.method)
-  # print(request)
-  # lm = LoginModel()
-
   if request.method == "POST":
     print("        ----------- in Post -----------          ")
 
@@ -17,21 +13,34 @@ def index(request):
     ml = LoginModel()
 
     # get form from the UI
-    #form = LoginForm(request.POST)
+    context = LoginForm(request.POST)
+    nav_search = NavbarFormOut(request.POST)
     
-    # if form.is_valid():
-    #   print("form is good !!!!! ")
-    #   username = request.POST['username']
-    #   password = request.POST['password']
-    #   role = ml.check_valid(username, password)
-    #   print(username, password, role)
+    if context.is_valid():
+      print("form is good !!!!! ")
+      username = request.POST['username']
+      password = request.POST['password']
+      role = ml.check_valid(username, password)
+      print( '~~~~~~~ back to view ~~~~~~~')
+      print(username, password, role)
 
-    #   if role is not None:
-    #     return HttpResponseRedirect('/')
-    #   else:
-    #     return render(request, 'login/test.html', {'form': form})
+      if role is not None:
+        return HttpResponseRedirect('/') # we need to pass context to next page
+      else:
+        return render(request, 'login/index.html', {'context': context, 'nav_search': nav_search, 'check': False})
+
+    else:
+       print("context is bad")
+
+
+    if nav_search.is_valid():
+      print(" = ===== = ==  = = = === = = = = = = = = = ")
+      search_target = request.POST['search_target']
+      print(search_target)
+      return render(request, 'login/test.html', {'context': context, 'nav_search': nav_search, 'check': None})
+    else:
+      print("search model cannot load")
   else:
-    print("        ----------- in Get -----------          ")
-    #form = LoginForm()
-    return render(request, 'login/index.html')
-    #return render(request, 'login/test.html', {'form': form})
+    context = LoginForm()
+    nav_search = NavbarFormOut()
+    return render(request, 'login/index.html', {'context': context, 'nav_search': nav_search, 'check': None})
