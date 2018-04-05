@@ -8,11 +8,15 @@
 
     <title>Forget Password</title>
     {% load static %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{% static 'forget_password/css/forget_password.css'%}" rel="stylesheet" type="text/css">
   </head>
 
   <body class="bg-light">
+  {% include "login/includes/navbar.html" %}
   {% include "forget_password/includes/security_question.html" %}
+  <!-- {% include "forget_password/includes/update_password.html" %} -->
   </body>
 </html>
