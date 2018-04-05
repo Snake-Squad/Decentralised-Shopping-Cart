@@ -12,9 +12,11 @@ def index(request):
 	if request.method == "GET":
 		print("--------------------------------------------get")
 		info = PersonalInfo()
-		question = SecurityQuestion()
+	
+		seq_info = SecurityQuestion()
+		print(question)
 		return render(request, 'sign_up/index.html',
-		  {'info': info,'question':question})
+		  {'info': info,'seq_info':seq_info})
 	else:
 		print(" --------------- in post ----------------- ")
 		model = PostInfo()
@@ -30,6 +32,7 @@ def index(request):
 		
 		print("seq_info--------------------",seq_info)
 		if seq_info.is_valid():
+		
 		  model_question.post_security(request)
 		else:
 		  print('seq_info is invalid')

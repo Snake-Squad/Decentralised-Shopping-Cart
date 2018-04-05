@@ -66,24 +66,7 @@ class SecurityQuestion(forms.Form):
     widget=forms.TextInput(attrs={'placeholder': 'Enter your answer', 'autofocus':'autofocus', 
       'class':'form-control', 'id':'sq3_answer','aria-label':'Default','aria-describedby':'inputGroup-sizing-default'}))
 	  
-	  
-  '''
-  question2 = forms.ChoiceField(label='question2', required=True,
-    widget=forms.Select(attrs={'class':'custom-select d-block w-100', 'id':'sq2'}),
-    choices=(question) )
 
-  question2_answer = forms.CharField(label='question2_answer', required=False, max_length=4,
-    widget=forms.TextInput(attrs={'placeholder': '', 'autofocus':'autofocus', 
-      'class':'form-control', 'id':'sq2_answer'}))
-	  
-  question3 = forms.ChoiceField(label='question3', required=True,
-    widget=forms.Select(attrs={'class':'custom-select d-block w-100', 'id':'sq3'}),
-    choices=(question))
-  #(question1['Question_list']
-  question3_answer = forms.CharField(label='question3_answer', required=False, max_length=4,
-    widget=forms.TextInput(attrs={'placeholder': '', 'autofocus':'autofocus', 
-      'class':'form-control', 'id':'sq3_answer'}))
-  '''
 
 class NavbarFormOut(forms.Form):
   search_target = forms.CharField(label='target', max_length=40,

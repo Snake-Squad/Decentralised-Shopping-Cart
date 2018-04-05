@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf4878c4-e5b8-45fc-aa1a-9b5e8ae42ca2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/sign_up/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/sign_up/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/sign_up/static_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/static_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/personal_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/personal_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/security questions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/security questions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/set_sq.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/set_sq.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/templates/sign_up/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/sign_up/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/sign_up/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,54 +11,6 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="personal_info.html" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Project/sign_up/templates/sign_up/includes/personal_info.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="425">
-                    <caret line="25" selection-start-line="25" selection-end-line="25" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Project/sign_up/templates/sign_up/index.html">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="391">
-                    <caret line="23" selection-start-line="23" selection-end-line="23" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/Project/sign_up/urls.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state>
-                    <folding>
-                      <element signature="e#0#28#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="sign_up.css" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/Project/sign_up/static/sign_up/css/sign_up.css">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="170">
-                    <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -173,6 +118,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,7 +146,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,24 +215,24 @@
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3288889" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32980973" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Data View" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
@@ -299,6 +244,48 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Project/home/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diaries/z5121128.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diaries/z5045361.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diaries/z5042116.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/sign_up/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Diaries/z5097732.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Project/forget_password/static/forget_password/css/forget_passward" />
     <entry file="file://$PROJECT_DIR$/Project/sign_up/admin.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -349,21 +336,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Project/settings.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Diaries/z5121128.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/css/signin.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/login.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project/Project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -379,9 +357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Project/settings.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/__init__.py" />
     <entry file="file://$PROJECT_DIR$/Project/Project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -390,13 +365,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Codes/login.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Codes/update_password.html" />
-    <entry file="file://$PROJECT_DIR$/Codes/css/signin.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/forget_password/template/forget_passward/update_password.html" />
     <entry file="file://$PROJECT_DIR$/Project/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -446,9 +415,6 @@
           <caret selection-end-line="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/home/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Project/home/admin.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -553,17 +519,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/sign_up/static/sign_up/css/sign_up.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/sign_up/templates/sign_up/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/sign_up/static/sign_up/css/sign_up.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -572,6 +538,15 @@
         <state>
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/sign_up/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
