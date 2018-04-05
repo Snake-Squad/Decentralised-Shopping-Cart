@@ -2,51 +2,61 @@
          
       <h3 class="mb-3">Security Questions</h3>
       <!-- A pair of Q/A starts here -->
+
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">Question One:</h6>
         <div class="form-group">
-          <select class="form-control" id="sq1">
-            {% include "sign_up/includes/security questions.html" %}
-          </select>
+          
+		  {{seq_info.sq1}}
         </div>
 
         <div class="input-group mb-3">
-          <input type="text" id="sq1_answer"class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Enter your answer" required autofocus>
-          <div class="invalid-feedback">Valid answer is required.</div>
+          <!--<input type="text" id="sq1_answer"class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Enter your answer" required autofocus>-->
+          {{seq_info.sq1_answer}}
+		  <div class="invalid-feedback">Valid answer is required.</div>
+		  
         </div>
       </div>
       <!-- A pair of Q/A end here -->
 
       <!-- A pair of Q/A starts here -->
+		  	  
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">Question Two:</h6>
         <div class="form-group">
-          <select class="form-control" id="sq2">
-            {% include "sign_up/includes/security questions.html" %}
-          </select>
+ 
+			{{seq_info.sq2}}
+        
         </div>
 
         <div class="input-group mb-3">
-          <input type="text" id="sq2_answer"class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Enter your answer" required autofocus>
-          <div class="invalid-feedback">Valid answer is required.</div>
+        
+           {{seq_info.sq2_answer}}
+		  <div class="invalid-feedback">Valid answer is required.</div>
+		 
         </div>
       </div>
       <!-- A pair of Q/A end here -->
-
+	
       <!-- A pair of Q/A starts here -->
+	  
       <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">Question Three:</h6>
         <div class="form-group">
-          <select class="form-control" id="sq3">
-            {% include "sign_up/includes/security questions.html" %}
-          </select>
+          
+           {{seq_info.sq3}}
+       
         </div>
-
+	
         <div class="input-group mb-3">
-          <input type="text" id="sq3_answer"class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Enter your answer" required autofocus>
-          <div class="invalid-feedback">Valid answer is required.</div>
+          
+          {{seq_info.sq3_answer}}
+		  <div class="invalid-feedback">Valid answer is required.</div>
         </div>
-      </div>
+	</div>
+
+     
+	
       <!-- A pair of Q/A end here -->
 
     
