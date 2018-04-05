@@ -14,18 +14,21 @@ def index(request):
 		info = PersonalInfo()
 	
 		seq_info = SecurityQuestion()
-		print(question)
+		
 		return render(request, 'sign_up/index.html',
 		  {'info': info,'seq_info':seq_info})
 	else:
 		print(" --------------- in post ----------------- ")
 		model = PostInfo()
 		info = PersonalInfo(request.POST)
-		model_question = PostSecurity()
+		
+		#info_list=[info.
 		seq_info = SecurityQuestion(request.POST)
+		
 		print("info--------------------",info)
 		if info.is_valid():
-		  model.post_info(request)
+		  info_list=model.post_info(request)
+		  
 		else:
 		  print('info is invalid')
 		
@@ -33,9 +36,10 @@ def index(request):
 		print("seq_info--------------------",seq_info)
 		if seq_info.is_valid():
 		
-		  model_question.post_security(request)
+		  security_list=model.post_security(request)
 		else:
 		  print('seq_info is invalid')
-		  
+		
+		model.register(info_list+security_list)
 		return render(request, 'sign_up/index.html',
 		  {'info': info,'seq_info':seq_info})

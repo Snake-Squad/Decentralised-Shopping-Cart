@@ -23,9 +23,23 @@ question1={
   ]
 }
 '''
-question=[
-  ('what is your favourite animal?', 'question1'),
-  ('what is your favourite food?', 'question2'),
-  ('what is your favourite fruit?','question3')
+question_list1=[
+  ('what is your favourite animal?', 'Question1: what is your favourite animal?'),
+  ('what is your favourite food?', 'Question2: what is your favourite food?'),
+  ('what is your favourite fruit?','Question3: what is your favourite fruit?')
+  
+]
+
+question_list2=[
+  ('where is your home?', 'Question1: where is your home?'),
+  ('Do you love your country?', 'Question2: Do you love your country?'),
+  ('Are you male or female?','Question3: what is your favourite fruit?')
+  
+]
+
+question_list3=[
+  ('Do you love chocolate?', 'Question1: Do you love chocolate?'),
+  ('Do you love pig?', 'Question2: Do you love pig?'),
+  ('what is your birthday?','Question3: what is your birthday?')
   
 ]

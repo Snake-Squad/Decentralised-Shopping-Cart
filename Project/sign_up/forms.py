@@ -41,28 +41,27 @@ class PersonalInfo(forms.Form):
 
 class SecurityQuestion(forms.Form):
 
-
   sq1 = forms.ChoiceField(label='question1', required=False,
     widget=forms.Select(attrs={'class':'custom-select d-block w-100', 'id':'sq1'}),
-    choices=(question) )
+    choices=(question_list1) )
 
-  sq1_answer = forms.CharField(label='question1_answer', required=True, max_length=4,
+  sq1_answer = forms.CharField(label='question1_answer', required=True, max_length=40,
     widget=forms.TextInput(attrs={'placeholder': 'Enter your answer', 'autofocus':'autofocus', 
       'class':'form-control', 'id':'sq1_answer','aria-label':'Default','aria-describedby':'inputGroup-sizing-default'}))
 	
   sq2 = forms.ChoiceField(label='question2', required=False,
     widget=forms.Select(attrs={'class':'custom-select d-block w-100', 'id':'sq2'}),
-    choices=(question) )
+    choices=(question_list2) )
 
-  sq2_answer = forms.CharField(label='question2_answer', required=True, max_length=4,
+  sq2_answer = forms.CharField(label='question2_answer', required=True, max_length=40,
     widget=forms.TextInput(attrs={'placeholder': 'Enter your answer', 'autofocus':'autofocus', 
       'class':'form-control', 'id':'sq2_answer','aria-label':'Default','aria-describedby':'inputGroup-sizing-default'}))
 	  
   sq3 = forms.ChoiceField(label='question3', required=False,
     widget=forms.Select(attrs={'class':'custom-select d-block w-100', 'id':'sq3'}),
-    choices=(question) )
+    choices=(question_list3) )
 
-  sq3_answer = forms.CharField(label='question3_answer', required=True, max_length=4,
+  sq3_answer = forms.CharField(label='question3_answer', required=True, max_length=40,
     widget=forms.TextInput(attrs={'placeholder': 'Enter your answer', 'autofocus':'autofocus', 
       'class':'form-control', 'id':'sq3_answer','aria-label':'Default','aria-describedby':'inputGroup-sizing-default'}))
 	  
