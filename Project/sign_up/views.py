@@ -41,5 +41,6 @@ def index(request):
 		  print('seq_info is invalid')
 		
 		model.register(info_list+security_list)
-		return render(request, 'sign_up/index.html',
-		  {'info': info,'seq_info':seq_info})
+		# return render(request, 'sign_up/index.html',
+		#   {'info': info,'seq_info':seq_info})
+		return HttpResponseRedirect("http://127.0.0.1:8000")

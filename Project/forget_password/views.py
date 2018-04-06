@@ -32,8 +32,8 @@ def index(request):
     if answers.is_valid():
       if model.check_answers(right, request):
         print("Good")
-        password = NewPW()
-        return render(request, 'reset_password/index.html', {'password': password})
+        
+        return HttpResponseRedirect('http://127.0.0.1:8000/reset_password/')
       else:
         print("Bad")
         return render(request, 'forget_password/index.html')

@@ -6,7 +6,7 @@ class LoginForm(forms.Form):
       'class':'form-control'}))
   password = forms.CharField(label='password', required=False, max_length=40,
     widget=forms.TextInput(attrs={'placeholder': 'password', 'autofocus':'autofocus', 
-      'class':'form-control'}))
+      'class':'form-control', 'type':'password'}))
   role = forms.CharField(label='role', max_length=1, required=False)
 
 class NavbarFormOut(forms.Form):

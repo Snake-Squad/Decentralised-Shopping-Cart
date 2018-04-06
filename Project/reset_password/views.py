@@ -20,7 +20,7 @@ def index(request):
         if password.is_valid():
         	if model.update_pw(request):
         		print("Good")
-        		return render(request, 'home/index.html')
+        		return HttpResponseRedirect('http://127.0.0.1:8000')
         	else:
         		print("Bad")
         		return render(request, 'reset_password/index.html', {'password': password})

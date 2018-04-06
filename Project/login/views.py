@@ -22,7 +22,8 @@ def index(request):
       print("Login is clicked")
     elif request.POST.get('forget') is not None:
       print("Forget is clicked")
-    
+      return HttpResponseRedirect("http://127.0.0.1:8000/forget_password/")
+
     if context.is_valid():
       print("form is good !!!!! ")
       username = request.POST['username']
