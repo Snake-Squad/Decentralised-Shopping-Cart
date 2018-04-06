@@ -32,7 +32,10 @@ def index(request):
       print(username, password, role)
 
       if role is not None:
-        return HttpResponseRedirect('/') # we need to pass context to next page
+        response = HttpResponseRedirect('/')
+        response.set_cookie("test", {'name':'watman', 'ans':'ass'})
+        return response
+        #return HttpResponseRedirect('/') # we need to pass context to next page
       else:
         return render(request, 'login/index.html', {'context': context, 'nav_search': nav_search, 'check': False})
 
