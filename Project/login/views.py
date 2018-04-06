@@ -15,6 +15,13 @@ def index(request):
     # get form from the UI
     context = LoginForm(request.POST)
     nav_search = NavbarFormOut(request.POST)
+
+    print(request.POST)
+
+    if request.POST.get('login') is not None:
+      print("Login is clicked")
+    elif request.POST.get('forget') is not None:
+      print("Forget is clicked")
     
     if context.is_valid():
       print("form is good !!!!! ")
@@ -25,7 +32,10 @@ def index(request):
       print(username, password, role)
 
       if role is not None:
-        return HttpResponseRedirect('/') # we need to pass context to next page
+        response = HttpResponseRedirect('/')
+        response.set_cookie("test", {'name':'watman', 'ans':'ass'})
+        return response
+        #return HttpResponseRedirect('/') # we need to pass context to next page
       else:
         return render(request, 'login/index.html', {'context': context, 'nav_search': nav_search, 'check': False})
 
