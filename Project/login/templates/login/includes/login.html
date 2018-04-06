@@ -7,6 +7,13 @@
       <img class="d-block mx-auto mb-1" src="{% static 'img/SnakeSquad-DSC-Logo.png' %}" alt="" width="auto" height="72">
       <h2 class="h3 mb-3 font-weight-normal">&nbsp</h2>
       <label for="username" class="sr-only">Email address</label>
+      {% if not check %}
+        {% if check1 == False %}
+          <script>
+            alert("Heihei, user does not exist ^_^");
+          </script>
+        {% endif %}   
+      {% endif %}
       {{ context.username }}
       <label for="password" class="sr-only">Password</label>
       {% if not check %}

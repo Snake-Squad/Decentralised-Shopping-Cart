@@ -26,3 +26,15 @@ class LoginModel(models.Model):
       if password == pswd:
         return role
     return None
+
+  def check_exist(self, username):
+    print("-------check-------")
+    client = MongoClient('mongodb://dsc:dsc@ds119129.mlab.com:19129/dsc')
+
+    user = client['dsc'].Users.find({'email': username})
+    print(user.count())
+    #check whether username exist in db
+    if user.count() == 1:
+      return True
+    return False
+

@@ -16,6 +16,8 @@ def index(request):
       'q3':'what is your favourite animal?'
     }
     answers = Answers()
+    test = request.POST
+    print(test.get('mm@gmail.com'))
     return render(request, 'forget_password/index.html', {'data': data, 'answers': answers})
   else:
     print(" ------------------- in post ------------------- ")
