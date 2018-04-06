@@ -15,6 +15,13 @@ def index(request):
     # get form from the UI
     context = LoginForm(request.POST)
     nav_search = NavbarFormOut(request.POST)
+
+    print(request.POST)
+
+    if request.POST.get('login') is not None:
+      print("Login is clicked")
+    elif request.POST.get('forget') is not None:
+      print("Forget is clicked")
     
     if context.is_valid():
       print("form is good !!!!! ")
