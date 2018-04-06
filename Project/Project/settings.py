@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'login',
     'sign_up',
     'forget_password',
+    'reset_password',
     'my_profile',
     'django.contrib.admin',
     'django.contrib.auth',

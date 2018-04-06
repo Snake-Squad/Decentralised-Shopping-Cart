@@ -32,8 +32,8 @@ def index(request):
     if answers.is_valid():
       if model.check_answers(right, request):
         print("Good")
-        new_pw = NewPW()
-        return render(request, 'forget_password/includes/update_password.html', {'new_pw': new_pw})
+        password = NewPW()
+        return render(request, 'reset_password/index.html', {'password': password})
       else:
         print("Bad")
         return render(request, 'forget_password/index.html')

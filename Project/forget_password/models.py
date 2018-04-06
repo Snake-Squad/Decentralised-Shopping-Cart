@@ -10,9 +10,4 @@ class ForgetPW(models.Model):
       return True
     return False
 
-
-  def update_pw(self, request):
-    # connect to DB
-    # update the password
-    return 
      

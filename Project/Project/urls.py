@@ -23,4 +23,5 @@ urlpatterns = [
     path('sign_up/', include('sign_up.urls')),
     path('forget_password/', include('forget_password.urls')),
     path('profile/', include('my_profile.urls')),
+    path('reset_password/', include('reset_password.urls'))
 ]
