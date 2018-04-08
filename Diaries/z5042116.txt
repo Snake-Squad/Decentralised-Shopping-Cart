@@ -12,3 +12,6 @@ week 4
 
 week 5
 This week, we connect the mango and python and python is connected to UI. Besides, we find a free them of our project and we continue complete the web pages and then we need to revise the model and design more pages. Finally, I have created several users in the mongoDB and I have completed that upload images to the MongoDB and then write into a new jpg.
+
+week 6
+This week, I have find the theme for our project. Besides, I have participated the part of login and sign_up and forget_password. And my major mission is to complete the part of sign_up's security questions and then submit the whole form of the sign_up pages then store the customer in the database.
