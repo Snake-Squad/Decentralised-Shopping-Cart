@@ -19,3 +19,7 @@ Firstly, Yufei gave me some missions. Secondly, I learned MongoDB this week, bec
 a centralised server. After we took a long time to study MongoDB, our scrum master decided to use python 
 instead of java. Then, Yanjie and i design parts of login system(code some htmls and css). I also keep 
 studying javascript and solidity. Finally, i didn't finish the missions, but i will finish it in two days.
+
+week 5
+
+We decided our website name and theme. Yufei taught me how to install MongoDb, then created table, upload and get data from MongoDb. We finished the HTML, css of login system, but still have some problems to improve. Moreover, I learned Django and know how to connect db with Django in python. Finally, I participated the part of security questions, reset password and home page, they are basically done. 
