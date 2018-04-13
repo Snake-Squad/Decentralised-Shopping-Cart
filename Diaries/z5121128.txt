@@ -33,3 +33,10 @@ Also, I can retrieve data from UIs and pass variables to UIs.
 In addition, I connect the cloud db via python in models while I get a POST request.
 Generally, the front-end and backend are fully connected.
 By the way, I posted a pile of toturial videos about Django on Trello.
+
+Week 6
+
+Together with Wenjian and Minzhen, we finished the login page, sign up page and forget password page for Django.
+I figured out how to set and get cookies we need to pass values from one page to another.
+However, as the way we did currently is quiet centrialized, we planned to use truffle to do the rest part or even start a new truffle project.
+
