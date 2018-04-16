@@ -22,9 +22,9 @@ def index(request):
       print("Login is clicked")
     elif request.POST.get('forget') is not None:
       print("Forget is clicked")
-      # username = request.POST['username']
+      username = request.POST['username']
       if ml.check_exist(username):
-        return HttpResponseRedirect("http://127.0.0.1:8000/forget_password/")
+        return HttpResponseRedirect("http://127.0.0.1:8000/forget_password/?username="+username)
       else:
         print('user does not exist')
         return render(request, 'login/index.html', {'context': context, 'check1': False})
