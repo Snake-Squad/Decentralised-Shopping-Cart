@@ -40,3 +40,12 @@ Together with Wenjian and Minzhen, we finished the login page, sign up page and 
 I figured out how to set and get cookies we need to pass values from one page to another.
 However, as the way we did currently is quiet centrialized, we planned to use truffle to do the rest part or even start a new truffle project.
 
+Week 7 
+
+This week, I moved part of the codes in Django to truffle, and I set up the environment so that we can use 'npm run dev' to demo, which is on localhost:3000.
+I also wrote the login page, sign update as a form in navigation bar while a person is not logged in.
+I followed the tutorial of pet shop to try how the transaction will look like, so that we can use the similar way to finish our transection part in Week 8.
+
+Week 8
+
+
