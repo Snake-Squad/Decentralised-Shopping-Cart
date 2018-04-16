@@ -1,3 +1,5 @@
+
+
 Week2
 We have formed a group and I created the Trello and Bitbucket accounts for the team. 
 But later, we decided to use github for this project so that we created github account for it. 
@@ -15,3 +17,7 @@ This week, we connect the mango and python and python is connected to UI. Beside
 
 week 6
 This week, I have find the theme for our project. Besides, I have participated the part of login and sign_up and forget_password. And my major mission is to complete the part of sign_up's security questions and then submit the whole form of the sign_up pages then store the customer in the database. Lastly, I have learn the truffle tutorial to prepare for the later work.
+
+week 7
+This week, I have follow the instruction of pet-shop-tutorial and know the basic knowledge of truffle. Besides, I have wrote the draft contract of add_to_cart and in the home page, I add the function of add to cart for each item and now I face one problem of the app.js and I will solve it in this week.
+
