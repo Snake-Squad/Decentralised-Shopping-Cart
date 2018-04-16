@@ -23,3 +23,9 @@ studying javascript and solidity. Finally, i didn't finish the missions, but i w
 week 5
 
 We decided our website name and theme. Yufei taught me how to install MongoDb, then created table, upload and get data from MongoDb. We finished the HTML, css of login system, but still have some problems to improve. Moreover, I learned Django and know how to connect db with Django in python. Finally, I participated the part of security questions, reset password and home page, they are basically done. 
+
+mid break
+
+week 6 
+
+Through the previous demo, our team focuses on the wrong direction. Under tutor Huang's guidance, we are back in the right direction. This week i found some tutorials of solidity  and learned a lot from Udemy course. I go through solidity tutorials and pet-shop-tutorials again.
