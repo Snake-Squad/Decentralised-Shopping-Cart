@@ -19,3 +19,9 @@ that the user want to reset their password. I learned how to collect security qu
 whether the information in the database and inputting data is the same or not. And then, I wanted to do some method to update the password in the
 cloud.
 Based on the tutor's advice, I update the blueprint of the system. I began to write the forget password html file and the css file for the case that the user want to reset their password. I learned how to collect security questions from the cloud database and grab the input data to compare whether the information in the database and inputting data is the same or not. And then, I wanted to do some method to update the password in the cloud.
+
+Week 5:
+Learn how to store the user's information in the MangoDB. I finish my forget password part and then I will learn how to use block chain in transaction in the next week.
+
+Week 6:
+I found a tutorial about how to use block chain in the pet shop. I am learning how to use block chain and send message between the buyer and user.
