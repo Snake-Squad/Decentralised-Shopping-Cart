@@ -1,5 +1,5 @@
 function onClickLogin() {
-  alert("Login");
+  alert("In navbar.js");
 
   document.getElementById('idLogin').style.display='block';
 

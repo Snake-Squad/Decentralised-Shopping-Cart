@@ -32,8 +32,8 @@
             <div id="idLogin" class="modal">
               <span onclick="document.getElementById('idLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
               <!-- Add from here -->
-              <form class="form-signin" id="loginForm" action="/login.html">
-                <div class="text-center mb-4">
+              <div class="modal-content" id="loginForm">
+                <div class="text-center mb-6">
 
                   <h2 class="h3 mb-3 font-weight-normal">&nbsp</h2>
                   <img class="d-block mx-auto mb-1" src="images/Logo-dark.png" alt="" width="auto" height="72">
@@ -46,13 +46,13 @@
                   <input type="password" name="password" placeholder="password" autofocus="autofocus" class="form-control" maxlength="40" id="password" />
                   <br>
 
-                  <button class="btn btn-lg btn-secondary btn-block" type="submit" id="loginBtn" name="login" onclick="onClickLogin()">Login</button>
+                  <button class="btn btn-lg btn-secondary btn-block" type="submit" id="loginBtn" name="login" onclick="checkLogin()">Login</button>
 
                   <button class="btn btn-lg btn-secondary btn-block" type="submit" id="forgetBtn" name="forget" onclick="onClickForget()">Forget Password</button>
                   <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
 
                 </div>
-              </form>
+              </div>
             </div>
           </li>
 
@@ -208,11 +208,15 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- firebase core js -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
