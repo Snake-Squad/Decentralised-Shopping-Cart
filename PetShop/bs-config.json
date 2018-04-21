@@ -1,0 +1,10 @@
+{
+  "files": [ "./src/**/*.{html,htm,css,js,php}" ],
+  "server": {
+    "baseDir": [
+      "./src/templates/", 
+      "./src/static/", 
+      "./build/contracts/"
+    ]
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "server": {
-    "baseDir": [
-      "./src/templates", 
-      "./src/static", 
-      "./build/contracts"
-    ]
-  }
-}
