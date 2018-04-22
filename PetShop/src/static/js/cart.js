@@ -29,13 +29,15 @@ $.getJSON('../pets.json', function(data) {
   for (i = 0; i < petsInfo.length; i ++) {
     cartTemplate.find('.product-title').text(data[petsInfo[i]].name);
     cartTemplate.find('img').attr('src', data[petsInfo[i]].picture);
-    cartTemplate.find('.product-description').text(data[petsInfo[i]].breed+"  "+data[petsInfo[i]].age);
+    cartTemplate.find('.product-description').text("breed:"+"  "+data[petsInfo[i]].breed);
+    cartTemplate.find('.product-description1').text("age:"+"  "+data[petsInfo[i]].age);
+    cartTemplate.find('.product-description2').text("location:"+"  "+data[petsInfo[i]].location);
     cartTemplate.find(".product-quantity").find('input').attr("value",count[i]);
     cartTemplate.find(".product-price").text("20");
     cartTemplate.find(".product-line-price").text(count[i]* document.getElementById("product-price").innerText);
     cartRow.append(cartTemplate.html());
   };
-  $('#quantity').change( function() {
+  $('.product-quantity input').change( function() {
     updateQuantity(this);
   });
   $('.product-removal button').click( function() {
@@ -50,7 +52,7 @@ $.getJSON('../pets.json', function(data) {
 function recalculateCart()
 {
   var subtotal = 0;
-  console.log($('.product'));
+  // console.log($('.product').length);
 for(var i=0;i<$('.product').length-1;i++){
    subtotal += parseFloat($($('.product')[i]).children('.product-line-price').text());
 }
@@ -83,6 +85,7 @@ for(var i=0;i<$('.product').length-1;i++){
 function updateQuantity(quantityInput)
 {
   /* Calculate line price */
+  console.log(quantityInput);
   var productRow = $(quantityInput).parent().parent();
   var price = parseFloat(productRow.children('.product-price').text());
   var quantity = $(quantityInput).val();
