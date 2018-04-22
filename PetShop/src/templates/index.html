@@ -9,7 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/navbar.css" rel="stylesheet">
   </head>
 
@@ -94,8 +94,9 @@
 
           <!-- Check what is in the Cart -->
           <li class="nav-item">
-            <a class="nav-link" onclick="onClickCart()">Cart</a>
-            <!-- Design Shopping cart div here -->
+            <a class="nav-link" onclick="location.href='cart.html'">Cart</a>
+            
+            <!-- Design Shopping cart div here 
             <div id="idCart" class="modal">
               <span onclick="document.getElementById('idCart').style.display='none'" class="close" title="Close Modal">&times;</span>
               <form class="modal-content" action="/action_page.php">
@@ -124,7 +125,7 @@
                   </div>
                 </div>
               </form>
-            </div>
+            </div> -->
           </li>
 
           <!-- Add a Filter to Search Item -->
@@ -153,27 +154,17 @@
         </form>
       </div>
     </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Here starts the main page -->
     <main role="main" class="container">
       <center>
         <br/>
         <h1 class="text-center">Puppy Shop</h1>
+        <div  class="shop-cart" id="shop-cart" >
+          <a  class="goToShopingCartPage">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </div>
+        <div class="shop-cart-index" id="shop-cart-index">0</div>
         <hr/>
         <br/>
       </center>
@@ -198,13 +189,12 @@
             <strong>Age</strong>: <span class="pet-age"></span><br/>
             <strong>Location</strong>: <span class="pet-location"></span><br/><br/>
             <center>
-            <button class="btn btn-default btn-adopt btn-primary" type="button" data-id="0">Add To Cart</button>
+            <button class="btn btn-default btn-add btn-primary" type="button" data-id="0" >Add To Cart</button>
             </center>
           </div>
         </div>
       </div>
     </main>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

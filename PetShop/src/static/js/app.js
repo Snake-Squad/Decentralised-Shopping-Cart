@@ -1,6 +1,8 @@
 App = {
   web3Provider: null,
   contracts: {},
+  petInCart:[],
+
 
   init: function() {
     // Load pets.
@@ -14,8 +16,8 @@ App = {
         petTemplate.find('.pet-breed').text(data[i].breed);
         petTemplate.find('.pet-age').text(data[i].age);
         petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-
+        // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+        petTemplate.find('.btn-add').attr('data-id', data[i].id);
         petsRow.append(petTemplate.html());
       }
     });
@@ -54,7 +56,9 @@ App = {
   },
 
   bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
+    // $(document).on('click', '.btn-adopt', App.handleAdopt);
+    $(document).on('click', '.btn-add', App.handleAdd);
+    $(document).on('click', '.goToShopingCartPage', App.goToShopingCartPage);
   },
 
   markAdopted: function(adopters, account) {
@@ -73,6 +77,22 @@ App = {
     }).catch(function(err) {
       console.log(err.message);
     });
+  },
+
+  handleAdd: function(event){
+    event.preventDefault();
+    var index = document.getElementById("shop-cart-index");
+    index.innerText++;
+    var petId = parseInt($(event.target).data('id'));
+    $.getJSON('../pets.json', function(data) {
+      let pet = data.filter(e=>{
+        if(e.id===petId)return e;
+      });
+      App.petInCart.push(pet[0].id);
+    });
+  },
+  goToShopingCartPage: function(event){
+    location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
   },
 
   handleAdopt: function(event) {
