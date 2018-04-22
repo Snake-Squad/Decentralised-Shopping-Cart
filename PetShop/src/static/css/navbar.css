@@ -15,8 +15,39 @@ input[type=text]:focus, input[type=password]:focus {
     outline: none;
 }
 
+/*shop-cart*/
 
-
+.shop-cart{
+    z-index:9998;
+    /*background-color: red;*/
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.shop-cart>a>i{
+    font-size: 50px;
+    color: silver;
+}
+.shop-cart-index{
+    z-index:9999;
+    color: white;
+    text-align:center;
+    line-height:20px;
+    font-size:10px;
+    width: 20px;
+    height: 20px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: red;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 13px;
+    margin-bottom: 52px;
+}
 /* Extra styles for the cancel button */
 .cancelbtn {
     padding: 14px 20px;

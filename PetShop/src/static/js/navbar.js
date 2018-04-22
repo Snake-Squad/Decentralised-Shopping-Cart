@@ -35,16 +35,16 @@ function onClickSignUp() {
 
 
 function onClickCart() {
+  
+  // document.getElementById('idCart').style.display='block';
 
-  document.getElementById('idCart').style.display='block';
+  // // Get the modal
+  // var modal = document.getElementById('idCart');
 
-  // Get the modal
-  var modal = document.getElementById('idCart');
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+  // // When the user clicks anywhere outside of the modal, close it
+  // window.onclick = function(event) {
+  //   if (event.target == modal) {
+  //     modal.style.display = "none";
+  //   }
+  // }
 }
