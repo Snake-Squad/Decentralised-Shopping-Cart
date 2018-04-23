@@ -17,6 +17,7 @@ function checkSignUp() {
   var password_ = document.getElementById("psw").value.trim();
   var confirm_password = document.getElementById("psw-repeat").value.trim();
   //var remember = document.getElementById("remember").value.trim();
+  //get the role of user
   var buyer = document.getElementById("buyer").value;
   var seller = document.getElementById("seller").value;
   alert(buyer);
@@ -28,8 +29,7 @@ function checkSignUp() {
     alert("all right");
   }
  
-  //get the database
-  //var users = firebase.database().ref().child('users').push({email:"yy",password:"uu",role:"zz" });
+  //get the database and store the data into database
   if(buyer == "on")
   {
       var users = firebase.database().ref().child('users').push({email:username_,password:password_,role:"buyer"});
@@ -39,20 +39,6 @@ function checkSignUp() {
     var users = firebase.database().ref().child('users').push({email:username_,password:password_,role:"seller"});
   }
   alert(users);
-  
-  
-  // This must be the last function of all
-  //users.on("value", function(snapshot) {
-    
-    
-   // );
-
-   // alert(isValid);
-    //if (isValid) {
-    //  window.location.replace("/");
-   // } else {
-   //   window.location.replace("/");
-   // }
-  //});
+ 
 
 }
