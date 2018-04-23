@@ -32,19 +32,8 @@ function onClickSignUp() {
   }
 }
 
-
-
+//shop cart 
 function onClickCart() {
-  
-  // document.getElementById('idCart').style.display='block';
-
-  // // Get the modal
-  // var modal = document.getElementById('idCart');
-
-  // // When the user clicks anywhere outside of the modal, close it
-  // window.onclick = function(event) {
-  //   if (event.target == modal) {
-  //     modal.style.display = "none";
-  //   }
-  // }
+  alert("Cart");
+  window.location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
 }
