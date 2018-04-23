@@ -9,7 +9,7 @@
     <!-- Bootstrap core CSS -->
     <link href="../PetShop/src/static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="main.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="main.css">  -->
     <!-- web3.js core -->
     <script src="../PetShop/src/static/js/web3.min.js"></script>
     
@@ -169,8 +169,12 @@
 ]
 );
 
+        console.log(CheckOutContract);
+
         var CheckOut = CheckOutContract.at('0x2c6315b775d00007935b3760af5f48f0a9f5a95d');
         console.log(CheckOut);
+
+        // get result from here ----------------------------------------------------------
 
         var result = CheckOut.getTransaction("0x2c6315b775d00007935b3760af5f48f0a9f5a960");
         console.log(result);

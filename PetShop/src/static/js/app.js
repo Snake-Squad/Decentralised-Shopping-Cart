@@ -47,6 +47,7 @@ App = {
 
       // Set the provider for our contract
       App.contracts.Adoption.setProvider(App.web3Provider);
+      console.log(App.contracts.Adoption);
 
       // Use our contract to retrieve and mark the adopted pets
       return App.markAdopted();
@@ -91,6 +92,7 @@ App = {
       App.petInCart.push(pet[0].id);
     });
   },
+
   goToShopingCartPage: function(event){
     location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
   },
