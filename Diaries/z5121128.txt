@@ -48,4 +48,6 @@ I followed the tutorial of pet shop to try how the transaction will look like, s
 
 Week 8
 
-
+This week I have found a new cloud database named firebase. I set up the environment so that my teem members can follow my step. I wrote part of the login.js and successfully logged in with the accounts I created manually. My teem members can follow the way I write to handle sign up, forget password easily in the future.
+In addition, I found an ID generator and pushed it to github so that my teem members can use it easily.
+Lastly, I wrote a .sol file called 'checkout.sol' to handle check out stuff. As we are going to demo about storing transactions in blockchain, I wrote two versions of it. One is using nmp run dev with truffle and another one is just for testing.

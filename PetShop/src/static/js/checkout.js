@@ -96,8 +96,6 @@ CheckOut = {
             if (result[0] != "") {
             var balence1 = 1000 - parseInt(result[3]);
             var balence2 = 1000 + parseInt(result[3]);
-            alert(balence2)
-            
             $("#buyerTrans").html('Item: ' + result[0] + 
                 ' From: ' + result[1] + '\n' +
                 ' Price:' + result[3] +
