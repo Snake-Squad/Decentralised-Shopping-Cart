@@ -1,5 +1,6 @@
 function checkLogin() {
   //  Initialize Firebase
+  
   var config = {
     apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
     authDomain: "comp9900-4b79d.firebaseapp.com",
@@ -9,7 +10,8 @@ function checkLogin() {
     messagingSenderId: "445311599888"
   };
   firebase.initializeApp(config);
-
+   
+ 
   // get user's email and password from the webpage
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
