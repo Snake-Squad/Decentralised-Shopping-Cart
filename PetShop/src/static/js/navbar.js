@@ -28,7 +28,6 @@ function searchPet(){
       petTemplate.find('.btn-add').attr('data-id', searchP[i].id);
       searchPetsRow.append(petTemplate.html());
     }
-    searchP = [];
   });
 }
 

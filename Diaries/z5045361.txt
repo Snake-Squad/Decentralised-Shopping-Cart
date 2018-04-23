@@ -29,3 +29,7 @@ mid break
 week 6 
 
 Through the previous demo, our team focuses on the wrong direction. Under tutor Huang's guidance, we are back in the right direction. This week i found some tutorials of solidity  and learned a lot from Udemy course. I go through solidity tutorials and pet-shop-tutorials again.
+
+week 7
+
+This week my scrum master changed mongo database to firebase as our server. I completed the function of Search in the first few days and it is hard to code javascript as a beginner. Then I added a shopping cart icon into the homepage and finished the add and remove function of shopping cart. Moreover, I went through some truffle box examples, and finally understood how to store transactions.
