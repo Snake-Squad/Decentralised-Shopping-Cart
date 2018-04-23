@@ -65,10 +65,10 @@ CheckOut = {
             }
 
             var account = accounts[0];
-            alert(account);
+            // alert(account);
 
             CheckOut.contracts.CheckOut.deployed().then(function(instance) {
-                alert("Here ");
+                // alert("Here ");
                 CheckOutInstance = instance;
                 return CheckOutInstance.setTransaction(
                     "0x2c6315b775d00007935b3760af5f48f0a9f5a960", 
@@ -77,30 +77,40 @@ CheckOut = {
                     seller, buyer, total, {gas:3000000});
 
             }).then(function(result) {
-                return CheckOut.showTransaction(CheckOutInstance, "0x2c6315b775d00007935b3760af5f48f0a9f5a960");
+                return CheckOut.showTransaction("0x2c6315b775d00007935b3760af5f48f0a9f5a960");
             }).catch(function(err) {
                 console.log(err.message);
             });
         });
     },
 
-    showTransaction: function(event) {
-        web3.eth.getAccounts(function(error, accounts) {
-            if (error) {
-                console.log(error);
+    showTransaction: function(address) {
+        // alert(address)
+        var CheckOutInstance;
+
+        CheckOut.contracts.CheckOut.deployed().then(function(instance) {
+        CheckOutInstance = instance;
+            return CheckOutInstance.getTransaction(address);
+        }).then(function(result) {
+            console.log(result);
+            if (result[0] != "") {
+            var balence1 = 1000 - parseInt(result[3]);
+            var balence2 = 1000 + parseInt(result[3]);
+            alert(balence2)
+            
+            $("#buyerTrans").html('Item: ' + result[0] + 
+                ' From: ' + result[1] + '\n' +
+                ' Price:' + result[3] +
+                ' Balence: '+' $' + balence1);
+            $("#sellerTrans").html('Item: ' + result[0] + 
+                ' To: ' + result[2] + '\n' +
+                ' Price:' + result[3] +
+                ' Balence: '+' $' +  balence2);
             }
-
-            var account = accounts[0];
-            alert(account);
-
-            CheckOut.contracts.CheckOut.deployed().then(function(instance) {
-                alert("Here 2");
-                CheckOutInstance = instance;
-                var result = CheckOutInstance.getTransaction("0x2c6315b775d00007935b3760af5f48f0a9f5a960");
-                console.log(result);
-            });
+        }).catch(function(err) {
+            console.log(err.message);
         });
-    },
+    }
 };
 
 function checkOut() {
