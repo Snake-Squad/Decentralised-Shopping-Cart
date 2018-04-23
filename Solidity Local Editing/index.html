@@ -59,43 +59,18 @@
         var CheckOutContract = web3.eth.contract(
             [
     {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_transId",
-                "type": "address"
-            },
-            {
-                "name": "_itemId",
-                "type": "string"
-            },
-            {
-                "name": "_seller",
-                "type": "string"
-            },
-            {
-                "name": "_buyer",
-                "type": "string"
-            },
-            {
-                "name": "_price",
-                "type": "uint256"
-            }
-        ],
-        "name": "setTransaction",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
         "constant": true,
-        "inputs": [],
-        "name": "countTransactions",
-        "outputs": [
+        "inputs": [
             {
                 "name": "",
                 "type": "uint256"
+            }
+        ],
+        "name": "transactionList",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
             }
         ],
         "payable": false,
@@ -114,15 +89,15 @@
         "outputs": [
             {
                 "name": "",
-                "type": "string"
+                "type": "address[]"
             },
             {
                 "name": "",
-                "type": "string"
+                "type": "address"
             },
             {
                 "name": "",
-                "type": "string"
+                "type": "address"
             },
             {
                 "name": "",
@@ -148,18 +123,43 @@
         "type": "function"
     },
     {
-        "constant": true,
+        "constant": false,
         "inputs": [
             {
-                "name": "",
+                "name": "_transId",
+                "type": "address"
+            },
+            {
+                "name": "_itemIds",
+                "type": "address[]"
+            },
+            {
+                "name": "_seller",
+                "type": "address"
+            },
+            {
+                "name": "_buyer",
+                "type": "address"
+            },
+            {
+                "name": "_price",
                 "type": "uint256"
             }
         ],
-        "name": "transactionList",
+        "name": "setTransaction",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "countTransactions",
         "outputs": [
             {
                 "name": "",
-                "type": "address"
+                "type": "uint256"
             }
         ],
         "payable": false,
@@ -168,31 +168,13 @@
     }
 ]
 );
-        //var Coursetro = CoursetroContract.at('0xD27a96Ba2ea99D026E7E7aCFdc42347F07B4a8B5');
-        var CheckOut = CheckOutContract.at('0x2e57f95733d6c90af91b3c1ea7b3c254e7285d55');
+
+        var CheckOut = CheckOutContract.at('0x2c6315b775d00007935b3760af5f48f0a9f5a95d');
         console.log(CheckOut);
 
-        // CheckOut.getTransaction(function(error, result) {
-        //     if(!error)
-        //         {
-        //             $("#buyerTrans").html('Buyer'+' $'+result[3]);
-        //             console.log(result);
-        //         }
-        //     else
-        //         console.error(error);
-        // });
-
-        // CheckOut.countTransactions(function(error, result) {
-        //     if(!error)
-        //         {
-        //             $("#buyerTrans").html('# of trans'+' $'+result[0]);
-        //             console.log(result);
-        //         }
-        //     else
-        //         console.error(error);
-        // });
-        var result = CheckOut.getTransaction("0x0003");
+        var result = CheckOut.getTransaction("0x2c6315b775d00007935b3760af5f48f0a9f5a960");
         console.log(result);
+        alert(result[0])
 
         if (result[0] != "") {
             var balence1 = 1000 - parseInt(result[3]);
@@ -209,10 +191,12 @@
         }
 
         $("#button").click(function() {
-            alert("here")
             var currentTrans = CheckOut.countTransactions();
-            alert(currentTrans);
-            CheckOut.setTransaction("0x0003", "Hey", "Watmant", "Batman", $("#price").val());
+            // transaction id, itme id, seller id, buyer id, price
+            CheckOut.setTransaction(
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a960", ["0x2c6315b775d00007935b3760af5f48f0a9f5a95a", "0x2c6315b775d00007935b3760af5f48f0a9f5a95b"], "0x2c6315b775d00007935b3760af5f48f0a9f5a951", "0x2c6315b775d00007935b3760af5f48f0a9f5a950", $("#price").val(),
+                {gas:3000000});
+            alert("good")
         });
 
     </script>
