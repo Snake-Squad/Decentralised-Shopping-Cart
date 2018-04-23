@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rand-id {
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+}
+.btn {
+  border-radius: 0.4rem;
+  border: 0.1rem solid blueViolet;
+  background-color: #fff;
+  color: blueViolet;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.6rem 0.8rem;
+}

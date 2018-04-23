@@ -1,17 +1,8 @@
 function onClickLogin() {
   alert("In navbar.js");
+  
+  window.location.href="login.html";
 
-  document.getElementById('idLogin').style.display='block';
-
-  // Get the modal
-  var modal = document.getElementById('idLogin');
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
 }
 
 function searchPet(){
@@ -43,19 +34,8 @@ function searchPet(){
 
 
 function onClickSignUp() {
-  alert("Sing Up");
-
-  document.getElementById('idSignUp').style.display='block';
-
-  // Get the modal
-  var modal = document.getElementById('idSignUp');
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
+  alert("Sign Up");
+  window.location.href="signup.html";
 }
 
 //shop cart 

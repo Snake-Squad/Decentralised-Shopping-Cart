@@ -1,6 +1,6 @@
 function checkSignUp() {
   //  Initialize Firebase
-  
+  alert("hhhh")
   var config = {
     apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
     authDomain: "comp9900-4b79d.firebaseapp.com",
@@ -10,7 +10,7 @@ function checkSignUp() {
     messagingSenderId: "445311599888"
   };
   firebase.initializeApp(config);
-  alert("hhd");
+  //alert("hhd");
   
   // get information from the webpage
   var username_ = document.getElementById("email").value.trim();
@@ -20,13 +20,15 @@ function checkSignUp() {
   //get the role of user
   var buyer = document.getElementById("buyer").value;
   var seller = document.getElementById("seller").value;
-  alert(buyer);
+  //alert(buyer);
   if(password_!=confirm_password)
   {
-      alert("password is not same");
+      alert("Password and confirm password are not same, sign up again");
+      window.location.href="signup.html";
+      
   }
   else{
-    alert("all right");
+    alert("Success login");
   }
  
   //get the database and store the data into database
@@ -38,7 +40,7 @@ function checkSignUp() {
       
     var users = firebase.database().ref().child('users').push({email:username_,password:password_,role:"seller"});
   }
-  alert(users);
+  //alert(users);
  
 
 }
