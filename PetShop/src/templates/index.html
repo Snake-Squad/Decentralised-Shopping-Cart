@@ -46,16 +46,10 @@
             <a class="nav-link" onclick="onClickSignUp()">Sign Up</a>
           </li>
 
-
-          <!-- Check what is in the Cart -->
-          <li class="nav-item">
-            <a class="nav-link" onclick="onClickCart()">Cart</a>
-          </li>
-
           <!-- Add a Filter to Search Item -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Clothing
+          Breed
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Polos</a>
@@ -72,10 +66,10 @@
           </li>
         </ul>
         <!-- Add search Buttom here -->
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
+        <!-- </form> -->
       </div>
     </nav>
     <!-- Here starts the main page -->
@@ -92,7 +86,9 @@
         <hr/>
         <br/>
       </center>
-
+      <div id="searchPetsRow" class="row">
+        <!-- PETS LOAD HERE, This is very important -->
+      </div>
       <div id="petsRow" class="row">
         <!-- PETS LOAD HERE, This is very important -->
       </div>
