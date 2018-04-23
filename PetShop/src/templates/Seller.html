@@ -5,20 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Home Page</title>
+    <title>Seller Page</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/navbar.css" rel="stylesheet">
-    <script>
-    $(document).ready(function(){
-        $('#role').find('input[type=checkbox]').bind('click', function(){
-            $('#test').find('input[type=checkbox]').not(this).attr("checked", false);
-        });
-    });
-    </script>
-  
   </head>
 
 
@@ -66,49 +57,55 @@
 
 
           <!-- Go to Sign Up Page -->
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" onclick="onClickSignUp()">Sign Up</a>
             <div id="idSignUp" class="modal">
               <span onclick="document.getElementById('idSignUp').style.display='none'" class="close" title="Close Modal">&times;</span>
-              <!--<form class="modal-content" action="/action_page.php">-->
-              <div class="modal-content" id="SignUpForm">
+              <form class="modal-content" action="/action_page.php">
                 <div class="container">
                   <h1>Sign Up</h1>
                   <p>Please fill in this form to create an account.</p>
                   <hr>
                   <label for="email"><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                  <input type="text" placeholder="Enter Email" name="email" required>
 
                   <label for="psw"><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                  <input type="password" placeholder="Enter Password" name="psw" required>
 
                   <label for="psw-repeat"><b>Repeat Password</b></label>
-                  <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                  <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
                   <label>
-                    <input type="checkbox" checked="checked" name="remember" id="remember" style="margin-bottom:15px"> Remember me
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
                   </label>
-                  <div id="role" style="display:inline-block">
-                    <input type="checkbox" checked="checked" name="buyer" id="buyer" style="margin-bottom:15px">buyer
-                    <input type="checkbox"  name="seller" id="seller" style="margin-bottom:15px"> seller
-                  </div>
-            
+                  <label>
+                    <input type="checkbox" checked="checked" name="buyer" style="margin-bottom:15px"> buyer
+                  </label>
+                  <label>
+                    <input type="checkbox"  name="seller" style="margin-bottom:15px"> seller
+                  </label>
+
                   <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                   <div class="clearfix">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-lg btn-danger">Cancel</button>
-                    <button type="submit" class="btn btn-lg" id="signupBtn" name="signup" onclick="checkSignUp()">Sign Up</button>
+                    <button type="submit" class="btn btn-lg">Sign Up</button>
                   </div>
                 </div>
-              <!--</form>-->
+              </form>
             </div>
-            </div>
-          </li>
+          </li> -->
+
+
+          <!-- Check what is in the Cart -->
+          <!-- <li class="nav-item">
+            <a class="nav-link" onclick="onClickCart()">Cart</a>
+          </li> -->
 
           <!-- Add a Filter to Search Item -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Breed
+          Clothing
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Polos</a>
@@ -136,12 +133,15 @@
       <center>
         <br/>
         <h1 class="text-center">Puppy Shop</h1>
-        <div  class="shop-cart" id="shop-cart" >
+          <div class = "upload_product" id = "upload_product">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Upload</button>
+          </div>
+        <!-- <div  class="shop-cart" id="shop-cart" >
           <a  class="goToShopingCartPage">
             <i class="fas fa-shopping-cart"></i>
           </a>
-        </div>
-        <div class="shop-cart-index" id="shop-cart-index">0</div>
+        </div> -->
+        <!-- <div class="shop-cart-index" id="shop-cart-index">0</div> -->
         <hr/>
         <br/>
       </center>
@@ -166,7 +166,7 @@
             <strong>Age</strong>: <span class="pet-age"></span><br/>
             <strong>Location</strong>: <span class="pet-location"></span><br/><br/>
             <center>
-            <button class="btn btn-default btn-add btn-primary" type="button" data-id="0" >Add To Cart</button>
+            <!-- <button class="btn btn-default btn-add btn-primary" type="button" data-id="0" >Add To Cart</button> -->
             </center>
           </div>
         </div>
@@ -185,6 +185,5 @@
     <script src="js/app.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/login.js"></script>
-    <script src="js/signup.js"></script>
   </body>
 </html>
