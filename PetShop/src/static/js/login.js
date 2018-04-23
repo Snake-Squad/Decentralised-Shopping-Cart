@@ -18,7 +18,7 @@ function checkLogin() {
 
   // get the database
   var users = firebase.database().ref().child('users');
-  alert(users);
+  //alert(users);
 
   // This must be the last function of all
   users.on("value", function(snapshot) {
@@ -29,7 +29,7 @@ function checkLogin() {
       var userKey = user.key; // user id
       var userVal = user.val(); // user's info (email, fn, ln, pw, role)
       
-      alert(userVal.email);
+      //alert(userVal.email);
       // check whether it matches or not
       if (userVal.email == username) {
         if (userVal.password == password) {
@@ -38,11 +38,12 @@ function checkLogin() {
         }
       }
     });
-    alert(isValid);
+    //alert(isValid);
     if (isValid) {
       window.location.replace("/");
     } else {
-      window.location.replace("/");
+      alert("Email or password is not correct, please input again");
+      window.location.href="login.html";
     }
   });
 
