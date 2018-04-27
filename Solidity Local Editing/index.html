@@ -59,18 +59,375 @@
         var CheckOutContract = web3.eth.contract(
             [
     {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_sellerId",
+                "type": "address"
+            },
+            {
+                "name": "_puppyId",
+                "type": "address"
+            },
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_breed",
+                "type": "string"
+            },
+            {
+                "name": "_age",
+                "type": "uint256"
+            },
+            {
+                "name": "_birthPlace",
+                "type": "string"
+            },
+            {
+                "name": "_price",
+                "type": "uint256"
+            },
+            {
+                "name": "_image",
+                "type": "string"
+            }
+        ],
+        "name": "addPuppy",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_transId",
+                "type": "address"
+            },
+            {
+                "name": "_puppiesIds",
+                "type": "address[]"
+            },
+            {
+                "name": "_seller",
+                "type": "address"
+            },
+            {
+                "name": "_buyer",
+                "type": "address"
+            },
+            {
+                "name": "_price",
+                "type": "uint256"
+            },
+            {
+                "name": "_cartId",
+                "type": "address"
+            },
+            {
+                "name": "_prodCartId",
+                "type": "address"
+            },
+            {
+                "name": "_cart",
+                "type": "address[]"
+            },
+            {
+                "name": "_prodCart",
+                "type": "address[]"
+            }
+        ],
+        "name": "checkOut",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_puppyId",
+                "type": "address"
+            }
+        ],
+        "name": "markSoldPuppy",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_userId",
+                "type": "address"
+            },
+            {
+                "name": "_price",
+                "type": "uint256"
+            }
+        ],
+        "name": "recharge",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_accountId",
+                "type": "address"
+            },
+            {
+                "name": "_cartId",
+                "type": "address"
+            },
+            {
+                "name": "_prodCartId",
+                "type": "address"
+            },
+            {
+                "name": "_balance",
+                "type": "uint256"
+            }
+        ],
+        "name": "setAccount",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_cartId",
+                "type": "address"
+            },
+            {
+                "name": "_puppiesIds",
+                "type": "address[]"
+            }
+        ],
+        "name": "setCart",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_productId",
+                "type": "address"
+            },
+            {
+                "name": "_puppiesIds",
+                "type": "address[]"
+            }
+        ],
+        "name": "setProduct",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_puppyId",
+                "type": "address"
+            },
+            {
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "name": "_breed",
+                "type": "string"
+            },
+            {
+                "name": "_age",
+                "type": "uint256"
+            },
+            {
+                "name": "_birthPlace",
+                "type": "string"
+            },
+            {
+                "name": "_price",
+                "type": "uint256"
+            },
+            {
+                "name": "_image",
+                "type": "string"
+            },
+            {
+                "name": "_onSale",
+                "type": "bool"
+            }
+        ],
+        "name": "setPuppy",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_transId",
+                "type": "address"
+            },
+            {
+                "name": "_puppiesIds",
+                "type": "address[]"
+            },
+            {
+                "name": "_seller",
+                "type": "address"
+            },
+            {
+                "name": "_buyer",
+                "type": "address"
+            },
+            {
+                "name": "_price",
+                "type": "uint256"
+            }
+        ],
+        "name": "setTransaction",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "constant": true,
         "inputs": [
+            {
+                "name": "_accountId",
+                "type": "address"
+            }
+        ],
+        "name": "getAccount",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
+            },
+            {
+                "name": "",
+                "type": "address[]"
+            },
             {
                 "name": "",
                 "type": "uint256"
             }
         ],
-        "name": "transactionList",
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_cartId",
+                "type": "address"
+            }
+        ],
+        "name": "getCart",
         "outputs": [
             {
                 "name": "",
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_productId",
                 "type": "address"
+            }
+        ],
+        "name": "getProducts",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_puppyId",
+                "type": "address"
+            }
+        ],
+        "name": "getPuppy",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            },
+            {
+                "name": "",
+                "type": "string"
+            },
+            {
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "type": "string"
+            },
+            {
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "type": "string"
+            },
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getPuppyList",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
             }
         ],
         "payable": false,
@@ -107,71 +464,13 @@
         "payable": false,
         "stateMutability": "view",
         "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "getTransactions",
-        "outputs": [
-            {
-                "name": "",
-                "type": "address[]"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_transId",
-                "type": "address"
-            },
-            {
-                "name": "_itemIds",
-                "type": "address[]"
-            },
-            {
-                "name": "_seller",
-                "type": "address"
-            },
-            {
-                "name": "_buyer",
-                "type": "address"
-            },
-            {
-                "name": "_price",
-                "type": "uint256"
-            }
-        ],
-        "name": "setTransaction",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "countTransactions",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
     }
 ]
 );
 
         console.log(CheckOutContract);
 
-        var CheckOut = CheckOutContract.at('0x2c6315b775d00007935b3760af5f48f0a9f5a95d');
+        var CheckOut = CheckOutContract.at('0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b5');
         console.log(CheckOut);
 
         // get result from here ----------------------------------------------------------
