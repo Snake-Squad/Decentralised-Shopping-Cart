@@ -31,11 +31,11 @@ body a{
 }
 
 @font-face {
-   font-family: 'Lato-Regular';
+   
    src: url(../fonts/Lato-Regular.ttf)format('truetype');
 }
 @font-face {
-   font-family: 'PlayfairDisplay-Regular';
+ 
    src: url(../fonts/PlayfairDisplay-Regular.ttf)format('truetype');
 }
 input[type="button"],input[type="submit"]{
