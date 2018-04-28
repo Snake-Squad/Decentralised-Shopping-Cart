@@ -1,3 +1,17 @@
+function addCookie(name,value,days,path){   /**添加设置cookie**/  
+    var name = escape(name);  
+    var value = escape(value);  
+    var expires = new Date();  
+    expires.setTime(expires.getTime() + days * 3600000 * 24);  
+    //path=/，表示cookie能在整个网站下使用，path=/temp，表示cookie只能在temp目录下使用  
+    path = path == "" ? "" : ";path=" + path;  
+    //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
+    //参数days只能是数字型  
+    var _expires = (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
+    document.cookie = name + "=" + value + _expires + path;  
+}  
+
+
 function checkSignUp() {
   //  Initialize Firebase
   var config = {
@@ -42,6 +56,7 @@ function checkSignUp() {
     alert("Success sign up");
     //redirect to home page with the username
     var users = firebase.database().ref().child('users').push({"email":username_,"password":password_,"first_name":firstname_,"last_name":lastname_,"mailling_address":maillingaddress_,"mainaddress":mainaddress,"additionaddress":additionaddress,"country":select_country.options[country_index].text,"state":select_state.options[state_index].text,"zip":zip});
+    addCookie("userName",username_,7,"/"); 
     window.location.replace("/");
     //window.location.href="http://localhost:3000?username=yy";
   

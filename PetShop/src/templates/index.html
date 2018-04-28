@@ -11,7 +11,40 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/navbar.css" rel="stylesheet">
+    <script>
+    function getCookieValue(name){   
 
+    var name = escape(name);  
+ 
+    var allcookies = document.cookie;         
+  
+    name += "=";  
+    var pos = allcookies.indexOf(name);      
+
+    if (pos != -1){                                             
+        var start = pos + name.length;                 
+        var end = allcookies.indexOf(";",start);        
+        if (end == -1) end = allcookies.length;        
+        var value = allcookies.substring(start,end);  
+        return (value);                              
+    }else{  
+        return "";  
+    }  
+}  
+window.onload = function(){  
+    var userNameValue = getCookieValue("userName");  
+    alert(userNameValue);
+    if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
+        document.getElementById("login_navabar").text = "Login"; 
+        
+        }
+    else{
+    document.getElementById("login_navabar").text = userNameValue;  
+    document.getElementById("login_navabar").onclick = onClickshowperson;
+    document.getElementById("signup_navabar").style.display = 'none';
+    }
+    }
+    </script>
   
   </head>
 
@@ -30,14 +63,14 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
           <!-- Go to Login Page -->
           <li class="nav-item">
-            <a class="nav-link" onclick="onClickLogin()">Login</a>
+            <a class="nav-link" id="login_navabar" onclick="onClickLogin()">Login</a>
      
           </li>
 
 
           <!-- Go to Sign Up Page -->
           <li class="nav-item">
-            <a class="nav-link" onclick="onClickSignUp()">Sign Up</a>
+            <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
           </li>
           
           

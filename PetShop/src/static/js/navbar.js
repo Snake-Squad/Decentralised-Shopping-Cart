@@ -4,6 +4,12 @@ function onClickLogin() {
   window.location.href="login.html";
 
 }
+function onClickshowperson(){
+  alert("showperson.js");
+  
+  window.location.href="personInfo.html";
+    
+}
 
 function searchPet(){
   var wat = document.getElementById("searchPetsRow");
