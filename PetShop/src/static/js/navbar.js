@@ -10,6 +10,23 @@ function onClickshowperson(){
   window.location.href="personInfo.html";
     
 }
+function onClickaddpuppy(){
+ alert("addpuppy.js");
+  
+  window.location.href="addpuppy.html";
+}
+
+function onClickrecharge(){
+  alert("recharge.js");
+  
+  window.location.href="recharge.html";
+}
+
+function onClicktransactions(){
+  alert("show transactions.js");
+  
+  window.location.href="transaction.html";
+}
 
 function searchPet(){
   var wat = document.getElementById("searchPetsRow");

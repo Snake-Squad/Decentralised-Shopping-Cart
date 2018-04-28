@@ -39,7 +39,11 @@ window.onload = function(){
         
         }
     else{
-  
+    /*
+    document.getElementById("login_navabar").text = userNameValue;  
+    document.getElementById("login_navabar").onclick = onClickshowperson;
+    document.getElementById("signup_navabar").style.display = 'none';
+    */
     document.getElementById("loginnavbarDropdown").text = userNameValue;  
     document.getElementById("loginnavbarDropdown").style.display = 'block';
     document.getElementById("login_navabar").style.display = 'none';
@@ -81,7 +85,7 @@ window.onload = function(){
               <a class="dropdown-item" id="addpuppy" onclick="onClickaddpuppy()">add Puppy</a>
               <a class="dropdown-item" id="recharge" onclick="onClickrecharge()">recharge</a>
               <a class="dropdown-item" id="transactions" onclick="onClicktransactions()">transactions</a>
-              <a class="dropdown-item" id="logout" onclick="onClicklogout()">logout</a>
+              <a class="dropdown-item"id="logout" onclick="onClicklogout()">logout</a>
   
             </div>
           </li>
@@ -125,47 +129,7 @@ window.onload = function(){
       </div>
     </nav>
     <!-- Here starts the main page -->
-    <main role="main" class="container">
-      <center>
-        <br/>
-        <h1 class="text-center">Puppy Shop</h1>
-        <div  class="shop-cart" id="shop-cart" >
-          <a  class="goToShopingCartPage">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-        <div class="shop-cart-index" id="shop-cart-index">0</div>
-        <hr/>
-        <br/>
-      </center>
-      <div id="searchPetsRow" class="row">
-        <!-- PETS LOAD HERE, This is very important -->
-      </div>
-      <div id="petsRow" class="row">
-        <!-- PETS LOAD HERE, This is very important -->
-      </div>
-
-
-    
-    <div id="petTemplate" style="display: none;">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="panel panel-default panel-pet">
-          <center><div class="panel-heading">
-            <h3 class="panel-title"></h3>
-          </div></center>
-          <div class="panel-body">
-            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true">
-            <br/><br/>
-            <strong>Breed</strong>: <span class="pet-breed"></span><br/>
-            <strong>Age</strong>: <span class="pet-age"></span><br/>
-            <strong>Location</strong>: <span class="pet-location"></span><br/><br/>
-            <center>
-            <button class="btn btn-default btn-add btn-primary" type="button" data-id="0" >Add To Cart</button>
-            </center>
-          </div>
-        </div>
-      </div>
-    </main>
+    <p>add puppy</p>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

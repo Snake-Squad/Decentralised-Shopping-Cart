@@ -12,22 +12,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/navbar.css" rel="stylesheet">
     <script>
-    function getCookieValue(name){  /**获取cookie的值，根据cookie的键获取值**/  
-    //用处理字符串的方式查找到key对应value  
+    function getCookieValue(name){   
+
     var name = escape(name);  
-    //读cookie属性，这将返回文档的所有cookie  
+ 
     var allcookies = document.cookie;         
-    //查找名为name的cookie的开始位置  
+  
     name += "=";  
     var pos = allcookies.indexOf(name);      
-    //如果找到了具有该名字的cookie，那么提取并使用它的值  
-    if (pos != -1){                                             //如果pos值为-1则说明搜索"version="失败  
-        var start = pos + name.length;                  //cookie值开始的位置  
-        var end = allcookies.indexOf(";",start);        //从cookie值开始的位置起搜索第一个";"的位置,即cookie值结尾的位置  
-        if (end == -1) end = allcookies.length;        //如果end值为-1说明cookie列表里只有一个cookie  
-        var value = allcookies.substring(start,end); //提取cookie的值  
-        return (value);                           //对它解码        
-    }else{  //搜索失败，返回空字符串  
+
+    if (pos != -1){                                             
+        var start = pos + name.length;                 
+        var end = allcookies.indexOf(";",start);        
+        if (end == -1) end = allcookies.length;        
+        var value = allcookies.substring(start,end);  
+        return (value);                              
+    }else{  
         return "";  
     }  
 }  
@@ -36,10 +36,18 @@ window.onload = function(){
     alert(userNameValue);
     if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
         document.getElementById("login_navabar").text = "Login"; 
-        document.getElementById("login_navaba").onclick = "onClickshowperson()";
+        
         }
     else{
+    /*
     document.getElementById("login_navabar").text = userNameValue;  
+    document.getElementById("login_navabar").onclick = onClickshowperson;
+    document.getElementById("signup_navabar").style.display = 'none';
+    */
+    document.getElementById("loginnavbarDropdown").text = userNameValue;  
+    document.getElementById("loginnavbarDropdown").style.display = 'block';
+    document.getElementById("login_navabar").style.display = 'none';
+    document.getElementById("signup_navabar").style.display = 'none';
     
     }
     }
@@ -50,10 +58,79 @@ window.onload = function(){
 
 
   <body>
+    <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Logo, which is home -->
+      <a class="navbar-brand" href="#">
+      <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
+      </a>
 
- 
-<p>person</p>
-    
+      <!-- Add bar items -->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+          <!-- Go to Login Page -->
+          
+          <li class="nav-item">
+            <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
+     
+          </li>
+          
+            <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+          login
+            </a>
+            <!--onclick function can be found in navabar.js-->
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" id="personinfo" onclick="onClickshowperson()">Profile</a>
+              <a class="dropdown-item" id="addpuppy" onclick="onClickaddpuppy()">add Puppy</a>
+              <a class="dropdown-item" id="recharge" onclick="onClickrecharge()">recharge</a>
+              <a class="dropdown-item" id="transactions" onclick="onClicktransactions()">transactions</a>
+              <a class="dropdown-item"id="logout" onclick="onClicklogout()">logout</a>
+  
+            </div>
+          </li>
+
+
+          <!-- Go to Sign Up Page -->
+          <li class="nav-item">
+            <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
+          </li>
+          
+          
+          <!-- Check what is in the Cart -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="onClickCart()">Cart</a>
+          </li>
+          
+          <!-- Add a Filter to Search Item -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Breed
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Polos</a>
+              <a class="dropdown-item" href="#">Casual Shirts</a>
+              <a class="dropdown-item" href="#">Casual Trousers</a>
+              <a class="dropdown-item" href="#">Jeans</a>
+              <a class="dropdown-item" href="#">Shorts & 3/4th</a>
+              <a class="dropdown-item" href="#">Formal Shirts</a>
+              <a class="dropdown-item" href="#">Formal Trousers</a>
+              <a class="dropdown-item" href="#">Suits & Blazers</a>
+              <a class="dropdown-item" href="#">Track Wear</a>
+              <a class="dropdown-item" href="#">Inner Wear</a>
+            </div>
+          </li>
+        </ul>
+        <!-- Add search Buttom here -->
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
+        <!-- </form> -->
+      </div>
+    </nav>
+    <p>personinfo</p>
+    </main>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- firebase core js -->

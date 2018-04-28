@@ -12,8 +12,49 @@ function addCookie(name,value,days,path){   /**添加设置cookie**/
     var _expires = (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
     document.cookie = name + "=" + value + _expires + path;  
 }  
+function getCookieValue(name){   
 
+    var name = escape(name);  
+ 
+    var allcookies = document.cookie;         
+  
+    name += "=";  
+    var pos = allcookies.indexOf(name);      
 
+    if (pos != -1){                                             
+        var start = pos + name.length;                 
+        var end = allcookies.indexOf(";",start);        
+        if (end == -1) end = allcookies.length;        
+        var value = allcookies.substring(start,end);  
+        return (value);                              
+    }else{  
+        return "";  
+    } 
+}
+function onClicklogout(){
+    delete_cookie("userName"); 
+    
+}
+function delete_cookie(name) {
+  /*
+  if( get_cookie( name ) ) {
+    document.cookie = name + "=" +
+      ((path) ? ";path="+path:"")+
+      ((domain)?";domain="+domain:"") +
+      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+  */
+  var exp = new Date();  
+  exp.setTime(exp.getTime() - 1);  
+  var cval=getCookieValue(name);  
+  if(cval!=null){      
+      document.cookie= name + "="+cval+";expires="+exp.toGMTString();  
+  }
+
+  alert("delete cookie");
+  window.location.replace("/");
+
+}
 function checkLogin() {
   //  Initialize Firebase
   
