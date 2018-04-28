@@ -231,6 +231,8 @@ contract Controller {
         accountsOnBC[_buyer].balance = accountsOnBC[_buyer].balance - _price;
         // record transaction
         setTransaction(_transId, _puppiesIds, _seller, _buyer, _price);
+        accountsOnBC[_seller].transactions.push(_transId);
+        accountsOnBC[_buyer].transactions.push(_transId);
         // update cart and prodcart
         accountsOnBC[_buyer].cartId = _cartId;
         setCart(_cartId, _cart);

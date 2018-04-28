@@ -1,5 +1,5 @@
-var CheckOut = artifacts.require("CheckOut");
+var Controller = artifacts.require("Controller");
 
 module.exports = function(deployer) {
-  deployer.deploy(CheckOut);
+  deployer.deploy(Controller);
 };
