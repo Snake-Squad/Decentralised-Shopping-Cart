@@ -1,33 +1,53 @@
+/* functions while not logged in */
 function onClickLogin() {
-  alert("In navbar.js");
-  
   window.location.href="login.html";
+}
 
+function onClickSignUp() {
+  alert("Sign Up");
+  window.location.href="signup.html";
 }
-function onClickshowperson(){
-  alert("showperson.js");
-  
+
+//shop cart 
+function onClickCart() {
+  alert("Cart");
+  window.location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
+}
+
+
+/* functions after logging in */
+function onClickPorfile() { 
   window.location.href="personInfo.html";
-    
 }
-function onClickaddpuppy(){
- alert("addpuppy.js");
-  
+
+function onClickAddAPuppy(){
   window.location.href="addpuppy.html";
 }
 
-function onClickrecharge(){
-  alert("recharge.js");
-  
+function onClickRecharge(){
   window.location.href="recharge.html";
 }
 
-function onClicktransactions(){
-  alert("show transactions.js");
-  
+function onClickTransactions(){
   window.location.href="transaction.html";
 }
 
+function onClickLogOut() {
+  delete_cookie("userName"); 
+}
+
+function delete_cookie(name) {
+  var exp = new Date();  
+  exp.setTime(exp.getTime() - 1);  
+  var cval=getCookieValue(name);  
+  if(cval!=null){      
+    document.cookie= name + "="+cval+";expires="+exp.toGMTString();  
+  }
+  alert("delete cookie");
+  window.location.replace("/");
+}
+
+/* search function */
 function searchPet(){
   var wat = document.getElementById("searchPetsRow");
   console.log("wat", wat);
@@ -60,15 +80,21 @@ function searchPet(){
   });
 }
 
+/* get cookie if it is set */
+function getCookieValue(name) {   
+  var name = escape(name);  
+  var allcookies = document.cookie;         
+  name += "=";  
+  var pos = allcookies.indexOf(name);      
 
-
-function onClickSignUp() {
-  alert("Sign Up");
-  window.location.href="signup.html";
+  if (pos != -1) {                                             
+    var start = pos + name.length;                 
+    var end = allcookies.indexOf(";",start);        
+    if (end == -1) end = allcookies.length;        
+    var value = allcookies.substring(start,end);  
+    return (value);                              
+  } else{  
+    return "";  
+  } 
 }
 
-//shop cart 
-function onClickCart() {
-  alert("Cart");
-  window.location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
-}
