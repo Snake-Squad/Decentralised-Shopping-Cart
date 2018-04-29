@@ -1,4 +1,4 @@
-<!doctype html>
+  <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -16,9 +16,7 @@
   <!-- Custom styles for this template -->
   <link href="css/sign_up.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-  <!-- Load javascripts -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/check_validation.js"></script>
+  <!-- Load online javascripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- firebase core js -->
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
@@ -27,9 +25,10 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/web3.min.js"></script>
   <script src="js/truffle-contract.js"></script>
-  <script src="js/app.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/signup.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/check_validation.js"></script>
 
   <meta name="viewport" content="width=device-width, intitial-scale=1">
 
@@ -105,7 +104,7 @@
 
         <div class="col-md-8 order-md-1">
           <h3 class="mb-3">Personal Information</h3>
-          <!--<form class="needs-validation" novalidate method="post">-->
+          <form class="needs-validation" novalidate method="get">
           <!--<form class="needs-validation" novalidate>-->
             
              <div class="mb-3">
@@ -128,24 +127,13 @@
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                
                 <label for="lastName">Last name</label>
                 <input type="text" class="form-control" id="last_name" placeholder="Last Name" value="" required> 
-               
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
               </div>
-                </div>
-                <div class="mb-3">
-                
-                <label for="mailingAddress">Mailling Address</label>
-                <input type="text" class="form-control" id="mailling_address" placeholder="Mailling Address" value="" required> 
-               
-                <div class="invalid-feedback">
-                  Valid mailling address is required.
-                </div>
-              </div>
+            </div>
 
 
             <div class="mb-3">
@@ -165,16 +153,17 @@
               </div>
             </div>
 
+            <hr>
+
+            <h3 class="mb-3">Mailing Address</h3>
             <div class="mb-3">
               <label for="address">Address <span class="text-muted">(Optional)</span></label>
-               <input type="text" class="form-control" id="address1" placeholder="1234 Main St"> 
-          
+              <input type="text" class="form-control" id="address1" placeholder="1234 Main St"> 
             </div>
 
             <div class="mb-3">
               <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-               <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"> 
-         
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"> 
             </div>
 
             <div class="row">
@@ -184,8 +173,6 @@
                   <option value="">Choose...</option>
                   <option value="United States">United States</option>
                 </select> 
-                
-
               </div>
 
               <div class="col-md-4 mb-3">
@@ -201,18 +188,11 @@
                  <input type="text" class="form-control" data-style="btn-primary" id="zip" placeholder=""> 
               </div>
             </div>
-            
-           <!--
-           <div class="row">
-             <div class="col-md-6 mb-3">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-lg btn-danger">Cancel</button>
-            </div>
-            <div class="col-md-6 mb-3">
-            <button type="submit" class="btn btn-lg" id="signupBtn" name="signup" onclick="checkSignUp()">Sign Up</button>
-            </div>
-          </div>
-          -->
+
+          <hr>
+
            <button class="btn btn-secondary btn-lg btn-block" type="submit" id="signupBtn" name="signup" onclick="checkSignUp()">Sign up</button>
+         </form>
 
             <footer class="my-1 pt-5 text-muted text-center text-small">
               <p class="mb-1">&copy; 2018-2019 Snake Squad</p>

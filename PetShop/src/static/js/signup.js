@@ -24,13 +24,14 @@ function checkSignUp() {
   };
   firebase.initializeApp(config);
   
+  alert("getting data from UI now")
   // get information from the webpage
   var username_ = document.getElementById("email").value.trim();
   var password_ = document.getElementById("psw").value.trim();
   var confirm_password = document.getElementById("psw-repeat").value.trim();
   var firstname_ = document.getElementById("first_name").value.trim();
   var lastname_ = document.getElementById("last_name").value.trim();
-  var maillingaddress_= document.getElementById("mailling_address").value.trim();
+  // var maillingaddress_= document.getElementById("mailling_address").value.trim();
   var mainaddress = document.getElementById("address1").value.trim();
   var additionaddress = document.getElementById("address2").value.trim();
   var select_country=document.getElementById("country");
