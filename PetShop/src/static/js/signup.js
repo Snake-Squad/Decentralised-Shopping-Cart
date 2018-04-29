@@ -27,13 +27,12 @@ function setOnFirebase(
     messagingSenderId: "445311599888"
   };
   firebase.initializeApp(config);
-  alert("firebase initialized");
 
   var users = firebase.database().ref().child('users');
   var userIdFB = firebase.database().ref().child('users').push().key;
   alert(userIdFB);
   
-  users.child(userIdFB).set({
+  return users.child(userIdFB).set({
     "email": username, 
     "password": password,
     "first_name": firstName,
@@ -44,12 +43,15 @@ function setOnFirebase(
     "state": state,
     "zip": zip,
     "user_id": userIdBC
+  }).then(function(result) {
+    return setUserOnBlockChain(userIdBC);
   });
 }
 
 
 function setUserOnBlockChain(userIdBC) {
   alert("set a user on block chain");
+  window.location.replace("/signup.html");
 }
 
 
@@ -83,11 +85,8 @@ function validSignUp() {
       username, firstName, lastName, password, 
       street, suite, country, state, zip
     );
-
-    //setUserOnBlockChain(userIdBC);
-
-    //addCookie("userName", username, 7, "/"); 
-    //window.location.replace("/");
+    //addCookie("userName", username, 7, "/");
+    
   }
 }
 
