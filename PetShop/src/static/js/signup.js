@@ -13,7 +13,7 @@ function addCookie(name, value, days, path){   /**添加设置cookie**/
 
 
 function setOnFirebase(
-  userIdFB, userIdBC,
+  userIdBC,
   username, firstName, lastName, password, 
   street, suite, country, state, zip
 ) {
@@ -30,9 +30,10 @@ function setOnFirebase(
   alert("firebase initialized");
 
   var users = firebase.database().ref().child('users');
-  alert(users);
-
-  users.push({
+  var userIdFB = firebase.database().ref().child('users').push().key;
+  alert(userIdFB);
+  
+  users.child(userIdFB).set({
     "email": username, 
     "password": password,
     "first_name": firstName,
@@ -44,18 +45,15 @@ function setOnFirebase(
     "zip": zip,
     "user_id": userIdBC
   });
-  
-  setOnBlockChain(userIdBC);
 }
 
 
-function setOnBlockChain(userIdBC) {
+function setUserOnBlockChain(userIdBC) {
   alert("set a user on block chain");
 }
 
 
-function validSignUp() {  
-  alert("getting valid data from UI")
+function validSignUp() {
   // get personal information from the webpage
   var username = document.getElementById("email").value.trim();
   var firstName = document.getElementById("first_name").value.trim();
@@ -79,16 +77,17 @@ function validSignUp() {
     alert("Password and confirm password are not same, sign up again");
   }
   else {
-    var userIdFB = generateUserIdFB();
     var userIdBC = generateUserIdBC();
     setOnFirebase(
-      userIdFB, userIdBC,
+      userIdBC,
       username, firstName, lastName, password, 
       street, suite, country, state, zip
     );
+
+    //setUserOnBlockChain(userIdBC);
+
     //addCookie("userName", username, 7, "/"); 
     //window.location.replace("/");
-    alert("back")
   }
 }
 

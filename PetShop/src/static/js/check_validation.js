@@ -13,6 +13,7 @@
                 event.stopPropagation();
               } else {
                 validSignUp();
+                window.location.replace("/");
               }
               form.classList.add('was-validated');
             }, false);
