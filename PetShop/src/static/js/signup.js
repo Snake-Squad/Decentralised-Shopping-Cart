@@ -41,20 +41,23 @@ Controller = {
         web3.eth.getAccounts(function(error, accounts) {
             if (error) {
                 console.log(error);
+            } else {
+                var account = accounts[0];
+                console.log("from: ", account);
+
+                Controller.contracts.Controller.deployed().then(
+                    function(instance) {
+                        console.log(instance);
+                        return instance.setAccount(
+                            userId, cartId, prodCartId, 0, {gas: 3000000}
+                        );
+                        alert("good");
+                }).then(function(result) {
+                    return Controller.getUserOnBC();
+                }).catch(function(err) {
+                    console.log(err.message);
+                });
             }
-
-            var account = accounts[0];
-            console.log("from: ", account);
-
-            Controller.contracts.Controller.deployed().then(function(instance) {
-                console.log(instance);
-                return instance.setCart(userId, ["0x2c6315b775d00007935b3760af5f48f0a9f5a96a"], {gas: 3000000});
-            }).then(function(result) {
-                alert("Good");
-                return Controller.getUserOnBC();
-            }).catch(function(err) {
-                console.log(err.message);
-            });
         });
     },
 
@@ -124,86 +127,74 @@ function setOnFirebase(
 }
 
 
-// function setUserOnBlockChain(userIdBC) {
-//   alert("set a user on block chain");
-//   window.location.replace("/signup.html");
-// }
-
-
 function validSignUp() {
-  // get personal information from the webpage
-  var username = document.getElementById("email").value.trim();
-  var firstName = document.getElementById("first_name").value.trim();
-  var lastName = document.getElementById("last_name").value.trim();
-  var password = document.getElementById("psw").value.trim();
-  var confirmPassword = document.getElementById("psw-repeat").value.trim();
+    // get personal information from the webpage
+    var username = document.getElementById("email").value.trim();
+    var firstName = document.getElementById("first_name").value.trim();
+    var lastName = document.getElementById("last_name").value.trim();
+    var password = document.getElementById("psw").value.trim();
+    var confirmPassword = document.getElementById("psw-repeat").value.trim();
   
-  // get mailing address from the webpage
-  var street = document.getElementById("address1").value.trim();
-  var suite = document.getElementById("address2").value.trim();
-  var countries = document.getElementById("country");
-  var cid = countries.selectedIndex ;             
-  var country = countries.options[cid].text;
-  var states = document.getElementById("state");
-  var sid = states.selectedIndex;
-  var state = states.options[sid].text; 
-  var zip = document.getElementById("zip").value.trim();
+    // get mailing address from the webpage
+    var street = document.getElementById("address1").value.trim();
+    var suite = document.getElementById("address2").value.trim();
+    var countries = document.getElementById("country");
+    var cid = countries.selectedIndex ;             
+    var country = countries.options[cid].text;
+    var states = document.getElementById("state");
+    var sid = states.selectedIndex;
+    var state = states.options[sid].text; 
+    var zip = document.getElementById("zip").value.trim();
 
-  // checkValidation here
-  var isValid=1;
-   //check the email is right or not
-  if (username != "") {
-      var reg = /^[0-9a-zA-Z_]{5,12}@(163|126|qq|yahoo|gmail|sina)\.(com|com\.cn|cn|la)$/;
-      isok= username.search(reg);
-      if(isok<0){
-          //alert("not right email");
-          //document.getElementById("emailinvalid").style.display = 'block';
-          isValid=0;
-          alert("Please enter a valid email address for shipping updates.");
-          window.location.replace("/signup.html");
-      }
-      
-  }
-  else{
-      isValid=0;
-      alert("Email address cannot be empty, please input again.");
-      window.location.replace("/signup.html");
-  }
+    // checkValidation here
+    var isValid = true;
+    //check the email is right or not
+    // if (username != "") {
+    //     var reg = /^[0-9a-zA-Z_]{5,12}@(163|126|qq|yahoo|gmail|sina)\.(com|com\.cn|cn|la)$/;
+    //     isok = username.search(reg);
+    //     if (isok < 0) {
+    //         isValid = false;
+    //         alert("Please enter a valid email address for shipping updates.");
+    //         window.location.replace("/signup.html");
+    //     }
+    // } else {
+    //     isValid = false;
+    //     alert("Email address cannot be empty, please input again.");
+    //     window.location.replace("/signup.html");
+    // }
 
-  
-  //check password and confirmPassword are not empty
-  if(password =="" ||confirmPassword ==""){
-      isValid=0;
-      alert("password or confirmPassword cannot be empty, please input again.");
-      window.location.replace("/signup.html");   
-  }
-  //check address is valid
-  if(street!="" && suite!=""){
-      
-    var regExp = /^[a-z0-9]+$/i;
-    if(street.search(regExp)<0 && state.search(regExp)<0 && street.search(/[a-zA-Z]/)<0 && state.search(/[a-zA-Z]/)<0){
-        
-        isValid=0;
-        alert("Please enter a valid address for shipping updates.");
-        window.location.replace("/signup.html");
+    // //check password and confirmPassword are not empty
+    // if(password == "" ||confirmPassword == "") {
+    //     isValid = false;
+    //     alert("Password or confirmPassword cannot be empty," +
+    //         " please input again.");
+    //     window.location.replace("/signup.html");   
+    // }
+
+    // //check address is valid
+    // if (street != "" && suite != "") {      
+    //     var regExp = /^[a-z0-9]+$/i;
+    //     if (street.search(regExp) < 0 && state.search(regExp) < 0 && 
+    //         street.search(/[a-zA-Z]/) < 0 && state.search(/[a-zA-Z]/) < 0) {
+    //         isValid = 0;
+    //         alert("Please enter a valid address for shipping updates.");
+    //         window.location.replace("/signup.html");
+    //     }
+    // }
+
+    if (isValid) {
+        // if all inputs are validate
+        if (password != confirmPassword) {
+            alert("Password and confirm password are not same, sign up again");
+        } else {
+            var userIdBC = generateAddress();
+            // setOnFirebase(
+            //   userIdBC,
+            //   username, firstName, lastName, password, 
+            //   street, suite, country, state, zip
+            // );
+            Controller.userId = userIdBC;
+            Controller.initWeb3();
+        }
     }
-  }
-
-  if(isValid==1){
-
-  // if all inputs are validate
-  if (password != confirmPassword) {
-    alert("Password and confirm password are not same, sign up again");
-  }
-  else {
-    var userIdBC = generateAddress();
-    // setOnFirebase(
-    //   userIdBC,
-    //   username, firstName, lastName, password, 
-    //   street, suite, country, state, zip
-    // );
-    Controller.userId = userIdBC;
-    Controller.initWeb3();
-  }
-}
 }

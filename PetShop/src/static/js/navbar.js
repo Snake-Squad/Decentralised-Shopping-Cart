@@ -39,9 +39,9 @@ function onClickLogOut() {
 function delete_cookie(name) {
   var exp = new Date();  
   exp.setTime(exp.getTime() - 1);  
-  var cval=getCookieValue(name);  
-  if(cval!=null){      
-    document.cookie= name + "="+cval+";expires="+exp.toGMTString();  
+  var cval = getCookieValue(name);  
+  if (cval != null) {      
+    document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();  
   }
   alert("delete cookie");
   window.location.replace("/");
@@ -82,19 +82,36 @@ function searchPet(){
 
 /* get cookie if it is set */
 function getCookieValue(name) {   
-  var name = escape(name);  
-  var allcookies = document.cookie;         
-  name += "=";  
-  var pos = allcookies.indexOf(name);      
+    var name = escape(name);  
+    var allcookies = document.cookie;         
+    name += "=";  
+    var pos = allcookies.indexOf(name);      
 
-  if (pos != -1) {                                             
-    var start = pos + name.length;                 
-    var end = allcookies.indexOf(";",start);        
-    if (end == -1) end = allcookies.length;        
-    var value = allcookies.substring(start,end);  
-    return (value);                              
-  } else{  
-    return "";  
-  } 
+    if (pos != -1) {
+        // get index of some spetial punctuations.
+        var start = pos + name.length;
+        var comma = allcookies.indexOf(",", start);                 
+        var end = allcookies.indexOf(";", start);        
+        if (end == -1) end = allcookies.length;    
+        // initialize a value to return.
+        var value = [];
+        value.push(allcookies.substring(start, comma));
+        value.push(allcookies.substring(comma + 1, end));
+        return (value);                              
+    } else  {  
+        return [];  
+    } 
 }
 
+window.onload = function() {  
+    var value = getCookieValue("userName");  
+    console.log(value);
+    if(value === undefined || value == null || value.length == 0) {
+        document.getElementById("login_navabar").text = "Login";     
+    } else {
+        document.getElementById("loginnavbarDropdown").text = value[0];  
+        document.getElementById("loginnavbarDropdown").style.display = 'block';
+        document.getElementById("login_navabar").style.display = 'none';
+        document.getElementById("signup_navabar").style.display = 'none';
+    }
+}
