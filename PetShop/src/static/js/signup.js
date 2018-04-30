@@ -30,8 +30,6 @@ function setOnFirebase(
 
   var users = firebase.database().ref().child('users');
   var userIdFB = firebase.database().ref().child('users').push().key;
-  alert(userIdFB);
-  
   return users.child(userIdFB).set({
     "email": username, 
     "password": password,
@@ -74,7 +72,17 @@ function validSignUp() {
   var state = states.options[sid].text; 
   var zip = document.getElementById("zip").value.trim();
 
-  // alert(countries.options[cid].text);
+  // checkValidation here
+
+
+
+
+
+
+
+
+
+  // if all inputs are validate
   if (password != confirmPassword) {
     alert("Password and confirm password are not same, sign up again");
   }
@@ -85,10 +93,5 @@ function validSignUp() {
       username, firstName, lastName, password, 
       street, suite, country, state, zip
     );
-    //addCookie("userName", username, 7, "/");
-    
   }
 }
-
-
-
