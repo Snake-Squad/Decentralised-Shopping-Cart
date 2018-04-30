@@ -1,0 +1,66 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	
+}
+
+.agileabout-info {
+	width: 55%;
+	float: left;
+	/*-- w3layouts --*/
+	/*-- agileinfo --*/
+	text-align: left;
+	padding-top: 25px;
+}
+
+.agileabout-info ul li {
+	display: block;
+	letter-spacing: 0.4px;
+	padding: 25px 0;
+}
+
+.agileabout-info ul li .li1 {
+	font-family: 'Montserrat', sans-serif;
+	width: 40%;
+	float: left;
+	font-size: 20px;
+	color: black;
+}
+
+.agileabout-info ul li .li2 {
+	width: 30%;
+	float: left;
+	text-align: center;
+	color: black;
+	/*-- w3layouts --*/
+	/*-- agileits --*/
+}
+
+.agileabout-info ul li .li3 {
+	width: 30%;
+	float: right;
+	font-size: 20px;
+	padding-top: 2px;
+	color: black;
+}
+
+.agileabout-info ul li:nth-child(1) {
+	padding-top: 0;
+}
+
+.agileabout-info ul li:nth-child(6) {
+	padding-bottom: 0;
+}
+
+.agileabout-info ul li:nth-child(6) .li3 {
+	line-height: 25px;
+	margin-top: -3px;
+}
+
+.agileabout-info ul li a {
+	color: black;
+}
+
+.agileabout-info ul li a:hover {
+	color: black;
+}

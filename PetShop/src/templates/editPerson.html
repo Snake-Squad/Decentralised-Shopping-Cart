@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Sign Up a DSC Account</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!--<link href="css/navbar.css" rel="stylesheet">-->
+  <!-- Custom styles for this template -->
+  <link href="css/sign_up.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <!-- Load online javascripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- firebase core js -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/signup.js"></script>
+  <script src="js/generators.js"></script>
+
+  <meta name="viewport" content="width=device-width, intitial-scale=1">
+
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+  <!-- cart -->
+  <script src="js/simpleCart.min.js"> </script>
+</head>
+
+<body>
+<nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Logo, which is home -->
+      <a class="navbar-brand" href="#">
+      <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
+      </a>
+
+      <!-- Add bar items -->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+          <!-- Go to Login Page -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="onClickLogin()">Login</a>
+     
+          </li>
+
+
+          <!-- Go to Sign Up Page -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="onClickSignUp()">Sign Up</a>
+          </li>
+          
+          
+          <!-- Check what is in the Cart -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="onClickCart()">Cart</a>
+          </li>
+          
+          <!-- Add a Filter to Search Item -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Breed
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Polos</a>
+              <a class="dropdown-item" href="#">Casual Shirts</a>
+              <a class="dropdown-item" href="#">Casual Trousers</a>
+              <a class="dropdown-item" href="#">Jeans</a>
+              <a class="dropdown-item" href="#">Shorts & 3/4th</a>
+              <a class="dropdown-item" href="#">Formal Shirts</a>
+              <a class="dropdown-item" href="#">Formal Trousers</a>
+              <a class="dropdown-item" href="#">Suits & Blazers</a>
+              <a class="dropdown-item" href="#">Track Wear</a>
+              <a class="dropdown-item" href="#">Inner Wear</a>
+            </div>
+          </li>
+        </ul>
+        <!-- Add search Buttom here -->
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
+        <!-- </form> -->
+      </div>
+    </nav>
+     <p>edit person</p>
+   <!-- </main>-->
+
+</body>
+</html>
