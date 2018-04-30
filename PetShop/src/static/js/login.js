@@ -1,20 +1,3 @@
-function addCookie(name, username, uid, days, path) {
-  var name = escape(name);  
-  var username = escape(username);  
-  var uid = escape(uid);
-  var expires = new Date();  
-  expires.setTime(expires.getTime() + days * 3600000 * 24);  
-  //path=/，表示cookie能在整个网站下使用，path=/temp，表示cookie只能在temp目录下使用  
-  path = path == "" ? "" : ";path=" + path;  
-  //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
-  //参数days只能是数字型  
-  var _expires = 
-    (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
-  document.cookie = name + "=" + [username, uid] + _expires + path;  
-  console.log(document.cookie);
-}  
-
-
 function onClickCheckLogin() {
     alert(" onClickCheckLogin ")
      //  Initialize Firebase
@@ -57,7 +40,7 @@ function onClickCheckLogin() {
         // alert(isValid);
         if (isValid) {
             addCookie("userName", username, userId, 7, "/");
-            window.location.replace("/");
+            //window.location.replace("/");
         } else {
             alert("Email or password is not correct, please input again");
             window.location.href="login.html";

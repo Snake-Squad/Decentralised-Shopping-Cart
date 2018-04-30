@@ -80,6 +80,22 @@ function searchPet(){
   });
 }
 
+function addCookie(name, username, uid, days, path) {
+    var name = escape(name);  
+    var username = escape(username);  
+    var uid = escape(uid);
+    var expires = new Date();  
+    expires.setTime(expires.getTime() + days * 3600000 * 24);  
+    //path=/，表示cookie能在整个网站下使用，path=/temp，表示cookie只能在temp目录下使用  
+    path = path == "" ? "" : ";path=" + path;  
+    //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
+    //参数days只能是数字型  
+    var _expires = 
+        (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
+    document.cookie = name + "=" + [username, uid] + _expires + path;  
+    console.log(document.cookie);
+}  
+
 /* get cookie if it is set */
 function getCookieValue(name) {   
     var name = escape(name);  
@@ -101,17 +117,4 @@ function getCookieValue(name) {
     } else  {  
         return [];  
     } 
-}
-
-window.onload = function() {  
-    var value = getCookieValue("userName");  
-    console.log(value);
-    if(value === undefined || value == null || value.length == 0) {
-        document.getElementById("login_navabar").text = "Login";     
-    } else {
-        document.getElementById("loginnavbarDropdown").text = value[0];  
-        document.getElementById("loginnavbarDropdown").style.display = 'block';
-        document.getElementById("login_navabar").style.display = 'none';
-        document.getElementById("signup_navabar").style.display = 'none';
-    }
 }
