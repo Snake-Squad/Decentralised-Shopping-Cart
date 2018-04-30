@@ -17,24 +17,44 @@
 <body>
     <div class="container">
 
+        <h1>Buyer Account</h1>
+        <h2 id="buyerAccount"></h2>
+        <button id="setBuyer">Add a Buyer</button>
+        <br><br>
+        <input id="rechargeInputBuyer" type="text">
+        <button id="rechargeBuyer">recharge</button>
+        <br><br>
+        <input id="addToCart" type="text">
+        <button id="add2Cart">Add to Cart</button>
+
+        <hr>
+
+        <h1>Seller Account</h1>
+        <h2 id="sellerAccount"></h2>
+        <button id="setSeller">Add a Seller</button>
+        <br><br>
+        <input id="rechargeInputSeller" type="text">
+        <button id="rechargeSeller">recharge</button>
+        <br><br>
+        <input id="uploadInput" type="text">
+        <button id="upload">Upload</button>
+
+        <hr>
+
         <h1>Buyer Transaction</h1>
-
         <h2 id="buyerTrans"></h2>
-
         <br>
         <hr>
 
         <h1>Seller Transaction</h1>
-
         <h2 id="sellerTrans"></h2>
-
         <br>
         <hr>
 
         <label for="name" class="col-lg-2 control-label">Price</label>
         <input id="price" type="text">
         
-        <button id="button">Check Out</button>
+        <button id="checkOut">Check Out</button>
 
     </div>
 
@@ -56,7 +76,7 @@
 
         web3.eth.defaultAccount = web3.eth.accounts[0];
 
-        var CheckOutContract = web3.eth.contract(
+        var ControllerContract = web3.eth.contract(
             [
     {
         "constant": false,
@@ -468,36 +488,85 @@
 ]
 );
 
-        console.log(CheckOutContract);
+        console.log(ControllerContract);
 
-        var CheckOut = CheckOutContract.at('0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b5');
-        console.log(CheckOut);
+        var Controller = ControllerContract.at('0xc23867e1eac98981f76340681124e14fe1b4ac70');
+        console.log(Controller);
 
         // get result from here ----------------------------------------------------------
 
-        var result = CheckOut.getTransaction("0x2c6315b775d00007935b3760af5f48f0a9f5a960");
-        console.log(result);
-        alert(result[0])
+        var buyer = Controller.getAccount("0x2c6315b775d00007935b3760af5f48f0a9f5a96a");
+        var seller = Controller.getAccount("0x2c6315b775d00007935b3760af5f48f0a9f5a96b");
+        console.log(buyer, seller);
+        $("#buyerAccount").html(
+            'Cart: ' + buyer[0] + 
+            ' ProdCart: ' + buyer[1] + '\n' +
+            ' Balence:' + buyer[2]
+        );
+        $("#sellerAccount").html(
+            'Cart: ' + seller[0] + 
+            ' ProdCart: ' + seller[1] + '\n' +
+            ' Balence:' + seller[2]
+        );
+        
+        // set account
+        $("#setBuyer").click(function() {
+            Controller.setAccount(
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96a", "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b1", "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b2", 0, {gas:3000000});
+            alert("good")
+        });
 
-        if (result[0] != "") {
-            var balence1 = 1000 - parseInt(result[3]);
-            var balence2 = 1000 + parseInt(result[3]);
+        $("#setSeller").click(function() {
+            Controller.setAccount(
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96b", "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8c1", "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8c2", 0, {gas:3000000});
+            alert("good")
+        });
 
-            $("#buyerTrans").html('Item: ' + result[0] + 
-                ' From: ' + result[1] + '\n' +
-                ' Price:' + result[3] +
-                ' Balence: '+' $' + balence1);
-            $("#sellerTrans").html('Item: ' + result[0] + 
-                ' To: ' + result[2] + '\n' +
-                ' Price:' + result[3] +
-                ' Balence: '+' $' +  balence2);
-        }
+        // recharge
+        $("#rechargeBuyer").click(function() {
+            Controller.recharge(
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96a", $("#rechargeInputBuyer").val(), {gas:3000000});
+            alert("good")
+        });
 
-        $("#button").click(function() {
-            var currentTrans = CheckOut.countTransactions();
-            // transaction id, itme id, seller id, buyer id, price
-            CheckOut.setTransaction(
-                "0x2c6315b775d00007935b3760af5f48f0a9f5a960", ["0x2c6315b775d00007935b3760af5f48f0a9f5a95a", "0x2c6315b775d00007935b3760af5f48f0a9f5a95b"], "0x2c6315b775d00007935b3760af5f48f0a9f5a951", "0x2c6315b775d00007935b3760af5f48f0a9f5a950", $("#price").val(),
+        $("#rechargeSeller").click(function() {
+            Controller.recharge(
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96b", $("#rechargeInputSeller").val(), {gas:3000000});
+            alert("good")
+        });
+
+        // upload a puppy
+        $("#upload").click(function() {
+            Controller.addPuppy(
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96b", 
+                "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8a0", 
+                "name", "bread", 1, "AU", 998, "www.google.com", 
+                {gas:3000000}
+            );
+            alert("good")
+        });
+
+        // add to cart
+        $("#add2Cart").click(function() {
+            Controller.setCart(
+                "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b1", 
+                ["0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8a0"], 
+                {gas:3000000}
+            );
+            alert("good")
+        });
+
+        // check out
+        $("#checkOut").click(function() {
+            Controller.checkOut(
+                "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8f0", 
+                ["0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8a0"], 
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96b", 
+                "0x2c6315b775d00007935b3760af5f48f0a9f5a96a", 
+                998, 
+                "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8d1", 
+                "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8e1", 
+                [], [], 
                 {gas:3000000});
             alert("good")
         });

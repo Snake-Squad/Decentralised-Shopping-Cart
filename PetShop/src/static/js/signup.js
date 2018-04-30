@@ -20,6 +20,7 @@ Controller = {
         $.getJSON('Controller.json', function(data) {
             // Get the necessary contract artifact file
             var ControllerArtifact = data;
+            console.log(data);
             // Instantiate it with truffle-contract
             Controller.contracts.Controller = 
                 TruffleContract(ControllerArtifact);
@@ -47,8 +48,7 @@ Controller = {
 
             Controller.contracts.Controller.deployed().then(function(instance) {
                 console.log(instance);
-                console.log("to: ", instance.address);
-                return instance.recharge(userId, 1000, {gas: 3000000});
+                return instance.setCart(userId, ["0x2c6315b775d00007935b3760af5f48f0a9f5a96a"], {gas: 3000000});
             }).then(function(result) {
                 alert("Good");
                 return Controller.getUserOnBC();
@@ -64,7 +64,7 @@ Controller = {
 
         Controller.contracts.Controller.deployed().then(function(instance) {
         ControllerInstance = instance;
-            return ControllerInstance.getAccount(Controller.userId);
+            return ControllerInstance.getCart(Controller.userId);
         }).then(function(result) {
             console.log("stored on block chain:", result);
         }).catch(function(err) {
