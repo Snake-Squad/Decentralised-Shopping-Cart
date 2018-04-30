@@ -18,35 +18,32 @@
   <body>
     <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
     <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
-      <!-- Logo, which is home -->
-      <a class="navbar-brand" href="#">
-      <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
-      </a>
+        <!-- Logo, which is home -->
+        <a class="navbar-brand" href="http://localhost:3000/">
+            <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
+        </a>
 
       <!-- Add bar items -->
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
-          <!-- Go to Login Page -->
-          
-          <li class="nav-item">
-            <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
-     
-          </li>
+            <!-- Go to Login Page -->
+            <li class="nav-item">
+                <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
+            </li>
           
             <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
-            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
-          login
-            </a>
-            <!--onclick function can be found in navabar.js-->
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" id="personinfo" onclick="onClickshowperson()">Profile</a>
-              <a class="dropdown-item" id="addpuppy" onclick="onClickaddpuppy()">add Puppy</a>
-              <a class="dropdown-item" id="recharge" onclick="onClickrecharge()">recharge</a>
-              <a class="dropdown-item" id="transactions" onclick="onClicktransactions()">transactions</a>
-              <a class="dropdown-item"id="logout" onclick="onClicklogout()">logout</a>
-  
-            </div>
-          </li>
+                <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+                login
+                </a>
+                <!--onclick function can be found in navabar.js-->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" id="navProfile">Profile</a>
+                    <a class="dropdown-item" id="navAddAPuppy">add Puppy</a>
+                    <a class="dropdown-item" id="navRecharge">recharge</a>
+                    <a class="dropdown-item" id="navTransactions">transactions</a>
+                    <a class="dropdown-item" id="navLogout">logout</a>
+                </div>
+            </li>
 
 
           <!-- Go to Sign Up Page -->

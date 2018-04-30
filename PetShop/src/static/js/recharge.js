@@ -71,7 +71,6 @@ Controller = {
     },
 
     refresh: function() {
-        alert("check");
         location.reload();
     }
 };

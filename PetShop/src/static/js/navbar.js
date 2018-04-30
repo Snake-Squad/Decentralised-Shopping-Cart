@@ -13,7 +13,7 @@ function onClickSignUp() {
 
 function onClickCart() {
     alert("Cart");
-    window.location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
+    window.location.href="http://localhost:3000/cart.html";
 }
 
 
@@ -21,28 +21,28 @@ function onClickCart() {
  * functions after logging in 
  * -----------------------------------------------------------------------------
  */
-function onClickProfile() { 
-    window.location.href="personInfo.html";
-}
+$("#navProfile").click(function() {
+    window.location.href = "http://localhost:3000/personInfo.html";
+});
 
-function onClickAddAPuppy(){
-    window.location.href="addpuppy.html";
-}
+$("#navAddAPuppy").click(function() {
+    window.location.href="http://localhost:3000/addpuppy.html";
+});
 
-function onClickRecharge(){
-    window.location.href="recharge.html";
-}
+$("#navRecharge").click(function() {
+    window.location.href = "http://localhost:3000/recharge.html";
+});
 
-function onClickTransactions(){
-    window.location.href="transaction.html";
-}
+$("#navTransactions").click(function() {
+    window.location.href = "http://localhost:3000/transaction.html";
+});
 
-function onClickLogOut() {
+$("#navLogout").click(function() {
     delete_cookie("userName"); 
-}
+});
 
 function editPersonInfo() {
-    window.location.href="editPerson.html";
+    window.location.href="/editPerson.html";
 }
 
 
