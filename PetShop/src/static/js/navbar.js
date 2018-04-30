@@ -41,7 +41,7 @@ function onClickLogOut() {
     delete_cookie("userName"); 
 }
 
-function editPersonInfo(){
+function editPersonInfo() {
     window.location.href="editPerson.html";
 }
 

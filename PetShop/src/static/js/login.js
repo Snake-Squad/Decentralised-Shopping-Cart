@@ -18,29 +18,34 @@ function onClickCheckLogin() {
     // get the database
     var users = firebase.database().ref().child('users');
 
+    
     // This must be the last function of all
     users.on("value", function(snapshot) {
         var isValid = false;
         var userId = "";            // this id is used in blockchain
-
+        
         snapshot.forEach(function(user) {
             // retrieve data from db
             var userKey = user.key;   // user id
             var userVal = user.val(); // user's info (email, fn, ln, pw, role)
           
+            
             // check whether it matches or not
             if (userVal.email == username) {
+                
+                //alert(userVal.email);
                 if (userVal.password == password) {
+                //alert(userVal.password);
                 isValid = true;
                 userId = userVal.user_id;
                 return true; // break the loop
                 }
             }
         });
-        // alert(isValid);
+        alert(isValid);
         if (isValid) {
             addCookie("userName", username, userId, 7, "/");
-            //window.location.replace("/");
+            window.location.replace("/");
         } else {
             alert("Email or password is not correct, please input again");
             window.location.href="login.html";
