@@ -37,6 +37,7 @@ function onClickLogOut() {
 }
 
 function editPersonInfo(){
+  //alert("showperson");
   window.location.href="editPerson.html";
 }
 

@@ -35,6 +35,23 @@
 
   <!-- cart -->
   <script src="js/simpleCart.min.js"> </script>
+  <script src="js/editPerson.js"> </script>
+  <script>
+    window.onload = function() {  
+    alert("editperson");
+    var value = getCookieValue("userName");  
+    console.log(value);
+    if(value === undefined || value == null || value.length == 0) {
+        document.getElementById("login_navabar").text = "Login";     
+    } else {
+        document.getElementById("loginnavbarDropdown").text = value[0];  
+        document.getElementById("loginnavbarDropdown").style.display = 'block';
+        document.getElementById("login_navabar").style.display = 'none';
+        document.getElementById("signup_navabar").style.display = 'none';
+    }
+    }  
+    
+    </script>
 </head>
 
 <body>
@@ -48,15 +65,30 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
           <!-- Go to Login Page -->
+          
           <li class="nav-item">
-            <a class="nav-link" onclick="onClickLogin()">Login</a>
+            <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
      
+          </li>
+          
+            <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+          login
+            </a>
+            <!--onclick functions can be found in navabar.js-->
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" id="personinfo" onclick="onClickProfile()">Profile</a>
+              <a class="dropdown-item" id="addpuppy" onclick="onClickAddAPuppy()">Add a Puppy</a>
+              <a class="dropdown-item" id="recharge" onclick="onClickRecharge()">Recharge</a>
+              <a class="dropdown-item" id="transactions" onclick="onClickTransactions()">Transactions</a>
+              <a class="dropdown-item" id="logout" onclick="onClickLogOut()">Log Out</a>
+            </div>
           </li>
 
 
           <!-- Go to Sign Up Page -->
           <li class="nav-item">
-            <a class="nav-link" onclick="onClickSignUp()">Sign Up</a>
+            <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
           </li>
           
           
@@ -91,7 +123,105 @@
         <!-- </form> -->
       </div>
     </nav>
-     <p>edit person</p>
+    
+     <center>
+    
+    <div class="container">
+      <div class="py-3 text-center">
+        <img class="d-block mx-auto mb-1" src="images/Logo-light.png" alt="" width="auto" height="10">
+      </div>
+
+        <div class="col-md-8 order-md-1">
+          <h3 class="mb-3">Personal Information</h3>
+          <!-- <form class="needs-validation" novalidate> -->    
+
+              <div class="row">
+              <div class="col-md-6 mb-3">
+                
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="first_name" placeholder="First Name" value="" required>
+                
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="last_name" placeholder="Last Name" value="" required> 
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="password">Password <span class="text-muted"></span></label>
+            <input type="password" id="psw" class="form-control" placeholder="Password" required> 
+              <div class="invalid-feedback">
+                Valid password is required.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirm_password">Confirm Password<span class="text-muted"></span></label>
+             <input type="password" id="psw-repeat" class="form-control" placeholder="confirm password" required> 
+              
+              <div class="invalid-feedback">
+                Confirmed password must be same as password.
+              </div>
+            </div>
+
+            <hr>
+
+            <h3 class="mb-3">Mailing Address</h3>
+            <div class="mb-3">
+              <label for="address">Address <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address1" placeholder="1234 Main St"> 
+            </div>
+
+            <div class="mb-3">
+              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"> 
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Country<span class="text-muted">(Optional)</span></label>
+               <select class="custom-select d-block w-100" id="country">
+                  <option value="">Autralia</option>
+                </select> 
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label for="state">State<span class="text-muted">(Optional)</span></label>
+                 <select class="custom-select d-block w-100" id="state">
+                  <option value=""></option>
+                  <option value="">NSW</option>
+                  <option value="California">Queensland</option>            
+                </select> 
+              </div>
+              
+              <div class="col-md-3 mb-3">
+                <label for="zip">Zip<span class="text-muted">(Optional)</span></label>
+                 <input type="text" class="form-control" data-style="btn-primary" id="zip" placeholder=""> 
+              </div>
+            </div>
+
+          <hr>
+
+          <button class="btn btn-secondary btn-lg btn-block" type="submit" 
+            id="editPersonBtn" name="editPerson" onclick="editPerson()">Confirm Personal Information
+          </button>
+         </div>
+
+            <footer class="my-1 pt-5 text-muted text-center text-small">
+              <p class="mb-1">&copy; 2018-2019 Snake Squad</p>
+            </footer>
+          <!--</form>-->
+        </div>
+    
+    </center>
    <!-- </main>-->
 
 </body>

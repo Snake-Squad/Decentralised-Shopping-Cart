@@ -11,26 +11,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/navbar.css" rel="stylesheet">
-    <script>
-    window.onload = function() {  
-    alert("index");
 
- 
-    var value = getCookieValue("userName");  
-    console.log(value);
-    if(value === undefined || value == null || value.length == 0) {
-        document.getElementById("login_navabar").text = "Login";     
-    } else {
-        document.getElementById("loginnavbarDropdown").text = value[0];  
-        document.getElementById("loginnavbarDropdown").style.display = 'block';
-        document.getElementById("login_navabar").style.display = 'none';
-        document.getElementById("signup_navabar").style.display = 'none';
-    }
- }  
-    
-    </script>
-    
-  
   </head>
 
 
@@ -172,6 +153,6 @@
           document.getElementById("signup_navabar").style.display = 'none';
         } 
       }
-    </script>>
+    </script>
   </body>
 </html>
