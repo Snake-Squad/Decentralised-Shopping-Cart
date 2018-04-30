@@ -11,52 +11,80 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/personInfo.css" rel="stylesheet">
     <script>
-    function getCookieValue(name){   
-
-    var name = escape(name);  
- 
-    var allcookies = document.cookie;         
-  
-    name += "=";  
-    var pos = allcookies.indexOf(name);      
-
-    if (pos != -1){                                             
-        var start = pos + name.length;                 
-        var end = allcookies.indexOf(";",start);        
-        if (end == -1) end = allcookies.length;        
-        var value = allcookies.substring(start,end);  
-        return (value);                              
-    }else{  
-        return "";  
-    }  
-}  
-window.onload = function(){  
-    var userNameValue = getCookieValue("userName");  
-    alert(userNameValue);
-    if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
-        document.getElementById("login_navabar").text = "Login"; 
+ /*
+    window.onload = function(){  
+        alert("jjjj");
+        var userNameValue = getCookieValue("userName");  
         
+        if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
+            document.getElementById("login_navabar").text = "Login"; 
+            
+            }
+        else{
+          document.getElementById("loginnavbarDropdown").text = userNameValue;  
+          document.getElementById("loginnavbarDropdown").style.display = 'block';
+          document.getElementById("login_navabar").style.display = 'none';
+          document.getElementById("signup_navabar").style.display = 'none';
+          var config = {
+            apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
+            authDomain: "comp9900-4b79d.firebaseapp.com",
+            databaseURL: "https://comp9900-4b79d.firebaseio.com",
+            projectId: "comp9900-4b79d",
+            storageBucket: "comp9900-4b79d.appspot.com",
+            messagingSenderId: "445311599888"
+          };
+          firebase.initializeApp(config);
+
+          // get user's email and password from the webpage
+          var userNameValue = getCookieValue("userName"); 
+          //alert("lllll");
+          //alert(userNameValue);
+          // get the database
+          var users = firebase.database().ref().child('users');
+
+          
+          // This must be the last function of all
+          users.on("value", function(snapshot) {
+            var isValid = false;
+            var userId = "";            // this id is used in blockchain
+
+            snapshot.forEach(function(user) {
+              // retrieve data from db
+              var userKey = user.key;   // user id
+              var userVal = user.val(); // user's info (email, fn, ln, pw, role)
+              
+              // check whether it matches or not
+              if (userVal.email == userNameValue) {
+             
+                  isValid = true;
+
+                  document.getElementById("email").innerHTML=userNameValue;
+                  document.getElementById("first_name").innerHTML=userVal.first_name;
+                  document.getElementById("last_name").innerHTML=userVal.last_name;
+                  document.getElementById("address1").innerHTML=userVal.street;
+                  document.getElementById("address2").innerHTML=userVal.suite;
+                  document.getElementById("country").innerHTML=userVal.country;
+                  document.getElementById("state").innerHTML=userVal.state;
+                  document.getElementById("zip").innerHTML=userVal.zip;
+                  
+                  return true;          // break the loop
+                
+                
+              }
+            });
+          });
+          
+      
         }
-    else{
-    /*
-    document.getElementById("login_navabar").text = userNameValue;  
-    document.getElementById("login_navabar").onclick = onClickshowperson;
-    document.getElementById("signup_navabar").style.display = 'none';
-    */
-    document.getElementById("loginnavbarDropdown").text = userNameValue;  
-    document.getElementById("loginnavbarDropdown").style.display = 'block';
-    document.getElementById("login_navabar").style.display = 'none';
-    document.getElementById("signup_navabar").style.display = 'none';
-    
+       
+        
     }
-    }
+     */
     </script>
   
   </head>
-
-
-
   <body>
     <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
     <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
@@ -81,7 +109,7 @@ window.onload = function(){
             </a>
             <!--onclick function can be found in navabar.js-->
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" id="personinfo" onclick="onClickshowperson()">Profile</a>
+              <a class="dropdown-item" id="personinfo" onclick="onClickProfile()">Profile</a>
               <a class="dropdown-item" id="addpuppy" onclick="onClickaddpuppy()">add Puppy</a>
               <a class="dropdown-item" id="recharge" onclick="onClickrecharge()">recharge</a>
               <a class="dropdown-item" id="transactions" onclick="onClicktransactions()">transactions</a>
@@ -128,8 +156,51 @@ window.onload = function(){
         <!-- </form> -->
       </div>
     </nav>
-    <p>personinfo</p>
-    </main>
+    <center>
+    
+    <div class="container">
+      <div class="py-3 text-center">
+        <img class="d-block mx-auto mb-1" src="images/Logo-light.png" alt="" width="auto" height="10">
+      </div>
+
+        <div class="col-md-8 order-md-1">
+          <h3 class="mb-3">Personal Information</h3>
+
+          <hr>
+       
+      
+        <div class="agileabout-info">
+            <ul>
+                <li><div class="li1">UserName</div><div class="li2">:</div><div class="li3" id="email"></div><div class="clearfix"></div></li>
+                <li><div class="li1">First Name</div><div class="li2">:</div><div class="li3" id="first_name"></div><div class="clearfix w3-agileits"></div></li>
+                <li><div class="li1">Last Name</div><div class="li2">:</div><div class="li3" id="last_name"></div><div class="clearfix"></div></li>
+                <li><div class="li1">Street</div><div class="li2">:</div><div class="li3" id="street"></div><div class="clearfix"></div></li>
+                <li><div class="li1">Suite</div><div class="li2">:</div><div class="li3" id="suite"></div><div class="clearfix"></div></li>
+                <li><div class="li1">Country</div><div class="li2">:</div><div class="li3" id="country"></div><div class="clearfix"></div></li>
+                <li><div class="li1">State</div><div class="li2">:</div><div class="li3" id="state"></div><div class="clearfix"></div></li>
+                <li><div class="li1">Zip</div><div class="li2">:</div><div class="li3" id="zip"></div><div class="clearfix"></div></li>
+            </ul>
+        </div>
+      
+ 
+
+          <button class="btn btn-secondary btn-lg btn-block" type="submit" 
+            id="editBtn" name="editInfo" onclick="editPersonInfo()">Edit your personal information
+          </button>
+         </div>
+
+            <footer class="my-1 pt-5 text-muted text-center text-small">
+              <p class="mb-1">&copy; 2018-2019 Snake Squad</p>
+            </footer>
+          <!--</form>-->
+        </div>
+      <!--</div>-->
+
+
+
+    
+    </center>
+ 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -140,7 +211,6 @@ window.onload = function(){
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/login.js"></script>
     <script src="js/signup.js"></script>
