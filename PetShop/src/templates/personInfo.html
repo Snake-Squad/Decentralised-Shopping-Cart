@@ -16,7 +16,7 @@
  
     window.onload = function(){  
         alert("jjjj");
-        var userNameValue = getCookieValue("userName");  
+        var userNameValue = getCookieValue("userName")[0];  
         
         if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
             document.getElementById("login_navabar").text = "Login"; 
@@ -38,7 +38,7 @@
           firebase.initializeApp(config);
 
           // get user's email and password from the webpage
-          var userNameValue = getCookieValue("userName"); 
+     
           
           //alert("lllll");
           //alert(userNameValue);

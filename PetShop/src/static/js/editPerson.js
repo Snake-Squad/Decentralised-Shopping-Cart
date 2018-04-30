@@ -30,7 +30,7 @@ function editPerson() {
     // get the database
     var users = firebase.database().ref().child('users');
     
-    var value = getCookieValue("userName");
+    var value = getCookieValue("userName")[0];
   
     
     // checkValidation here
@@ -70,8 +70,8 @@ function editPerson() {
                 // check whether it matches or not
                 //alert(userVal.email);
                
-                //if (userVal.email == value) {
-               if(userVal.email=="test@gmail.com") { 
+                if (userVal.email == value) {
+               //if(userVal.email=="test@gmail.com") { 
                 
                 if(password == confirmPassword) { 
               
