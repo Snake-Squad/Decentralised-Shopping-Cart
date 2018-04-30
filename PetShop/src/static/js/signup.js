@@ -150,14 +150,46 @@ function validSignUp() {
   var zip = document.getElementById("zip").value.trim();
 
   // checkValidation here
+  var isValid=1;
+   //check the email is right or not
+  if (username != "") {
+      var reg = /^[0-9a-zA-Z_]{5,12}@(163|126|qq|yahoo|gmail|sina)\.(com|com\.cn|cn|la)$/;
+      isok= username.search(reg);
+      if(isok<0){
+          //alert("not right email");
+          //document.getElementById("emailinvalid").style.display = 'block';
+          isValid=0;
+          alert("Please enter a valid email address for shipping updates.");
+          window.location.replace("/signup.html");
+      }
+      
+  }
+  else{
+      isValid=0;
+      alert("Email address cannot be empty, please input again.");
+      window.location.replace("/signup.html");
+  }
 
+  
+  //check password and confirmPassword are not empty
+  if(password =="" ||confirmPassword ==""){
+      isValid=0;
+      alert("password or confirmPassword cannot be empty, please input again.");
+      window.location.replace("/signup.html");   
+  }
+  //check address is valid
+  if(street!="" && suite!=""){
+      
+    var regExp = /^[a-z0-9]+$/i;
+    if(street.search(regExp)<0 && state.search(regExp)<0 && street.search(/[a-zA-Z]/)<0 && state.search(/[a-zA-Z]/)<0){
+        
+        isValid=0;
+        alert("Please enter a valid address for shipping updates.");
+        window.location.replace("/signup.html");
+    }
+  }
 
-
-
-
-
-
-
+  if(isValid==1){
 
   // if all inputs are validate
   if (password != confirmPassword) {
@@ -173,4 +205,5 @@ function validSignUp() {
     Controller.userId = userIdBC;
     Controller.initWeb3();
   }
+}
 }
