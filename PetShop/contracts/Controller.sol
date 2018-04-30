@@ -1,11 +1,10 @@
-pragma solidity ^0.4.2;
-
+pragma solidity ^0.4.21;
+    
 /**
  * @title Controller.
  * @author Yufei Zhang
  */
 contract Controller {
-    
     /*--------------------------------------------------------------------------
      * Define all of the structures we are going to store in block chain.
      *--------------------------------------------------------------------------
@@ -16,15 +15,15 @@ contract Controller {
         address[] transactions;  // a list of Transaction
         uint balance;
     }
-    
+        
     struct Cart {
         address[] puppies;       // a list of items that are going to check out
     }
-    
+        
     struct Product {
         address[] puppies;       // a list of items that are uploaded by a user
     }
-    
+        
     struct Puppy {
         string name;             // name of the puppy
         string breed;            // breed of the puppy
@@ -34,14 +33,14 @@ contract Controller {
         string image;            // image url of the puppy
         bool onSale;             // status of a puppy
     }
-    
+        
     struct Transaction {
         address[] puppiesIds;    // id of multiple puppies
         address seller;          // address of the seller
         address buyer;           // address of the buyer
         uint256 price;           // total price in the trade
     }
-    
+        
     /*--------------------------------------------------------------------------
      * Define all of the mappings that we are going to use。
      *--------------------------------------------------------------------------
@@ -52,7 +51,7 @@ contract Controller {
     mapping (address => Puppy) puppiesOnBC;
     mapping (address => Transaction) transactionsOnBC;
     address[] allPuppies;
-    
+        
     /*--------------------------------------------------------------------------
      * Define functions to set and get infomation of an Account.
      *--------------------------------------------------------------------------
@@ -72,7 +71,7 @@ contract Controller {
         setCart(_cartId, new address[](0));
         setProduct(_prodCartId, new address[](0));
     }
-   
+       
     function getAccount(address _accountId) 
         view 
         public 
@@ -90,7 +89,7 @@ contract Controller {
             accountsOnBC[_accountId].balance
         );
     } 
-    
+        
     /*--------------------------------------------------------------------------
      * Define functions to set and get infomation of a Cart.
      *--------------------------------------------------------------------------
@@ -98,11 +97,11 @@ contract Controller {
     function setCart(address _cartId, address[] _puppiesIds) public {
         cartsOnBC[_cartId].puppies =  _puppiesIds;
     }
-    
+        
     function getCart(address _cartId) view public returns (address[]) {
         return (cartsOnBC[_cartId].puppies);
     }
-    
+        
     /*--------------------------------------------------------------------------
      * Define functions to set and get infomation of an product.
      *--------------------------------------------------------------------------
@@ -114,7 +113,7 @@ contract Controller {
     function getProducts(address _productId) view public returns (address[]) {
         return (productsOnBC[_productId].puppies);
     }
-    
+        
     /*--------------------------------------------------------------------------
      * Define functions to set and get infomation of a Puppy.
      *--------------------------------------------------------------------------
@@ -140,7 +139,7 @@ contract Controller {
         puppy.image = _image;
         puppy.onSale = _onSale;
     }
-   
+    
     function getPuppy(address _puppyId) 
         view 
         public 
@@ -184,7 +183,7 @@ contract Controller {
         transaction.buyer = _buyer;
         transaction.price = _price;
     }
-   
+       
     function getTransaction(address _transId) 
         view 
         public 

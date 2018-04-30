@@ -1,23 +1,77 @@
-CheckOut = {
+Controller = {
     web3Provider: null,
     contracts: {},
+    userId: null,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
         if (typeof web3 !== 'undefined') {
-            CheckOut.web3Provider = web3.currentProvider;
+            Controller.web3Provider = web3.currentProvider;
         } else {
             // If no injected web3 instance is detected, fall back to Ganache
-            CheckOut.web3Provider = new 
-            Web3.providers.HttpProvider('http://localhost:7545');
+            Controller.web3Provider = new Web3.providers.HttpProvider(
+                'http://localhost:7545');
         } 
-
-        web3 = new Web3(CheckOut.web3Provider);
-        // alert("web3 Initialized");
-        return CheckOut.initContract();
+        web3 = new Web3(Controller.web3Provider);
+        return Controller.initContract();
     },
 
-}；
+    initContract: function() {
+        $.getJSON('Controller.json', function(data) {
+            // Get the necessary contract artifact file
+            var ControllerArtifact = data;
+            // Instantiate it with truffle-contract
+            Controller.contracts.Controller = 
+                TruffleContract(ControllerArtifact);
+            // Set the provider for our contract
+            Controller.contracts.Controller.setProvider(
+                Controller.web3Provider);
+            return Controller.setAUserOnBC();
+            //return Controller.getAUserOnBC();
+        });
+    },
+
+    setAUserOnBC: function() {
+        var userId = Controller.userId;
+        var cartId = generateAddress();
+        var prodCartId = generateAddress();
+        console.log(userId, cartId, prodCartId, 0);
+        // -------------------------------
+        web3.eth.getAccounts(function(error, accounts) {
+            if (error) {
+                console.log(error);
+            }
+
+            var account = accounts[0];
+            console.log("from: ", account);
+
+            Controller.contracts.Controller.deployed().then(function(instance) {
+                console.log(instance);
+                console.log("to: ", instance.address);
+                return instance.recharge(userId, 1000, {gas: 3000000});
+            }).then(function(result) {
+                alert("Good");
+                return Controller.getUserOnBC();
+            }).catch(function(err) {
+                console.log(err.message);
+            });
+        });
+    },
+
+    getAUserOnBC: function() {
+        // alert(address)
+        var ControllerInstance;
+
+        Controller.contracts.Controller.deployed().then(function(instance) {
+        ControllerInstance = instance;
+            return ControllerInstance.getAccount(Controller.userId);
+        }).then(function(result) {
+            console.log("stored on block chain:", result);
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+    }
+};
 
 
 function addCookie(name, value, days, path) {   /**添加设置cookie**/  
@@ -70,10 +124,10 @@ function setOnFirebase(
 }
 
 
-function setUserOnBlockChain(userIdBC) {
-  alert("set a user on block chain");
-  window.location.replace("/signup.html");
-}
+// function setUserOnBlockChain(userIdBC) {
+//   alert("set a user on block chain");
+//   window.location.replace("/signup.html");
+// }
 
 
 function validSignUp() {
@@ -110,12 +164,13 @@ function validSignUp() {
     alert("Password and confirm password are not same, sign up again");
   }
   else {
-    var userIdBC = generateUserIdBC();
+    var userIdBC = generateAddress();
     // setOnFirebase(
     //   userIdBC,
     //   username, firstName, lastName, password, 
     //   street, suite, country, state, zip
     // );
-    setUserOnBlockChain(userIdBC);
+    Controller.userId = userIdBC;
+    Controller.initWeb3();
   }
 }
