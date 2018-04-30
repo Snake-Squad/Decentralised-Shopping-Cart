@@ -4,9 +4,9 @@ CheckOut = {
     petInCart:[],
 
     initWeb3: function() {
-        // Is there an injected web3 instance?
-        if (typeof web3 !== 'undefined') {
-        CheckOut.web3Provider = web3.currentProvider;
+    // Is there an injected web3 instance?
+    if (typeof web3 !== 'undefined') {
+    CheckOut.web3Provider = web3.currentProvider;
         } else {
         // If no injected web3 instance is detected, fall back to Ganache
         CheckOut.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
@@ -30,7 +30,7 @@ CheckOut = {
       // alert("Contract Initialized");
       // Use our contract to retrieve and mark the adopted pets
       return CheckOut.pay();
-    });
+    }); 
   },
 
     pay: function(event) {

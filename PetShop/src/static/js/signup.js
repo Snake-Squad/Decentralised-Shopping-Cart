@@ -1,4 +1,26 @@
-function addCookie(name, value, days, path){   /**添加设置cookie**/  
+CheckOut = {
+    web3Provider: null,
+    contracts: {},
+
+    initWeb3: function() {
+        // Is there an injected web3 instance?
+        if (typeof web3 !== 'undefined') {
+            CheckOut.web3Provider = web3.currentProvider;
+        } else {
+            // If no injected web3 instance is detected, fall back to Ganache
+            CheckOut.web3Provider = new 
+            Web3.providers.HttpProvider('http://localhost:7545');
+        } 
+
+        web3 = new Web3(CheckOut.web3Provider);
+        // alert("web3 Initialized");
+        return CheckOut.initContract();
+    },
+
+}；
+
+
+function addCookie(name, value, days, path) {   /**添加设置cookie**/  
     var name = escape(name);  
     var value = escape(value);  
     var expires = new Date();  
@@ -7,8 +29,9 @@ function addCookie(name, value, days, path){   /**添加设置cookie**/
     path = path == "" ? "" : ";path=" + path;  
     //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
     //参数days只能是数字型  
-    var _expires = (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
-    document.cookie = name + "=" + value + _expires + path;  
+    var validDate = 
+        (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
+    document.cookie = name + "=" + value + validDate + path;  
 }  
 
 
@@ -27,7 +50,7 @@ function setOnFirebase(
     messagingSenderId: "445311599888"
   };
   firebase.initializeApp(config);
-
+  // Add a user to firebase
   var users = firebase.database().ref().child('users');
   var userIdFB = firebase.database().ref().child('users').push().key;
   return users.child(userIdFB).set({
@@ -65,7 +88,7 @@ function validSignUp() {
   var street = document.getElementById("address1").value.trim();
   var suite = document.getElementById("address2").value.trim();
   var countries = document.getElementById("country");
-  var cid = countries.selectedIndex ;             // country_Index is the index user choose
+  var cid = countries.selectedIndex ;             
   var country = countries.options[cid].text;
   var states = document.getElementById("state");
   var sid = states.selectedIndex;
@@ -88,10 +111,11 @@ function validSignUp() {
   }
   else {
     var userIdBC = generateUserIdBC();
-    setOnFirebase(
-      userIdBC,
-      username, firstName, lastName, password, 
-      street, suite, country, state, zip
-    );
+    // setOnFirebase(
+    //   userIdBC,
+    //   username, firstName, lastName, password, 
+    //   street, suite, country, state, zip
+    // );
+    setUserOnBlockChain(userIdBC);
   }
 }
