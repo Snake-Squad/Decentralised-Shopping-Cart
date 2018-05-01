@@ -33,6 +33,7 @@ Controller = {
     },
 
     setAUserOnBC: function() {
+        console.log("setAUserOnBC")
         var userId = Controller.userId;
         var cartId = generateAddress();
         var prodCartId = generateAddress();
@@ -59,8 +60,9 @@ Controller = {
     },
 
     getAUserOnBC: function() {
-        addCookie("userName", Controller.username, Controller.userId, 7, "/");                
-        window.location.href = "/";
+        addCookie("userName", Controller.username, Controller.userId, 7, "/"); 
+        console.log("Added On Block Chain.");               
+        window.location.href = "http://localhost:3000/";
     //     var ControllerInstance;
     //     Controller.contracts.Controller.deployed().then(function(instance) {
     //     ControllerInstance = instance;
@@ -105,13 +107,18 @@ function setOnFirebase(
         "zip": zip,
         "user_id": userIdBC
     }).then(function(result) {
-        return setUserOnBlockChain(userIdBC);
+        console.log("Added on firebase.");
+        Controller.username = username;
+        Controller.userId = userIdBC;
+        console.log(Controller.userId, Controller.username);
+        return Controller.initWeb3();
     });
 }
 
 
-function validSignUp() {
+$("#btnSignUp").click(function() {
     // get personal information from the webpage
+    alert("in signup");
     var username = document.getElementById("email").value.trim();
     var firstName = document.getElementById("first_name").value.trim();
     var lastName = document.getElementById("last_name").value.trim();
@@ -140,12 +147,12 @@ function validSignUp() {
             alert("Please enter a valid email address for shipping updates." + 
                 "\n" +
                 "[0-9a-zA-Z_]{1,24}@(163/126/qq/yahoo/gmail/sina/hotmail).(com/com.cn/cn/la");
-            window.location.replace("/signup.html");
+            //window.location.replace("/signup.html");
         }
     } else {
         isValid = false;
         alert("Email address cannot be empty, please input again.");
-        window.location.replace("/signup.html");
+        //window.location.replace("/signup.html");
     }
 
     //check password and confirmPassword are not empty
@@ -153,7 +160,7 @@ function validSignUp() {
         isValid = false;
         alert("Password or confirmPassword cannot be empty," +
             " please input again.");
-        window.location.replace("/signup.html");   
+        //window.location.replace("/signup.html");   
     }
 
     //check address is valid
@@ -163,7 +170,7 @@ function validSignUp() {
             street.search(/[a-zA-Z]/) < 0 && state.search(/[a-zA-Z]/) < 0) {
             isValid = 0;
             alert("Please enter a valid address for shipping updates.");
-            window.location.replace("/signup.html");
+            //window.location.replace("/signup.html");
         }
     }
 
@@ -178,9 +185,6 @@ function validSignUp() {
               username, firstName, lastName, password, 
               street, suite, country, state, zip
             );
-            Controller.username = username;
-            Controller.userId = userIdBC;
-            Controller.initWeb3();
         }
     }
-}
+});

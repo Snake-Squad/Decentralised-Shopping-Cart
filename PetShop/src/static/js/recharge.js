@@ -78,7 +78,6 @@ Controller = {
 
 // While Recharge Button is clicked
 $("#rechargeButton").click(function() {
-    //Controller.recharge("0x2c6315b775d00007935b3760af5f48f0a9f5a96a", $("#rechargeInputBuyer").val(), {gas:3000000});
     Controller.amount = $("#rechargeInput").val();
     console.log(Controller.username, Controller.userId, Controller.amount);
     Controller.recharge();

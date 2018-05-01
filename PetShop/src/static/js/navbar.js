@@ -26,7 +26,7 @@ $("#navProfile").click(function() {
 });
 
 $("#navAddAPuppy").click(function() {
-    window.location.href="http://localhost:3000/addpuppy.html";
+    window.location.href="http://localhost:3000/add_a_puppy.html";
 });
 
 $("#navRecharge").click(function() {
