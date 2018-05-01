@@ -118,7 +118,6 @@ function setOnFirebase(
 
 $("#btnSignUp").click(function() {
     // get personal information from the webpage
-    alert("in signup");
     var username = document.getElementById("email").value.trim();
     var firstName = document.getElementById("first_name").value.trim();
     var lastName = document.getElementById("last_name").value.trim();
