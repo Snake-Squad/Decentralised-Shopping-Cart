@@ -156,11 +156,17 @@ $("#btnSignUp").click(function() {
     }
 
     //check password and confirmPassword are not empty
-    if(password == "" ||confirmPassword == "") {
+    if(password == "" ) {
         isValid = false;
-        alert("Password or confirmPassword cannot be empty," +
+        alert("Password cannot be empty," +
             " please input again.");
         //window.location.replace("/signup.html");   
+    }
+    if(password !=confirmPassword) {
+        isValid = false;
+        alert("ConfirmPassword cannot be the same with Password"+
+        "Please input ConfirmPassword again.");
+        //window.location.replace("/signup.html");
     }
 
     //check address is valid
