@@ -95,7 +95,7 @@
 
     <h2>Upload an image for the puppy</h2>
     <div>
-      <img id="imgUploaded" src="https://img.tulaoshi.com/image/20160612/0861fc6edc59fb347ecf8c6f06d128cf.jpg"
+      <img id="imgOfPuppy" src="https://img.tulaoshi.com/image/20160612/0861fc6edc59fb347ecf8c6f06d128cf.jpg"
     width="auto" height="360" >
     </div>
     <br>
@@ -108,9 +108,9 @@
     <div>
       <input type="text" class="form-control" id="inputName" placeholder="Name of the Puppy" value="" required>
       <input type="text" class="form-control" id="inputBreed" placeholder="Breed of the Puppy" value="" required>
-      <input type="text" class="form-control" id="inputAge" placeholder="Age of the Puppy" value="" required>
+      <input type="text" class="form-control" id="inputAge" placeholder="Age of the Puppy. Must be an integer." value="" required>
       <input type="text" class="form-control" id="inputBirthPlace" placeholder="Birth Place of the Puppy" value="" required>
-      <input type="text" class="form-control" id="inputPrice" placeholder="Price of the Puppy" value="" required>
+      <input type="text" class="form-control" id="inputPrice" placeholder="Price of the Puppy. Must be an integer." value="" required>
     </div>
     <button id="btnConfirm" class="btn btn-secondary my-2 my-sm-0" >Confirm</button>
 
@@ -133,5 +133,6 @@
     <script src="js/truffle-contract.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/add_a_puppy.js"></script>
+    <script src="js/generators.js"></script>
   </body>
 </html>
