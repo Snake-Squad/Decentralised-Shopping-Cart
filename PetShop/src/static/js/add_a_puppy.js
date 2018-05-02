@@ -99,7 +99,7 @@ function checkValidation() {
         alert("The name is Null. Please input puppy's name")
     }else{
         if(/[A-Z]/.test(name[0])){
-            if(!(/^[A-Za-z]+$/).test(name)){
+            if(!(/^[A-Za-z _]+$/).test(name)){
                 isValid=false
                 alert("The name should only contain letters")
             }
@@ -115,7 +115,7 @@ function checkValidation() {
         alert("The breed is Null. Please input puppy's breed")
     }else{
         if(/[A-Z]/.test(breed[0])){
-            if(!(/^[A-Za-z]+$/).test(breed)){
+            if(!(/^[A-Za-z _]+$/).test(breed)){
                 isValid=false
                 alert("The breed should only contain letters")
             }
@@ -146,7 +146,7 @@ function checkValidation() {
         alert("The BirthPlace is Null. Please input puppy's BirthPlace")
     }else{
         if(/[A-Z]/.test(birthPlace[0])){
-            if(!(/^[A-Za-z]+$/).test(birthPlace)){
+            if(!(/^[A-Za-z _]+$/).test(birthPlace)){
                 isValid=false
                 alert("The BirthPlace should only contain letters")
             }

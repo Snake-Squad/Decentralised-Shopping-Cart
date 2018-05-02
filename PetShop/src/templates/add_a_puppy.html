@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Add a Puppy</title>
-
+    <style type="text/css">
+    p {text-align: left}
+    </style>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -91,10 +93,15 @@
     <h2>Details of a Puppy</h2>
 
     <div>
+      <p>Name of the Puppy:</p>
       <input type="text" class="form-control" id="inputName" placeholder="Name of the Puppy" value="" required>
+      <p>Breed of the Puppy:</p>
       <input type="text" class="form-control" id="inputBreed" placeholder="Breed of the Puppy" value="" required>
+      <p>Age of the Puppy:</p>
       <input type="text" class="form-control" id="inputAge" placeholder="Age of the Puppy. Must be an integer." value="" required>
+      <p>Birth Place of the Puppy:</p>
       <input type="text" class="form-control" id="inputBirthPlace" placeholder="Birth Place of the Puppy" value="" required>
+      <p>Price:</p>
       <input type="text" class="form-control" id="inputPrice" placeholder="Price of the Puppy. Must be an integer." value="" required>
     </div>
     <button id="btnConfirm" class="btn btn-secondary my-2 my-sm-0" >Confirm</button>
