@@ -29,6 +29,10 @@ $("#navAddAPuppy").click(function() {
     window.location.href="http://localhost:3000/add_a_puppy.html";
 });
 
+$("#navEditPostedPuppies").click(function() {
+    window.location.href="http://localhost:3000/edit_posted_puppies.html";
+});
+
 $("#navRecharge").click(function() {
     window.location.href = "http://localhost:3000/recharge.html";
 });
