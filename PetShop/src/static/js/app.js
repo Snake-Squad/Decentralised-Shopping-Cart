@@ -2,7 +2,8 @@ Controller = {
     web3Provider: null,
     contracts: {},
     userId: null,
-    onSales: {},
+    puppyList: null,
+    onSales: [],
     //petInCart:[],
 
     initWeb3: function() {
@@ -37,52 +38,66 @@ Controller = {
         Controller.contracts.Controller.deployed().then(function(instance) {;
             return instance.getPuppyList();
         }).then(function(result) {
-            console.log("Puppy List:", result);
-            return Controller.showOnSalePuppies(result);
+            Controller.puppyList = result;
+            if (result.length > 0) 
+                return Controller.isOnSale(0);
         }).catch(function(err) {
             console.log(err.message);
         });
     },
 
-    showOnSalePuppies: function(data) {
-        for (var i = 0;i < data.length; i++) {
-            console.log(data[i]);
-            Controller.contracts.Controller.deployed().then(
-                function(instance) {;
-                    return instance.getPuppy();
-        }).then(function(result) {
-            console.log("Puppy List:", result);
-            return Controller.showOnSalePuppies(result);
+    isOnSale: function(i) {
+        console.log(i);
+        if (i == Controller.puppyList.length) {
+            return Controller.showOnSales();
+        }
+
+        var puppyId = Controller.puppyList[i];
+        Controller.contracts.Controller.deployed().then(function(instance) {
+            return instance.getPuppyStatus(puppyId);
+        }).then(function(status) {
+            if (status) {
+                return Controller.getPuppyInfo(puppyId, i);
+            } else {
+                return Controller.isOnSale(i + 1);
+            }
         }).catch(function(err) {
             console.log(err.message);
         });
+    },
 
+    getPuppyInfo: function(puppyId, i) {
+        console.log(puppyId);
+        Controller.contracts.Controller.deployed().then(function(instance) {
+            return instance.getPuppyInfo(puppyId);
+        }).then(function(info) {
+            console.log(info);
+            Controller.onSales.push(info);
+            return Controller.isOnSale(i + 1);
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+    },
+
+    showOnSales: function() {
+        console.log(Controller.onSales);
+        var data = Controller.onSales;
+        var petsRow = $('#petsRow');
+        var petTemplate = $('#petTemplate');
+
+        for (i = 0; i < data.length; i ++) {
+            petTemplate.find('.panel-title').text(data[i][1]);
+            petTemplate.find('img').attr('src', data[i][6]);
+            petTemplate.find('.pet-breed').text(data[i][2]);
+            petTemplate.find('.pet-age').text(data[i][3]);
+            petTemplate.find('.pet-location').text(data[i][4]);
+            // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+            petTemplate.find('.btn-add').attr('data-id', data[i][5]);
+            petsRow.append(petTemplate.html());
         }
-        // $.getJSON('../pets.json', function(data) {
-        //     console.log(data);
-        // var petsRow = $('#petsRow');
-        // var petTemplate = $('#petTemplate');
-
-        // for (i = 0; i < data.length; i ++) {
-        //     petTemplate.find('.panel-title').text(data[i].name);
-        //     petTemplate.find('img').attr('src', data[i].picture);
-        //     petTemplate.find('.pet-breed').text(data[i].breed);
-        //     petTemplate.find('.pet-age').text(data[i].age);
-        //     petTemplate.find('.pet-location').text(data[i].location);
-        //     // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-        //     petTemplate.find('.btn-add').attr('data-id', data[i].id);
-        //     petsRow.append(petTemplate.html());
-        // }
-        // });
+        
         //return App.initWeb3();
     },
-
-
-
-
-
-
-
 
 
   bindEvents: function() {
