@@ -146,3 +146,23 @@ function delete_cookie(name) {
     window.location.replace("/");
 }
 
+// thees setter and getter are used for editing a dog.
+function setEditCookie(data, exdays) {
+    var expiresDate = new Date();
+    expiresDate.setTime(expiresDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + expiresDate.toUTCString();
+    document.cookie = "editTargets=" + data + ";" + expires + ";path=/";
+}
+
+function getEditCookie() {
+    var name = escape("editTargets") + "=";  
+    var cookie = document.cookie;
+
+    var pos = cookie.indexOf(name);
+    var start = pos + name.length;                 
+    var end = end = cookie.length;
+
+    var data = cookie.substring(start, end);
+    var list = data.split(",");
+    return list;
+}
