@@ -10,7 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-    <link href="css/navbar.css" rel="stylesheet">  
+    <link href="css/navbar.css" rel="stylesheet">
   </head>
 
 
@@ -30,38 +30,34 @@
           
           <li class="nav-item">
             <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
-     
           </li>
           
-            <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
-            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" 
+            data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
           login
             </a>
-            <!--onclick function can be found in navabar.js-->
+            <!--onclick functions can be found in navabar.js-->
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" id="navProfile">Profile</a>
               <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
               <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
               <a class="dropdown-item" id="navRecharge">Recharge</a>
-              <a class="dropdown-item" id="navTransactions">Transactions</a>
-              <a class="dropdown-item" id="navLogout">Logout</a>
+              <a class="dropdown-item" id="navTrasactions">Transactions</a>
+              <a class="dropdown-item" id="navLogout">Log Out</a>
             </div>
           </li>
-
 
           <!-- Go to Sign Up Page -->
           <li class="nav-item">
             <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
           </li>
-          
-          
+                    
           <!-- Check what is in the Cart -->
           <li class="nav-item">
             <a class="nav-link" onclick="onClickCart()">Cart</a>
           </li>
         </ul>
-
-
 
         <!-- Add search Buttom here -->
         <!-- <form class="form-inline my-2 my-lg-0"> -->
@@ -70,39 +66,54 @@
         <!-- </form> -->
       </div>
     </nav>
+
+
+
+
+
+
+
     <!-- Here starts the main page -->
+    <main role="main" class="container">
+      <center>
+        <br/>
+        <h1 class="text-center">Your Puppies</h1>
+        <hr/>
+        <br/>
+      </center>
+
+      <!-- Here listed all of the puppies on block chain -->
+      <div id="searchPetsRow" class="row">
+        <!-- PETS LOAD HERE, This is very important -->
+      </div>
+      <div id="petsRow" class="row">
+        <!-- PETS LOAD HERE, This is very important -->
+      </div>
 
 
-    <div class="container"><center>
+    <!-- Here define the search template -->
+    <div id="petTemplate" style="display: none;">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="panel panel-default panel-pet">
+          <center><div class="panel-heading">
+            <h3 class="panel-title"></h3>
+          </div></center>
+          <div class="panel-body">
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true">
+            <br/><br/>
+            <strong>Breed</strong>: <span class="pet-breed"></span><br/>
+            <strong>Age</strong>: <span class="pet-age"></span><br/>
+            <strong>Location</strong>: <span class="pet-location"></span><br/>
+            <strong>Price</strong>: <span class="pet-price"></span><br/><br/>
+            <!-- <strong>Seller</strong>: <span class="pet-seller"></span><br/><br/> -->
+            <center>
+            <button class="btn btn-default btn-add btn-primary" type="button" data-id="0" >Add To Cart</button>
+            </center>
+          </div>
+        </div>
+      </div>
+    </main>
 
-    <h1>Add a Puppy</h1>
-    <hr>
-
-    <h2>Upload an image for the puppy</h2>
-    <div>
-      <img id="imgOfPuppy" src="https://cdn.filestackcontent.com/wxLPFKkLRZmumTng5O7e"
-    width="auto" height="360" >
-    </div>
-    <br>
-    <button id="btnUploadImg" class="btn btn-secondary my-2 my-sm-0" onclick="uploadimage()">Upload an Image</button>
-    
-    <hr>
-
-    <h2>Details of a Puppy</h2>
-
-    <div>
-      <input type="text" class="form-control" id="inputName" placeholder="Name of the Puppy" value="" required>
-      <input type="text" class="form-control" id="inputBreed" placeholder="Breed of the Puppy" value="" required>
-      <input type="text" class="form-control" id="inputAge" placeholder="Age of the Puppy. Must be an integer." value="" required>
-      <input type="text" class="form-control" id="inputBirthPlace" placeholder="Birth Place of the Puppy" value="" required>
-      <input type="text" class="form-control" id="inputPrice" placeholder="Price of the Puppy. Must be an integer." value="" required>
-    </div>
-    <button id="btnConfirm" class="btn btn-secondary my-2 my-sm-0" >Confirm</button>
-
-    </center></div>
-
-    <!-- https://img.tulaoshi.com/image/20160612/0861fc6edc59fb347ecf8c6f06d128cf.jpg -->
-    <!-- https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/02/ChMkJ1bKxg6IdZk5AAK3PMpO-zEAALHfgDer-EAArdU066.jpg -->
 
 
 
@@ -117,12 +128,7 @@
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/navbar.js"></script>
-
-    <!--import image part-->
-    <script src="https://static.filestackapi.com/v3/filestack.js"></script>
-    <script src="js/add_a_puppy.js"></script>
-    <script src="js/upload_an_image.js"></script>
-    <script src="js/generators.js"></script>
-
+    <script src="js/edit_posted_puppies.js"></script>
+    
   </body>
 </html>
