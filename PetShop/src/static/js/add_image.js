@@ -1,5 +1,5 @@
 function uploadimage(){
-        const link = document.getElementById('image');
+        const link = document.getElementById('imgOfPuppy');
         const client = filestack.init('Ac3EdiggQlOxJvyyxsfTmz');
         client.pick({
         accept:'image/*',
