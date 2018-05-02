@@ -4,7 +4,7 @@ Controller = {
     userId: null,
     puppyList: null,
     onSales: [],
-    petInCart:[],
+    petInCart: [],
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -135,6 +135,6 @@ window.onload = function() {
         document.getElementById("login_navabar").style.display = 'none';
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
-        Controller.initWeb3();
-    } 
+    }
+    Controller.initWeb3();
 }
