@@ -92,11 +92,91 @@ function checkValidation() {
     console.log(name, breed, age, birthPlace, price, image);
 
     // TODO: Check validation of each input
-    var isValid = false;
+    var isValid = true;
+    //name
+    if(name==""){
+        isValid=false;
+        alert("The name is Null. Please input puppy's name")
+    }else{
+        if(/[A-Z]/.test(name[0])){
+            if(!(/^[A-Za-z]+$/).test(name)){
+                isValid=false
+                alert("The name should only contain letters")
+            }
+        }
+        else{
+            isValid=false
+            alert("The name should be start with capital letter")
+        }
+    }
+    //breed
+    if(breed==""){
+        isValid=false;
+        alert("The breed is Null. Please input puppy's breed")
+    }else{
+        if(/[A-Z]/.test(breed[0])){
+            if(!(/^[A-Za-z]+$/).test(breed)){
+                isValid=false
+                alert("The breed should only contain letters")
+            }
+        }
+        else{
+            isValid=false
+            alert("The breed should be start with capital letter")
+        }
+      }
+      //age
+      if(age==""){
+        isValid=false;
+        alert("The age is Null. Please input puppy's age")
+      }else{
+        if(/^[A-Za-z]+$/.test(age)){
+            isValid=false
+            alert("The age is wrong with letters")
+            }else{
+               if(age>40){
+                    isValid=false
+                    alert("Your Puppy lives beyond record")
+                }
+            }
+      }
+    // birthPlace
+    if(birthPlace==""){
+        isValid=false;
+        alert("The BirthPlace is Null. Please input puppy's BirthPlace")
+    }else{
+        if(/[A-Z]/.test(birthPlace[0])){
+            if(!(/^[A-Za-z]+$/).test(birthPlace)){
+                isValid=false
+                alert("The BirthPlace should only contain letters")
+            }
+        }
+        else{
+            isValid=false
+            alert("The BirthPlace should be start with capital letter")
+        }
+      }
+
+//    price = parseInt($("#inputPrice").val());
+      if(price==""){
+        isValid=false;
+        alert("The price is Null. Please input puppy's age")
+      }else{
+        if(/^[A-Za-z]+$/.test(price)){
+            isValid=false
+            alert("The price don't contain letters")
+            }
+      }
+      // image
+
+     var defaultimage = "https://cdn.filestackcontent.com/wxLPFKkLRZmumTng5O7e"
+    if(image==defaultimage){
+        isValid=false
+        alert("You should upload your puppy's image for buyers")
+    }
 
 
 
-    isValid = true; // this is only for testing
     
     // if all inputs are valid, add the puppy to block chain
     if (isValid) {
@@ -109,8 +189,14 @@ function checkValidation() {
         Controller.initWeb3();
     }
 }
-
-
+//judge the value is int
+function isInt(value) {
+  if (isNaN(value)) {
+    return false;
+  }
+  var x = parseFloat(value);
+  return (x | 0) === x;
+}
 // While Confrim Button is clicked
 $("#btnConfirm").click(function() {
     checkValidation();
