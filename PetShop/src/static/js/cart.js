@@ -8,7 +8,7 @@ var loc = location.href;
 var n1 = loc.length;//地址的总长度
 var n2 = loc.indexOf("=");//取得=号的位置
 var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-console.log(id)
+
 /* value processing */
 var petIdList =id.split(",");
 var petsInfo = [];
@@ -41,13 +41,13 @@ window.onload = function()
     cartTemplate.find('.product-description2').text("location:"+"  "+petsInfo[i][3]);
     cartTemplate.find(".product-quantity").find('input').attr("value",1);
     cartTemplate.find(".product-price").text(petsInfo[i][4]);
-    console.log(document.getElementById("product-price").innerText)
     cartTemplate.find(".product-line-price").text(document.getElementById("product-price").innerText);
     cartRow.append(cartTemplate.html());
   };
-  $('.product-quantity input').change( function() {
-    updateQuantity(this);
-  });
+  //since the number of pet is always one,then i dont need this function
+  // $('.product-quantity input').change( function() {
+  //   updateQuantity(this);
+  // });
 
   $('.product-removal button').click( function() {
     removeItem(this);
@@ -87,24 +87,25 @@ function recalculateCart()
 }
 
 /* Update quantity */
-function updateQuantity(quantityInput)
-{
-  /* Calculate line price */
-  console.log(quantityInput);
-  var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.product-price').text());
-  var quantity = $(quantityInput).val();
-  var linePrice = price * quantity;
+//since the number of pet is always one,then i dont need this function
+// function updateQuantity(quantityInput)
+// {
+//   /* Calculate line price */
+//   console.log(quantityInput);
+//   var productRow = $(quantityInput).parent().parent();
+//   var price = parseFloat(productRow.children('.product-price').text());
+//   var quantity = $(quantityInput).val();
+//   var linePrice = price * quantity;
   
-  /* Update line price display and recalc cart totals */
-  productRow.children('.product-line-price').each(function () {
-    $(this).fadeOut(fadeTime, function() {
-      $(this).text(linePrice.toFixed(2));
-      recalculateCart();
-      $(this).fadeIn(fadeTime);
-    });
-  });  
-}
+//   /* Update line price display and recalc cart totals */
+//   productRow.children('.product-line-price').each(function () {
+//     $(this).fadeOut(fadeTime, function() {
+//       $(this).text(linePrice.toFixed(2));
+//       recalculateCart();
+//       $(this).fadeIn(fadeTime);
+//     });
+//   });  
+// }
 
 /* Remove item from cart */
 function removeItem(removeButton)
