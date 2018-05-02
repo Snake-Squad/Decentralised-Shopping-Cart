@@ -87,13 +87,48 @@
       </div>
     </nav>
     <!-- Here starts the main page -->
-    <h1>Add a Puppy</h1>
-    <hr>
-    <hr>
-    <button id="btnAddAPuppy">Add It</button>
+  <table>
+    <legend>Import Puppy Information</legend>
+    <form method="post" action="">
+    <table border="1" bordercolor="#0099ff" cellpadding="10px" cellspacing="0">
+        <tr>
+            <td>Puppy Name：</td>
+            <td>
+                <input  type="text" name="name" value="--Puppy Name without special signals--"/>
+            </td>
+        </tr>
+      <tr>
+            <td>Puppy Breed：</td>
+            <td>
+                <input  type="text" name="breed" value="--Puppy Breed without special signals and numbers--"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Gender：</td>
+            <td>
+                <input type="radio" name="sex" value="nan" checked="checked"/>Male
+                <input type="radio" name="sex" value="nv" />Female
+            </td>
+        </tr>
 
+    </table>
+    </form>
 
-
+    <div>Add Image:</div>
+    <div>
+        <img id="image" src="https://cdn.filestackcontent.com/wxLPFKkLRZmumTng5O7e">
+    </div>
+    <td>
+        <button onclick="uploadimage()">Adding</button>
+    </td>
+    <p></p>
+    </tr>
+    <tr>
+        <th colspan="1">
+            <input type="button" name="submit" value="submit" />
+        </th>
+    </tr>
+  </table>
 
 
 
@@ -108,6 +143,8 @@
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/add_a_puppy.js"></script>
+    <!--import image part-->
+    <script src="https://static.filestackapi.com/v3/filestack.js"></script>
+    <script src = "js/add_image.js"></script>
   </body>
 </html>
