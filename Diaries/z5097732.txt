@@ -25,3 +25,12 @@ Learn how to store the user's information in the MangoDB. I finish my forget pas
 
 Week 6:
 I found a tutorial about how to use block chain in the pet shop. I am learning how to use block chain and send message between the buyer and user.
+
+Week7:
+This week my scrum master changed mongo database to firebase as our server and store the user information into the database. I help my teammates to finish the  function of Search and try to solve the problem it cannot use this function in other pages.
+
+Week8:
+I found a API named filestack for import image as url and then our website can store the image into the block chain. And I also begin to write add_ puppy function.Store the puppy information into block chain
+
+Week9:
+
