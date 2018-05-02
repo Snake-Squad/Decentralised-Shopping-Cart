@@ -160,7 +160,7 @@ function checkValidation() {
 //    price = parseInt($("#inputPrice").val());
       if(price==""){
         isValid=false;
-        alert("The price is Null. Please input puppy's age")
+        alert("The price is Null. Please input puppy's price")
       }else{
         if(/^[A-Za-z]+$/.test(price)){
             isValid=false
