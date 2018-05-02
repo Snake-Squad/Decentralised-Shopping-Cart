@@ -97,6 +97,11 @@ Controller = {
         console.log("index =", idx);
         Controller.target = Controller.onSales[idx];
         console.log("Edit ->:", Controller.target);
+        setEditCookie(Controller.target, 1);
+        var dogInfo = getEditCookie();
+        console.log("dog need to be edited", dogInfo);
+        var value = getCookieValue("userName");  
+        console.log("user account info:", value);
     },
 
     goToShopingCartPage: function(event){
