@@ -115,7 +115,7 @@ Controller = {
         console.log("index =", onSalesIndex);
 
         Controller.petInCart.push(Controller.onSales[onSalesIndex]);
-        console.log(Controller.petInCart);
+        console.log("Items in petInCart:", Controller.petInCart);
     },
 
     goToShopingCartPage: function(event){
