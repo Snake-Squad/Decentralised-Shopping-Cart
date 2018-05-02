@@ -1,60 +1,89 @@
-App = {
-  web3Provider: null,
-  contracts: {},
-  petInCart:[],
+Controller = {
+    web3Provider: null,
+    contracts: {},
+    userId: null,
+    onSales: {},
+    //petInCart:[],
+
+    initWeb3: function() {
+        // Is there an injected web3 instance?
+        if (typeof web3 !== 'undefined') {
+            Controller.web3Provider = web3.currentProvider;
+        } else {
+            // If no injected web3 instance is detected, fall back to Ganache
+            Controller.web3Provider = new Web3.providers.HttpProvider(
+                'http://localhost:7545');
+        } 
+        web3 = new Web3(Controller.web3Provider);
+        return Controller.initContract();
+    },
+
+    initContract: function() {
+        $.getJSON('Controller.json', function(data) {
+            // Get the necessary contract artifact file
+            var ControllerArtifact = data;
+            console.log(data);
+            // Instantiate it with truffle-contract
+            Controller.contracts.Controller = 
+                TruffleContract(ControllerArtifact);
+            // Set the provider for our contract
+            Controller.contracts.Controller.setProvider(
+                Controller.web3Provider);
+            return Controller.getAllPuppiesOnBC();
+        });
+    },
+
+    getAllPuppiesOnBC: function() {
+        Controller.contracts.Controller.deployed().then(function(instance) {;
+            return instance.getPuppyList();
+        }).then(function(result) {
+            console.log("Puppy List:", result);
+            return Controller.showOnSalePuppies(result);
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+    },
+
+    showOnSalePuppies: function(data) {
+        for (var i = 0;i < data.length; i++) {
+            console.log(data[i]);
+            Controller.contracts.Controller.deployed().then(
+                function(instance) {;
+                    return instance.getPuppy();
+        }).then(function(result) {
+            console.log("Puppy List:", result);
+            return Controller.showOnSalePuppies(result);
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+
+        }
+        // $.getJSON('../pets.json', function(data) {
+        //     console.log(data);
+        // var petsRow = $('#petsRow');
+        // var petTemplate = $('#petTemplate');
+
+        // for (i = 0; i < data.length; i ++) {
+        //     petTemplate.find('.panel-title').text(data[i].name);
+        //     petTemplate.find('img').attr('src', data[i].picture);
+        //     petTemplate.find('.pet-breed').text(data[i].breed);
+        //     petTemplate.find('.pet-age').text(data[i].age);
+        //     petTemplate.find('.pet-location').text(data[i].location);
+        //     // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+        //     petTemplate.find('.btn-add').attr('data-id', data[i].id);
+        //     petsRow.append(petTemplate.html());
+        // }
+        // });
+        //return App.initWeb3();
+    },
 
 
-  init: function() {
-    // Load pets.
-    $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
 
-      for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-        petTemplate.find('.btn-add').attr('data-id', data[i].id);
-        petsRow.append(petTemplate.html());
-      }
-    });
 
-    return App.initWeb3();
-  },
 
-  initWeb3: function() {
-    // Is there an injected web3 instance?
-    if (typeof web3 !== 'undefined') {
-      App.web3Provider = web3.currentProvider;
-    } else {
-      // If no injected web3 instance is detected, fall back to Ganache
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-    }
-    
-    web3 = new Web3(App.web3Provider);
 
-    return App.initContract();
-  },
 
-  initContract: function() {
-    $.getJSON('Adoption.json', function(data) {
-      // Get the necessary contract artifact file and instantiate it with truffle-contract
-      var AdoptionArtifact = data;
-      App.contracts.Adoption = TruffleContract(AdoptionArtifact);
 
-      // Set the provider for our contract
-      App.contracts.Adoption.setProvider(App.web3Provider);
-      console.log(App.contracts.Adoption);
-
-      // Use our contract to retrieve and mark the adopted pets
-      return App.markAdopted();
-    });
-
-    return App.bindEvents();
-  },
 
   bindEvents: function() {
     // $(document).on('click', '.btn-adopt', App.handleAdopt);
@@ -126,8 +155,23 @@ App = {
   }
 };
 
-$(function() {
-  $(window).load(function() {
-    App.init();
-  });
-});
+// $(function() {
+//   $(window).load(function() {
+//     App.init();
+//   });
+// });
+
+window.onload = function() {  
+    var value = getCookieValue("userName");  
+    console.log(value);
+    if(value === undefined || value == null || value.length == 0) {
+        document.getElementById("login_navabar").text = "Login";     
+    } else {
+        document.getElementById("loginnavbarDropdown").text = value[0];  
+        document.getElementById("loginnavbarDropdown").style.display = 'block';
+        document.getElementById("login_navabar").style.display = 'none';
+        document.getElementById("signup_navabar").style.display = 'none';
+        Controller.userId = value[0];
+        Controller.initWeb3();
+    } 
+}

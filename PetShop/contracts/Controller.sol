@@ -25,13 +25,14 @@ contract Controller {
     }
         
     struct Puppy {
+        address sellerId;        // the id of the seller
         string name;             // name of the puppy
         string breed;            // breed of the puppy
         uint age;                // age of the puppy
         string birthPlace;       // birth place of the puppy
         uint256 price;           // price of the puppy
         string image;            // image url of the puppy
-        bool onSale;             // status of a puppy
+        bool onSale;             // status of a Puppy
     }
         
     struct Transaction {
@@ -120,6 +121,7 @@ contract Controller {
      */
     function setPuppy(
         address _puppyId,
+        address _sellerId,
         string _name,
         string _breed,
         uint _age,
@@ -131,6 +133,7 @@ contract Controller {
         public 
     { 
         var puppy = puppiesOnBC[_puppyId];
+        puppy.sellerId = _sellerId;
         puppy.name = _name;
         puppy.breed = _breed;
         puppy.age = _age;
@@ -140,28 +143,32 @@ contract Controller {
         puppy.onSale = _onSale;
     }
     
-    function getPuppy(address _puppyId) 
+    function getPuppyInfo(address _puppyId) 
         view 
         public 
         returns (
+            address,
             string, 
             string, 
             uint,
             string,
             uint256,
-            string,
-            bool
+            string
         ) 
     {
         return (
+            puppiesOnBC[_puppyId].sellerId,
             puppiesOnBC[_puppyId].name, 
             puppiesOnBC[_puppyId].breed, 
             puppiesOnBC[_puppyId].age,
             puppiesOnBC[_puppyId].birthPlace,
             puppiesOnBC[_puppyId].price,
-            puppiesOnBC[_puppyId].image,
-            puppiesOnBC[_puppyId].onSale
+            puppiesOnBC[_puppyId].image
         );
+    }
+    
+    function getPuppyStatus(address _puppyId) view public returns (bool) {
+        return (puppiesOnBC[_puppyId].onSale);
     }
      
     /*--------------------------------------------------------------------------
@@ -241,8 +248,8 @@ contract Controller {
     }
     
     function addPuppy(
-        address _sellerId,
         address _puppyId,
+        address _sellerId,
         string _name,
         string _breed,
         uint _age,
@@ -254,6 +261,7 @@ contract Controller {
     {
         setPuppy(
             _puppyId, 
+            _sellerId,
             _name, 
             _breed, 
             _age, 

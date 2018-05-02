@@ -30,54 +30,35 @@
           
           <li class="nav-item">
             <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
-     
           </li>
           
-            <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
-            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" 
+            data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
           login
             </a>
             <!--onclick functions can be found in navabar.js-->
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" id="navProfile">Profile</a>
               <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
+              <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
               <a class="dropdown-item" id="navRecharge">Recharge</a>
               <a class="dropdown-item" id="navTrasactions">Transactions</a>
               <a class="dropdown-item" id="navLogout">Log Out</a>
             </div>
           </li>
 
-
           <!-- Go to Sign Up Page -->
           <li class="nav-item">
             <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
           </li>
-          
-          
+                    
           <!-- Check what is in the Cart -->
           <li class="nav-item">
             <a class="nav-link" onclick="onClickCart()">Cart</a>
           </li>
-          
-          <!-- Add a Filter to Search Item -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Breed
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Polos</a>
-              <a class="dropdown-item" href="#">Casual Shirts</a>
-              <a class="dropdown-item" href="#">Casual Trousers</a>
-              <a class="dropdown-item" href="#">Jeans</a>
-              <a class="dropdown-item" href="#">Shorts & 3/4th</a>
-              <a class="dropdown-item" href="#">Formal Shirts</a>
-              <a class="dropdown-item" href="#">Formal Trousers</a>
-              <a class="dropdown-item" href="#">Suits & Blazers</a>
-              <a class="dropdown-item" href="#">Track Wear</a>
-              <a class="dropdown-item" href="#">Inner Wear</a>
-            </div>
-          </li>
         </ul>
+
         <!-- Add search Buttom here -->
         <!-- <form class="form-inline my-2 my-lg-0"> -->
           <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
@@ -85,11 +66,20 @@
         <!-- </form> -->
       </div>
     </nav>
+
+
+
+
+
+
+
     <!-- Here starts the main page -->
     <main role="main" class="container">
       <center>
         <br/>
         <h1 class="text-center">Puppy Shop</h1>
+
+        <!-- Here is the shopping cart icon at the buttom right of the page -->
         <div  class="shop-cart" id="shop-cart" >
           <a  class="goToShopingCartPage">
             <i class="fas fa-shopping-cart"></i>
@@ -99,6 +89,8 @@
         <hr/>
         <br/>
       </center>
+
+      <!-- Here listed all of the puppies on block chain -->
       <div id="searchPetsRow" class="row">
         <!-- PETS LOAD HERE, This is very important -->
       </div>
@@ -107,7 +99,7 @@
       </div>
 
 
-    
+    <!-- Here define the search template -->
     <div id="petTemplate" style="display: none;">
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="panel panel-default panel-pet">
@@ -128,6 +120,10 @@
       </div>
     </main>
 
+
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- firebase core js -->
@@ -139,20 +135,5 @@
     <script src="js/truffle-contract.js"></script>
     <script src="js/app.js"></script>
     <script src="js/navbar.js"></script>
-
-    <script type="text/javascript">
-      window.onload = function() {  
-        var value = getCookieValue("userName");  
-        console.log(value);
-        if(value === undefined || value == null || value.length == 0) {
-          document.getElementById("login_navabar").text = "Login";     
-        } else {
-          document.getElementById("loginnavbarDropdown").text = value[0];  
-          document.getElementById("loginnavbarDropdown").style.display = 'block';
-          document.getElementById("login_navabar").style.display = 'none';
-          document.getElementById("signup_navabar").style.display = 'none';
-        } 
-      }
-    </script>
   </body>
 </html>
