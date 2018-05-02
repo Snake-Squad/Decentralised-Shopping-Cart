@@ -4,7 +4,7 @@ Controller = {
     userId: null,
     puppyList: null,
     onSales: [],
-    petInCart: [],
+    target: null,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -83,31 +83,24 @@ Controller = {
             petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
-        console.log(data);
-
+        console.log("Details of all puppies:", data);
         return Controller.bindEvents();
     },
 
     bindEvents: function() {
-    // $(document).on('click', '.btn-adopt', App.handleAdopt);
-        $(document).on('click', '.btn-add', Controller.handleAdd);
+        $(document).on('click', '.btn-edit', Controller.handleEdit);
         $(document).on('click', '.goToShopingCartPage', Controller.goToShopingCartPage);
     },
 
-    handleAdd: function(event) {
-        event.preventDefault();
-        var index = document.getElementById("shop-cart-index");
-        index.innerText++;
-
-        var onSalesIndex = parseInt($(event.target).data('id'));
-        console.log("index =", onSalesIndex);
-
-        Controller.petInCart.push(Controller.onSales[onSalesIndex]);
-        console.log("Items in petInCart:", Controller.petInCart);
+    handleEdit: function(event) {
+        var idx = parseInt($(event.target).data('id'));
+        console.log("index =", idx);
+        Controller.target = Controller.onSales[idx];
+        console.log("Edit ->:", Controller.target);
     },
 
     goToShopingCartPage: function(event){
-        location.href="cart.html?"+"txt="+encodeURI(Controller.petInCart);
+        location.href="http://localhost:3000/cart.html";
     }
 };
 
