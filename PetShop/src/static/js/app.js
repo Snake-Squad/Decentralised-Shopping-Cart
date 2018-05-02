@@ -6,6 +6,8 @@ Controller = {
     onSales: [],
     petInCart:[],
 
+
+
     initWeb3: function() {
         // Is there an injected web3 instance?
         if (typeof web3 !== 'undefined') {
@@ -90,7 +92,7 @@ Controller = {
             petTemplate.find('.pet-breed').text(data[i][2]);
             petTemplate.find('.pet-age').text(data[i][3]);
             petTemplate.find('.pet-location').text(data[i][4]);
-            // here miss data[i][0] which is the price of a puppy
+            petTemplate.find('.pet-price').text(data[i][5]);
             petTemplate.find('img').attr('src', data[i][6]);
 
             petTemplate.find('.btn-add').attr('data-id', i);
