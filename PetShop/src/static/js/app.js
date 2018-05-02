@@ -96,7 +96,7 @@ Controller = {
             petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
-        console.log(data);
+        // console.log(data);
 
         return Controller.bindEvents();
     },
@@ -110,12 +110,28 @@ Controller = {
     handleAdd: function(event) {
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
-        index.innerText++;
+        
 
         var onSalesIndex = parseInt($(event.target).data('id'));
         console.log("index =", onSalesIndex);
-
-        Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+        if(Controller.petInCart.length == 0){
+            Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+            index.innerText++;
+        }else{
+            for (i = 0; i < Controller.petInCart.length; i ++){
+                if (Controller.petInCart.includes(Controller.onSales[onSalesIndex])){
+                    console.log("======")
+                    alert("U can't add the same pet!")
+                    break;
+                }else{
+                    console.log("wtf")
+                    Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+                    index.innerText++;
+                    break;
+                }
+            } 
+        } 
+        
         console.log("Items in petInCart:", Controller.petInCart);
     },
 
@@ -127,7 +143,7 @@ Controller = {
 
 window.onload = function() {  
     var value = getCookieValue("userName");  
-    console.log(value);
+    // console.log(value);
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
     } else {
