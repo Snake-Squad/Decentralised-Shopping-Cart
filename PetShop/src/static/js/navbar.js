@@ -22,7 +22,7 @@ function onClickCart() {
  * -----------------------------------------------------------------------------
  */
 $("#navProfile").click(function() {
-    window.location.href = "http://localhost:3000/personInfo.html";
+    window.location.href = "http://localhost:3000/editPerson.html";
 });
 
 $("#navAddAPuppy").click(function() {
@@ -44,11 +44,11 @@ $("#navTransactions").click(function() {
 $("#navLogout").click(function() {
     delete_cookie("userName"); 
 });
-
+/*
 function editPersonInfo() {
     window.location.href="/editPerson.html";
 }
-
+*/
 
 
 /* -----------------------------------------------------------------------------

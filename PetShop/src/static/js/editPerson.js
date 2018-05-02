@@ -1,16 +1,5 @@
 
 function editPerson() {
-    alert(" onClickeditperson ");
-     //  Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
-        authDomain: "comp9900-4b79d.firebaseapp.com",
-        databaseURL: "https://comp9900-4b79d.firebaseio.com",
-        projectId: "comp9900-4b79d",
-        storageBucket: "comp9900-4b79d.appspot.com",
-        messagingSenderId: "445311599888"
-    };
-    firebase.initializeApp(config);
 
     var firstName = document.getElementById("first_name").value.trim();
     var lastName = document.getElementById("last_name").value.trim();
@@ -95,7 +84,7 @@ function editPerson() {
                
                 }
             });
-            // alert(isValid);
+            alert("Success Update");
             window.location.replace("/");
             /*if (isValid) {
                 window.location.replace("/");

@@ -17,17 +17,7 @@
   <link href="css/sign_up.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
   <!-- Load online javascripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- firebase core js -->
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/web3.min.js"></script>
-  <script src="js/truffle-contract.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/signup.js"></script>
-  <script src="js/generators.js"></script>
+
 
   <meta name="viewport" content="width=device-width, intitial-scale=1">
 
@@ -36,21 +26,74 @@
   <!-- cart -->
   <script src="js/simpleCart.min.js"> </script>
   <script src="js/editPerson.js"> </script>
+ 
   <script>
-    window.onload = function() {  
-    alert("editperson");
-    var value = getCookieValue("userName");  
-    console.log(value);
-    if(value === undefined || value == null || value.length == 0) {
-        document.getElementById("login_navabar").text = "Login";     
-    } else {
-        document.getElementById("loginnavbarDropdown").text = value[0];  
-        document.getElementById("loginnavbarDropdown").style.display = 'block';
-        document.getElementById("login_navabar").style.display = 'none';
-        document.getElementById("signup_navabar").style.display = 'none';
-    }
-    }  
-    
+    window.onload = function(){  
+        var userNameValue = getCookieValue("userName")[0];  
+        
+        if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
+            document.getElementById("login_navabar").text = "Login"; 
+            
+            }
+        else{
+          document.getElementById("loginnavbarDropdown").text = userNameValue;  
+          document.getElementById("loginnavbarDropdown").style.display = 'block';
+          document.getElementById("login_navabar").style.display = 'none';
+          document.getElementById("signup_navabar").style.display = 'none';
+          var config = {
+            apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
+            authDomain: "comp9900-4b79d.firebaseapp.com",
+            databaseURL: "https://comp9900-4b79d.firebaseio.com",
+            projectId: "comp9900-4b79d",
+            storageBucket: "comp9900-4b79d.appspot.com",
+            messagingSenderId: "445311599888"
+          };
+          firebase.initializeApp(config);
+
+          // get user's email and password from the webpage
+
+          var users = firebase.database().ref().child('users');
+          // This must be the last function of all
+          users.on("value", function(snapshot) {
+            var isValid = false;
+            var userId = "";            // this id is used in blockchain
+
+            snapshot.forEach(function(user) {
+              // retrieve data from db
+              var userKey = user.key;   // user id
+              var userVal = user.val(); // user's info (email, fn, ln, pw, role)
+              
+              // check whether it matches or not
+              if (userVal.email == userNameValue) {
+             
+                  isValid = true;    
+                  document.getElementById("email").innerHTML=userNameValue;
+                  document.getElementById("first_name").value=userVal.first_name; 
+                  document.getElementById("last_name").value=userVal.last_name;
+                  document.getElementById("psw").value=userVal.psw; 
+                  document.getElementById("psw-repeat").value=userVal.psw;
+                  document.getElementById("address1").value=userVal.street;
+                  document.getElementById("address2").value=userVal.suite;
+                  
+                  document.getElementById("country-option1").checked;
+                  var state_options=document.getElementById("state");
+                
+                  for(var i = 0; i < state_options.length; i++) {  
+                    if (userVal.state == state_options[i].value) 
+                        {  
+                            state_options[i].selected=true;
+                        }  
+                    } 
+                  document.getElementById("zip").value=userVal.zip;
+                  
+                  return true;          // break the loop
+              }
+            });
+          });
+        }
+       
+        
+    }   
     </script>
 </head>
 
@@ -77,11 +120,12 @@
             </a>
             <!--onclick functions can be found in navabar.js-->
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" id="personinfo" onclick="onClickProfile()">Profile</a>
-              <a class="dropdown-item" id="addpuppy" onclick="onClickAddAPuppy()">Add a Puppy</a>
-              <a class="dropdown-item" id="recharge" onclick="onClickRecharge()">Recharge</a>
-              <a class="dropdown-item" id="transactions" onclick="onClickTransactions()">Transactions</a>
-              <a class="dropdown-item" id="logout" onclick="onClickLogOut()">Log Out</a>
+              <a class="dropdown-item" id="navProfile">Profile</a>
+              <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
+              <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
+              <a class="dropdown-item" id="navRecharge">Recharge</a>
+              <a class="dropdown-item" id="navTrasactions">Transactions</a>
+              <a class="dropdown-item" id="navLogout">Log Out</a>
             </div>
           </li>
 
@@ -95,25 +139,6 @@
           <!-- Check what is in the Cart -->
           <li class="nav-item">
             <a class="nav-link" onclick="onClickCart()">Cart</a>
-          </li>
-          
-          <!-- Add a Filter to Search Item -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Breed
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Polos</a>
-              <a class="dropdown-item" href="#">Casual Shirts</a>
-              <a class="dropdown-item" href="#">Casual Trousers</a>
-              <a class="dropdown-item" href="#">Jeans</a>
-              <a class="dropdown-item" href="#">Shorts & 3/4th</a>
-              <a class="dropdown-item" href="#">Formal Shirts</a>
-              <a class="dropdown-item" href="#">Formal Trousers</a>
-              <a class="dropdown-item" href="#">Suits & Blazers</a>
-              <a class="dropdown-item" href="#">Track Wear</a>
-              <a class="dropdown-item" href="#">Inner Wear</a>
-            </div>
           </li>
         </ul>
         <!-- Add search Buttom here -->
@@ -133,7 +158,17 @@
 
         <div class="col-md-8 order-md-1">
           <h3 class="mb-3">Personal Information</h3>
-          <!-- <form class="needs-validation" novalidate> -->    
+          <!-- <form class="needs-validation" novalidate> --> 
+
+              <div class="mb-3">
+              
+              <label for="email">Email <span class="text-muted">(This will be your username)</span></label>
+              <p id="email"></p>
+              <!--type="email" class="form-control"  placeholder="you@example.com" value=""required> -->
+              
+              <div class="invalid-feedback" id="emailfeedback" style="display:none;">
+                Please enter a valid email address for shipping updates.
+              </div>
 
               <div class="row">
               <div class="col-md-6 mb-3">
@@ -176,35 +211,35 @@
 
             <h3 class="mb-3">Mailing Address</h3>
             <div class="mb-3">
-              <label for="address">Address <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address1" placeholder="1234 Main St"> 
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address1" placeholder="1234 Main St" required> 
             </div>
 
             <div class="mb-3">
-              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"> 
+              <label for="address2">Address 2</label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" required> 
             </div>
 
             <div class="row">
               <div class="col-md-5 mb-3">
                 <label for="country">Country<span class="text-muted">(Optional)</span></label>
                <select class="custom-select d-block w-100" id="country">
-                  <option value="">Autralia</option>
+                  <option value="" id="country-option1">Autralia</option>
                 </select> 
               </div>
 
               <div class="col-md-4 mb-3">
                 <label for="state">State<span class="text-muted">(Optional)</span></label>
                  <select class="custom-select d-block w-100" id="state">
-                  <option value=""></option>
-                  <option value="">NSW</option>
-                  <option value="California">Queensland</option>            
+                  <option value="" id="state-option1"></option>
+                  <option name="state" id="state-option2" value="NSW">NSW</option>
+                  <option name="state" id="state-option3" value="California">Queensland</option>            
                 </select> 
               </div>
               
               <div class="col-md-3 mb-3">
                 <label for="zip">Zip<span class="text-muted">(Optional)</span></label>
-                 <input type="text" class="form-control" data-style="btn-primary" id="zip" placeholder=""> 
+                 <input type="text" class="form-control" data-style="btn-primary" id="zip" placeholder="">   
               </div>
             </div>
 
@@ -223,6 +258,16 @@
     
     </center>
    <!-- </main>-->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- firebase core js -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/signup.js"></script>
+  <script src="js/generators.js"></script>
 </body>
 </html>
