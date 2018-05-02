@@ -4,7 +4,7 @@ Controller = {
     userId: null,
     puppyList: null,
     onSales: [],
-    //petInCart:[],
+    petInCart:[],
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -23,7 +23,7 @@ Controller = {
         $.getJSON('Controller.json', function(data) {
             // Get the necessary contract artifact file
             var ControllerArtifact = data;
-            console.log(data);
+            // console.log(data);
             // Instantiate it with truffle-contract
             Controller.contracts.Controller = 
                 TruffleContract(ControllerArtifact);
@@ -47,7 +47,7 @@ Controller = {
     },
 
     isOnSale: function(i) {
-        console.log(i);
+        // console.log(i);
         if (i == Controller.puppyList.length) {
             return Controller.showOnSales();
         }
@@ -67,11 +67,11 @@ Controller = {
     },
 
     getPuppyInfo: function(puppyId, i) {
-        console.log(puppyId);
+        // console.log(puppyId);
         Controller.contracts.Controller.deployed().then(function(instance) {
             return instance.getPuppyInfo(puppyId);
         }).then(function(info) {
-            console.log(info);
+            // console.log(info);
             Controller.onSales.push(info);
             return Controller.isOnSale(i + 1);
         }).catch(function(err) {
@@ -80,101 +80,49 @@ Controller = {
     },
 
     showOnSales: function() {
-        console.log(Controller.onSales);
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
 
         for (i = 0; i < data.length; i ++) {
+            // here miss data[i][0] which is the seller id
             petTemplate.find('.panel-title').text(data[i][1]);
-            petTemplate.find('img').attr('src', data[i][6]);
             petTemplate.find('.pet-breed').text(data[i][2]);
             petTemplate.find('.pet-age').text(data[i][3]);
             petTemplate.find('.pet-location').text(data[i][4]);
-            // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-            petTemplate.find('.btn-add').attr('data-id', data[i][5]);
+            // here miss data[i][0] which is the price of a puppy
+            petTemplate.find('img').attr('src', data[i][6]);
+
+            petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
-        
-        //return App.initWeb3();
+
+        return Controller.bindEvents();
     },
 
-
-  bindEvents: function() {
+    bindEvents: function() {
     // $(document).on('click', '.btn-adopt', App.handleAdopt);
-    $(document).on('click', '.btn-add', App.handleAdd);
-    $(document).on('click', '.goToShopingCartPage', App.goToShopingCartPage);
-  },
+        $(document).on('click', '.btn-add', Controller.handleAdd);
+        $(document).on('click', '.goToShopingCartPage', Controller.goToShopingCartPage);
+    },
 
-  markAdopted: function(adopters, account) {
-    var adoptionInstance;
+    handleAdd: function(event) {
+        event.preventDefault();
+        var index = document.getElementById("shop-cart-index");
+        index.innerText++;
 
-    App.contracts.Adoption.deployed().then(function(instance) {
-      adoptionInstance = instance;
+        var onSalesIndex = parseInt($(event.target).data('id'));
+        console.log("index =", onSalesIndex);
 
-      return adoptionInstance.getAdopters.call();
-    }).then(function(adopters) {
-      for (i = 0; i < adopters.length; i++) {
-        if (adopters[i] !== '0x0000000000000000000000000000000000000000') {
-          $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
-        }
-      }
-    }).catch(function(err) {
-      console.log(err.message);
-    });
-  },
+        Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+        console.log("Items in petInCart:", Controller.petInCart);
+    },
 
-  handleAdd: function(event){
-    event.preventDefault();
-    var index = document.getElementById("shop-cart-index");
-    index.innerText++;
-    var petId = parseInt($(event.target).data('id'));
-    $.getJSON('../pets.json', function(data) {
-      let pet = data.filter(e=>{
-        if(e.id===petId)return e;
-      });
-      App.petInCart.push(pet[0].id);
-    });
-  },
-
-  goToShopingCartPage: function(event){
-    location.href="cart.html?"+"txt="+encodeURI(App.petInCart);
-  },
-
-  handleAdopt: function(event) {
-    event.preventDefault();
-
-    var petId = parseInt($(event.target).data('id'));
-
-    var adoptionInstance;
-
-    web3.eth.getAccounts(function(error, accounts) {
-      if (error) {
-        console.log(error);
-      }
-
-      var account = accounts[0];
-      alert(account);
-
-      App.contracts.Adoption.deployed().then(function(instance) {
-        alert("Here ");
-        adoptionInstance = instance;
-        // Execute adopt as a transaction by sending account
-        return adoptionInstance.adopt(petId, {from: account});
-      }).then(function(result) {
-        return App.markAdopted();
-      }).catch(function(err) {
-        console.log(err.message);
-      });
-    });
-  }
+    goToShopingCartPage: function(event){
+        location.href="cart.html?"+"txt="+encodeURI(Controller.petInCart);
+    }
 };
 
-// $(function() {
-//   $(window).load(function() {
-//     App.init();
-//   });
-// });
 
 window.onload = function() {  
     var value = getCookieValue("userName");  
