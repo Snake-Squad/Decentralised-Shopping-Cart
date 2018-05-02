@@ -8,59 +8,64 @@ var loc = location.href;
 var n1 = loc.length;//地址的总长度
 var n2 = loc.indexOf("=");//取得=号的位置
 var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-
+console.log(id)
 /* value processing */
 var petIdList =id.split(",");
 var petsInfo = [];
 var count =[];
-for(var i=0;i<petIdList.length;i++){
-  var e =petIdList[i];
-  if(petsInfo.indexOf(e) >= 0){
-    count[petsInfo.indexOf(e)]++;
+var apetInfo = [];
+/*get infomation of all pets*/
+for(var i=0;i<petIdList.length+1;i++){
+  if(i%7 !== 0){
+    apetInfo.push(petIdList[i])
+    // console.log(apetInfo)
   }else{
-    petsInfo.push(e);
-    count.push(1);
+    if(i != 0){
+      petsInfo.push(apetInfo)
+      apetInfo=[]
+    }  
   }
 };
+console.log(petsInfo)
 
-$.getJSON('../pets.json', function(data) {
+
+window.onload = function()
+{
   var cartRow = $('#productRow');
   var cartTemplate = $('#product-none');
   for (i = 0; i < petsInfo.length; i ++) {
-    cartTemplate.find('.product-title').text(data[petsInfo[i]].name);
-    cartTemplate.find('img').attr('src', data[petsInfo[i]].picture);
-    cartTemplate.find('.product-description').text("breed:"+"  "+data[petsInfo[i]].breed);
-    cartTemplate.find('.product-description1').text("age:"+"  "+data[petsInfo[i]].age);
-    cartTemplate.find('.product-description2').text("location:"+"  "+data[petsInfo[i]].location);
-    cartTemplate.find(".product-quantity").find('input').attr("value",count[i]);
-    cartTemplate.find(".product-price").text("20");
-    cartTemplate.find(".product-line-price").text(count[i]* document.getElementById("product-price").innerText);
+    cartTemplate.find('.product-title').text(petsInfo[i][0]);
+    cartTemplate.find('img').attr('src', petsInfo[i][5]);
+    cartTemplate.find('.product-description').text("breed:"+"  "+petsInfo[i][1]);
+    cartTemplate.find('.product-description1').text("age:"+"  "+petsInfo[i][2]);
+    cartTemplate.find('.product-description2').text("location:"+"  "+petsInfo[i][3]);
+    cartTemplate.find(".product-quantity").find('input').attr("value",1);
+    cartTemplate.find(".product-price").text(petsInfo[i][4]);
+    console.log(document.getElementById("product-price").innerText)
+    cartTemplate.find(".product-line-price").text(document.getElementById("product-price").innerText);
     cartRow.append(cartTemplate.html());
   };
   $('.product-quantity input').change( function() {
     updateQuantity(this);
   });
+
   $('.product-removal button').click( function() {
     removeItem(this);
   });
-   recalculateCart()
-});
 
+  recalculateCart();
+}
 
 
 /* Recalculate cart */
 function recalculateCart()
 {
+  console.log("=================")
   var subtotal = 0;
   // console.log($('.product').length);
-for(var i=0;i<$('.product').length-1;i++){
-   subtotal += parseFloat($($('.product')[i]).children('.product-line-price').text());
-}
-  /* Sum up row totals */
-  // $('.product').each(function () {
-  //   subtotal += parseFloat($(this).children('.product-line-price').text());
-  // });
-  
+  for(var i=0;i<$('.product').length-1;i++){
+    subtotal += parseFloat($($('.product')[i]).children('.product-line-price').text());
+  }
   /* Calculate totals */
   var tax = subtotal * taxRate;
   var shipping = (subtotal > 0 ? shippingRate : 0);

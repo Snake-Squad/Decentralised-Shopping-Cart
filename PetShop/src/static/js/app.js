@@ -6,8 +6,6 @@ Controller = {
     onSales: [],
     petInCart: [],
 
-
-
     initWeb3: function() {
         // Is there an injected web3 instance?
         if (typeof web3 !== 'undefined') {
@@ -87,7 +85,7 @@ Controller = {
         var petTemplate = $('#petTemplate');
 
         for (i = 0; i < data.length; i ++) {
-            // here miss data[i][0] which is the seller id
+            //petTemplate.find('.pet-seller').text(data[i][0]);
             petTemplate.find('.panel-title').text(data[i][1]);
             petTemplate.find('.pet-breed').text(data[i][2]);
             petTemplate.find('.pet-age').text(data[i][3]);
@@ -98,6 +96,7 @@ Controller = {
             petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
+        console.log(data);
 
         return Controller.bindEvents();
     },
