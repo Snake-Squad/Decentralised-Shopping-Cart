@@ -146,6 +146,7 @@ function delete_cookie(name) {
     window.location.replace("/");
 }
 
+
 /* -----------------------------------------------------------------------------
  * Thees setter and getter are used for editing a dog.
  * -----------------------------------------------------------------------------
@@ -184,7 +185,6 @@ function deleteEditCookie() {
  * -----------------------------------------------------------------------------
  */
 function setCartCookie(data, exdays) {
-    console.log("data", data);
     var expiresDate = new Date();
     expiresDate.setTime(expiresDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + expiresDate.toUTCString();
@@ -193,9 +193,7 @@ function setCartCookie(data, exdays) {
         value += data[i] + "|||";
     }
     document.cookie = "puppiesInCart=" + value + ";" + expires + ";path=/";
-    console.log(document.cookie);
 }
-
 
 function getCartCookie() {
     var name = escape("puppiesInCart") + "=";  
@@ -215,39 +213,38 @@ function deleteCartCookie() {
     expiresDate.setTime(expiresDate.getTime() - 1);
     var expires = "puppiesInCart=" + expiresDate.toGMTString();
     document.cookie = 'puppiesInCart=;' + expires;
-    console.log(document.cookie);
 }
 
 
 
-// thees setter and getter are used for shopping cart.
-function addCartCookie(name, Information, days) {  
-    var name = escape(name);
-    var Information = escape(Information);
-    var expires = new Date();  
-    expires.setTime(expires.getTime() + days * 3600000 * 24);  
+// // thees setter and getter are used for shopping cart.
+// function addCartCookie(name, Information, days) {  
+//     var name = escape(name);
+//     var Information = escape(Information);
+//     var expires = new Date();  
+//     expires.setTime(expires.getTime() + days * 3600000 * 24);  
     
-    //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
-    //参数days只能是数字型  
-    var _expires = 
-        (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
-    document.cookie = name + "=" + [Information] + _expires;  
-    console.log(document.cookie);
-}  
+//     //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
+//     //参数days只能是数字型  
+//     var _expires = 
+//         (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
+//     document.cookie = name + "=" + [Information] + _expires;  
+//     console.log(document.cookie);
+// }  
 
-/* get cookie if it is set */
-function getCartCookieValue(name) {   
-    if(document.cookie.length>0){
-        begin=document.cookie.indexOf(name+"=");
-        if(begin!=-1){
-            begin+=name.length+1;
-            end=document.cookie.indexOf(";",begin);
-            if(end==-1) end=document.cookie.length;
-            return unescape(document.cookie.substring(begin,end));
-        }
-    }
-    return null;
-}
+// /* get cookie if it is set */
+// function getCartCookieValue(name) {   
+//     if(document.cookie.length>0){
+//         begin=document.cookie.indexOf(name+"=");
+//         if(begin!=-1){
+//             begin+=name.length+1;
+//             end=document.cookie.indexOf(";",begin);
+//             if(end==-1) end=document.cookie.length;
+//             return unescape(document.cookie.substring(begin,end));
+//         }
+//     }
+//     return null;
+// }
 
 
 

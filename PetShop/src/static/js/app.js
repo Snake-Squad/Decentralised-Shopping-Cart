@@ -5,7 +5,6 @@ Controller = {
     puppyList: null,
     onSales: [],
     petInCart: [],
-    petIdInCart: [],
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -82,33 +81,30 @@ Controller = {
     },
 
     showOnSales: function() {
+<<<<<<< HEAD
 
         // console.log(Controller.onSales);
         console.log("Stored in Controller.onSales:", Controller.onSales);
 
+=======
+>>>>>>> ceb52b1faa8e893df8345287e72b153864fec278
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
-        // console.log(data[0]);
         for (i = 0; i < data.length; i ++) {
-            //petTemplate.find('.pet-seller').text(data[i][0]);
             petTemplate.find('.panel-title').text(data[i][1]);
             petTemplate.find('.pet-breed').text(data[i][2]);
             petTemplate.find('.pet-age').text(data[i][3]);
             petTemplate.find('.pet-location').text(data[i][4]);
             petTemplate.find('.pet-price').text(data[i][5]);
             petTemplate.find('img').attr('src', data[i][6]);
-
             petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
-        // console.log(data);
-
         return Controller.bindEvents();
     },
 
     bindEvents: function() {
-    // $(document).on('click', '.btn-adopt', App.handleAdopt);
         $(document).on('click', '.btn-add', Controller.handleAdd);
         $(document).on('click', '.goToShopingCartPage', Controller.goToShopingCartPage);
     },
@@ -116,9 +112,8 @@ Controller = {
     handleAdd: function(event) {
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
-        
-
         var onSalesIndex = parseInt($(event.target).data('id'));
+<<<<<<< HEAD
 
         console.log("index =", onSalesIndex);
         console.log("onSales:", Controller.onSales);
@@ -153,29 +148,23 @@ Controller = {
             } 
         } 
         console.log("petIdInCart: ", Controller.petIdInCart);
+=======
+        Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+        $(event.target).attr('disabled', true);
+        index.innerText++;
+>>>>>>> ceb52b1faa8e893df8345287e72b153864fec278
         console.log("Items in petInCart:", Controller.petInCart);
-        
-        // TODO: Store all puppies in shopping cart to cookie
         setCartCookie(Controller.petInCart, 7);
-
-
-
-        var itemsInCart = getCartCookie();
-        console.log(itemsInCart);
-
-
-
-
-
     },
 
     goToShopingCartPage: function(event){
-        location.href="cart.html?"+"txt="+encodeURI(Controller.petInCart);
+        window.location.replace("http://localhost:3000/cart.html");
     }
 };
 
 
 window.onload = function() {  
+<<<<<<< HEAD
 
     // delete_cookie("YY");
     // this is cart cookie part
@@ -219,8 +208,12 @@ window.onload = function() {
     // document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
     
 
+=======
+>>>>>>> ceb52b1faa8e893df8345287e72b153864fec278
     var value = getCookieValue("userName");  
+    var puppyid_list=[];
     console.log(value);
+    //deleteCartCookie();
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
     } else {
@@ -230,7 +223,26 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
-
+    // deleteCartCookie();
+    var petInCart = getCartCookie();
+    //alert(petInCart.length);
+    
+    if(petInCart==null){
+        alert(petInCart);
+    }
+    console.log("itemsInCart:", petInCart);
+    if(petInCart!=null){
+        Controller.petInCart = petInCart;
+        //console.log("---------------------------",Controller.petInCart);
+        for(var i=0;i<Controller.petInCart.length;i++)
+        {
+            //console.log(Controller.petInCart[i].split(",")[7]);
+            puppyid_list.push(Controller.petInCart[i].split(",")[7]);
+            //console.log("puppyy",puppyid_list);
+        }
+        
+        $("#shop-cart-index").html(petInCart.length);
+    }
+    
     Controller.initWeb3();
-
 }
