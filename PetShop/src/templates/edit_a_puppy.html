@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Edit a Puppy</title>
+    <style type="text/css">
+    p {text-align: left}
+    </style>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="css/navbar.css" rel="stylesheet">  
+  </head>
+
+
+
+  <body>
+    <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Logo, which is home -->
+      <a class="navbar-brand" href="http://localhost:3000/">
+        <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
+      </a>
+
+      <!-- Add bar items -->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+          <!-- Go to Login Page -->
+          
+          <li class="nav-item">
+            <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
+     
+          </li>
+          
+            <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+          login
+            </a>
+            <!--onclick function can be found in navabar.js-->
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" id="navProfile">Profile</a>
+              <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
+              <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
+              <a class="dropdown-item" id="navRecharge">Recharge</a>
+              <a class="dropdown-item" id="navTransactions">Transactions</a>
+              <a class="dropdown-item" id="navLogout">Logout</a>
+            </div>
+          </li>
+
+
+          <!-- Go to Sign Up Page -->
+          <li class="nav-item">
+            <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
+          </li>
+          
+          
+          <!-- Check what is in the Cart -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="onClickCart()">Cart</a>
+          </li>
+        </ul>
+
+
+
+        <!-- Add search Buttom here -->
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
+        <!-- </form> -->
+      </div>
+    </nav>
+    <!-- Here starts the main page -->
+
+
+    <div class="container"><center>
+
+    <h1>Edit a Puppy</h1>
+    <hr>
+
+    <h2>Upload an image for the puppy</h2>
+    <div>
+      <img id="imgOfPuppy" src="https://cdn.filestackcontent.com/wxLPFKkLRZmumTng5O7e"
+    width="auto" height="360" >
+    </div>
+    <br>
+    <button id="btnUploadImg" class="btn btn-secondary my-2 my-sm-0" >Upload an Image</button>
+
+    <hr>
+
+    <h2>Details of a Puppy</h2>
+
+    <div>
+      <p>Name of the Puppy:</p>
+      <input type="text" class="form-control" id="inputName" placeholder="Name of the Puppy" value="" required>
+      <p>Breed of the Puppy:</p>
+      <input type="text" class="form-control" id="inputBreed" placeholder="Breed of the Puppy" value="" required>
+      <p>Age of the Puppy:</p>
+      <input type="text" class="form-control" id="inputAge" placeholder="Age of the Puppy. Must be an integer." value="" required>
+      <p>Birth Place of the Puppy:</p>
+      <input type="text" class="form-control" id="inputBirthPlace" placeholder="Birth Place of the Puppy" value="" required>
+      <p>Price:</p>
+      <input type="text" class="form-control" id="inputPrice" placeholder="Price of the Puppy. Must be an integer." value="" required>
+    </div>
+    <button id="btnConfirm" class="btn btn-secondary my-2 my-sm-0" >Confirm</button>
+
+    </center></div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- firebase core js -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/navbar.js"></script>
+
+    <!--import image part-->
+    <script src="https://static.filestackapi.com/v3/filestack.js"></script>
+    <script src="js/edit_a_puppy.js"></script>
+    <script src="js/upload_an_image.js"></script>
+    <script src="js/generators.js"></script>
+
+  </body>
+</html>

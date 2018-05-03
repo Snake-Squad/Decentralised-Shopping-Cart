@@ -152,21 +152,22 @@ function setEditCookie(data, exdays) {
     expiresDate.setTime(expiresDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + expiresDate.toUTCString();
     document.cookie = "editTargets=" + data + ";" + expires + ";path=/";
+    console.log(document.cookie);
 }
 
 function getEditCookie() {
     var name = escape("editTargets") + "=";  
     var cookie = document.cookie;
-
     var pos = cookie.indexOf(name);
-    var start = pos + name.length;                 
+    if (pos == -1) return null;
+    var start = pos + name.length;
     var end = end = cookie.length;
-
     var data = cookie.substring(start, end);
     var list = data.split(",");
     return list;
 }
 
+<<<<<<< HEAD
 // thees setter and getter are used for shopping cart.
 function addCartCookie(name, Information, days) {  
     var name = escape(name);
@@ -196,3 +197,12 @@ function getCartCookieValue(name) {
     return null;
 }
 
+=======
+function deleteEditCookie() {
+    var expiresDate = new Date();
+    expiresDate.setTime(expiresDate.getTime() - 1);
+    var expires = "expires=" + expiresDate.toGMTString();
+    document.cookie = 'editTargets=;' + expires;
+    console.log(document.cookie);
+}
+>>>>>>> 3646d214d148487a07c514c36c6dfe3064acfb76

@@ -94,14 +94,10 @@ Controller = {
 
     handleEdit: function(event) {
         var idx = parseInt($(event.target).data('id'));
-        console.log("index =", idx);
         Controller.target = Controller.onSales[idx];
-        console.log("Edit ->:", Controller.target);
+        Controller.target.push(Controller.puppyList[idx]);
         setEditCookie(Controller.target, 1);
-        var dogInfo = getEditCookie();
-        console.log("dog need to be edited", dogInfo);
-        var value = getCookieValue("userName");  
-        console.log("user account info:", value);
+        window.location.replace("http://localhost:3000/edit_a_puppy.html");
     },
 
     goToShopingCartPage: function(event){
@@ -111,7 +107,8 @@ Controller = {
 
 
 window.onload = function() {  
-    var value = getCookieValue("userName");  
+    var value = getCookieValue("userName"); 
+    console.log("edit puppy cookie onload", getEditCookie()); 
     console.log(value);
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
