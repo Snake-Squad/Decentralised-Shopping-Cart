@@ -46,6 +46,7 @@ function onClickForget() {
     });
     
     if (isValid) {
+
       window.location.replace("forget_password.html");
     } else {
       alert("Username doesn't exist, please input again");
