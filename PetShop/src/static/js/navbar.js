@@ -42,8 +42,8 @@ $("#navTransactions").click(function() {
 });
 
 $("#navLogout").click(function() {
-    logout();
-    //delete_cookie("userName"); 
+    // logout();
+    delete_cookie("userName"); 
 });
 
 
