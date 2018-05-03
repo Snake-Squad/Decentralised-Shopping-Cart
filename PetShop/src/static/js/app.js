@@ -81,30 +81,23 @@ Controller = {
     },
 
     showOnSales: function() {
-        console.log("Stored in Controller.onSales:", Controller.onSales);
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
-        // console.log(data[0]);
         for (i = 0; i < data.length; i ++) {
-            //petTemplate.find('.pet-seller').text(data[i][0]);
             petTemplate.find('.panel-title').text(data[i][1]);
             petTemplate.find('.pet-breed').text(data[i][2]);
             petTemplate.find('.pet-age').text(data[i][3]);
             petTemplate.find('.pet-location').text(data[i][4]);
             petTemplate.find('.pet-price').text(data[i][5]);
             petTemplate.find('img').attr('src', data[i][6]);
-
             petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
-        // console.log(data);
-
         return Controller.bindEvents();
     },
 
     bindEvents: function() {
-    // $(document).on('click', '.btn-adopt', App.handleAdopt);
         $(document).on('click', '.btn-add', Controller.handleAdd);
         $(document).on('click', '.goToShopingCartPage', Controller.goToShopingCartPage);
     },
@@ -112,33 +105,15 @@ Controller = {
     handleAdd: function(event) {
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
-        
-
         var onSalesIndex = parseInt($(event.target).data('id'));
-        // console.log("index =", onSalesIndex);
-        if(Controller.petInCart.length == 0){
-            Controller.petInCart.push(Controller.onSales[onSalesIndex]);
-            index.innerText++;
-        }else{
-            for (i = 0; i < Controller.petInCart.length; i ++){
-                if (Controller.petInCart.includes(Controller.onSales[onSalesIndex])){
-                    // console.log("======");
-                    alert("U can't add the same pet!")
-                    break;
-                }else{
-                    // console.log("wtf")
-                    Controller.petInCart.push(Controller.onSales[onSalesIndex]);
-                    index.innerText++;
-                    break;
-                }
-            } 
-        } 
-        
+        $(event.target)[0].disabled = true;
+        Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+        index.innerText++;
         console.log("Items in petInCart:", Controller.petInCart);
         
         setCartCookie(Controller.petInCart, 7);
-        var itemsInCart = getCartCookie();
-        console.log(itemsInCart);
+        // var itemsInCart = getCartCookie();
+        // console.log(itemsInCart);
     },
 
     goToShopingCartPage: function(event){
@@ -159,8 +134,10 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
-    var itemsInCart = getCartCookie();
-    console.log(itemsInCart);
+    //deleteCartCookie();
+    var petInCart = getCartCookie();
+    console.log("itemsInCart:", petInCart);
+    Controller.petInCart = petInCart;
     Controller.initWeb3();
 
 }
