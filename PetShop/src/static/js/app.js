@@ -150,7 +150,7 @@ Controller = {
         index.innerText++;
         console.log("Items in petInCart:", Controller.petInCart);
         setCartCookie(Controller.petInCart, 7);
-    },
+    }
 
     goToShopingCartPage: function(event){
         window.location.replace("http://localhost:3000/cart.html");
