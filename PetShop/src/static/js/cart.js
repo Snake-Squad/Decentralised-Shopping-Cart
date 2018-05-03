@@ -41,7 +41,8 @@ window.onload = function()
     cartTemplate.find('.product-description2').text("location:"+"  "+petsInfo[i][3]);
     cartTemplate.find(".product-quantity").find('input').attr("value",1);
     cartTemplate.find(".product-price").text(petsInfo[i][4]);
-    cartTemplate.find(".product-line-price").text(document.getElementById("product-price").innerText);
+    
+    cartTemplate.find(".product-line-price").text(petsInfo[i][4]);
     cartRow.append(cartTemplate.html());
   };
   //since the number of pet is always one,then i dont need this function
