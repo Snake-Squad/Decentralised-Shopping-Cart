@@ -5,6 +5,7 @@ Controller = {
     puppyList: null,
     onSales: [],
     petInCart: [],
+    petIdInCart: [],
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -81,7 +82,11 @@ Controller = {
     },
 
     showOnSales: function() {
+<<<<<<< HEAD
+        // console.log(Controller.onSales);
+=======
         console.log("Stored in Controller.onSales:", Controller.onSales);
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
@@ -115,25 +120,40 @@ Controller = {
         
 
         var onSalesIndex = parseInt($(event.target).data('id'));
+<<<<<<< HEAD
+        console.log("index =", onSalesIndex);
+        console.log("onSales:", Controller.onSales);
+=======
         // console.log("index =", onSalesIndex);
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
         if(Controller.petInCart.length == 0){
             Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+            Controller.petIdInCart.push(Controller.onSales[onSalesIndex][7]);
             index.innerText++;
         }else{
             for (i = 0; i < Controller.petInCart.length; i ++){
+<<<<<<< HEAD
+                console.log("petInCart", Controller.petInCart);
+                console.log("petIdInCart", Controller.petIdInCart);
+                console.log("onSales", Controller.onSales);
+                if (Controller.petIdInCart.includes(Controller.onSales[onSalesIndex][7])){
+                    console.log("======")
+=======
                 if (Controller.petInCart.includes(Controller.onSales[onSalesIndex])){
                     // console.log("======");
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
                     alert("U can't add the same pet!")
                     break;
                 }else{
                     // console.log("wtf")
                     Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+                    Controller.petIdInCart.push(Controller.onSales[onSalesIndex][7]);
                     index.innerText++;
                     break;
                 }
             } 
         } 
-        
+        console.log("petIdInCart: ", Controller.petIdInCart);
         console.log("Items in petInCart:", Controller.petInCart);
         
         setCartCookie(Controller.petInCart, 7);
@@ -148,6 +168,41 @@ Controller = {
 
 
 window.onload = function() {  
+<<<<<<< HEAD
+    // delete_cookie("YY");
+    // this is cart cookie part
+
+    var cartValue = getCartCookieValue("YY");
+    // console.log("cartValue", cartValue);
+    if (cartValue != null){
+        var dogscookie = cartValue.split(',');
+        var lengthOfCartCookie = dogscookie.length;
+        document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/8)
+        // Controller.petInCart.push(cartValue);
+        console.log(dogscookie);
+        adoginfo = [];
+        for(var i = 0; i < lengthOfCartCookie+1; i++){
+            console.log(i);
+            if(i == 0){
+                adoginfo.push(dogscookie[i])
+            }else{
+                if(i%8==0){
+                    Controller.petInCart.push(adoginfo)
+                    Controller.petIdInCart.push(adoginfo[7])
+                    console.log("down", Controller.petInCart)
+                    adoginfo = []
+                    adoginfo.push(dogscookie[i])
+                }else{   
+                    adoginfo.push(dogscookie[i])
+                }
+            }
+            
+        }
+    }
+
+
+    //this is for username
+=======
     // var cartValue = getCartCookieValue("YY");
     // console.log(cartValue);
     // if (cartValue != null) {
@@ -155,6 +210,7 @@ window.onload = function() {
     // }
     // document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
     
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
     var value = getCookieValue("userName");  
     console.log(value);
     if(value === undefined || value == null || value.length == 0) {
