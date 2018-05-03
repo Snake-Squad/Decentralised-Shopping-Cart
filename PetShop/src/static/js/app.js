@@ -131,7 +131,7 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
-    deleteCartCookie();
+    // deleteCartCookie();
     var petInCart = getCartCookie();
     console.log("itemsInCart:", petInCart);
     Controller.petInCart = petInCart;
