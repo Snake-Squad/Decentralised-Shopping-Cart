@@ -121,7 +121,9 @@ Controller = {
 
 window.onload = function() {  
     var value = getCookieValue("userName");  
+    var puppyid_list=[];
     console.log(value);
+    //deleteCartCookie();
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
     } else {
@@ -133,8 +135,24 @@ window.onload = function() {
     }
     // deleteCartCookie();
     var petInCart = getCartCookie();
+    //alert(petInCart.length);
+    
+    if(petInCart==null){
+        alert(petInCart);
+    }
     console.log("itemsInCart:", petInCart);
-    Controller.petInCart = petInCart;
-    $("#shop-cart-index").html(petInCart.length);
+    if(petInCart!=null){
+        Controller.petInCart = petInCart;
+        //console.log("---------------------------",Controller.petInCart);
+        for(var i=0;i<Controller.petInCart.length;i++)
+        {
+            //console.log(Controller.petInCart[i].split(",")[7]);
+            puppyid_list.push(Controller.petInCart[i].split(",")[7]);
+            //console.log("puppyy",puppyid_list);
+        }
+        
+        $("#shop-cart-index").html(petInCart.length);
+    }
+    
     Controller.initWeb3();
 }
