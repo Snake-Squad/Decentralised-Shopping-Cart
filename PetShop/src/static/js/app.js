@@ -72,6 +72,7 @@ Controller = {
             return instance.getPuppyInfo(puppyId);
         }).then(function(info) {
             // console.log(info);
+            info.push(puppyId);
             Controller.onSales.push(info);
             return Controller.isOnSale(i + 1);
         }).catch(function(err) {
@@ -80,6 +81,7 @@ Controller = {
     },
 
     showOnSales: function() {
+        console.log(Controller.onSales);
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
