@@ -76,7 +76,7 @@ Controller = {
                         );
                 }).then(function(result) {
                     console.log("Successfully Added to Block Chain.", result);
-                    return Controller.refresh();
+                    return Controller.backToPrevPage();
                 }).catch(function(err) {
                     console.log(err.message);
                 });
@@ -84,8 +84,10 @@ Controller = {
         });
     },
 
-    refresh: function() {
-        location.reload();
+    backToPrevPage: function() {
+        deleteEditCookie()
+        window.location.replace(
+            "http://localhost:3000/edit_posted_puppies.html");
     }
 };
 

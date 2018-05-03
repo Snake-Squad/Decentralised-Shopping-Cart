@@ -107,7 +107,8 @@ Controller = {
 
 
 window.onload = function() {  
-    var value = getCookieValue("userName");  
+    var value = getCookieValue("userName"); 
+    console.log("edit puppy cookie onload", getEditCookie()); 
     console.log(value);
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
