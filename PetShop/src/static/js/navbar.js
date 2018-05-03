@@ -146,7 +146,10 @@ function delete_cookie(name) {
     window.location.replace("/");
 }
 
-// thees setter and getter are used for editing a dog.
+/* -----------------------------------------------------------------------------
+ * Thees setter and getter are used for editing a dog.
+ * -----------------------------------------------------------------------------
+ */
 function setEditCookie(data, exdays) {
     var expiresDate = new Date();
     expiresDate.setTime(expiresDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -174,6 +177,47 @@ function deleteEditCookie() {
     document.cookie = 'editTargets=;' + expires;
     console.log(document.cookie);
 }
+
+
+/* -----------------------------------------------------------------------------
+ * Thees setter and getter are used for adding a dog to shopping chart.
+ * -----------------------------------------------------------------------------
+ */
+function setCartCookie(data, exdays) {
+    console.log("data", data);
+    var expiresDate = new Date();
+    expiresDate.setTime(expiresDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + expiresDate.toUTCString();
+    var value = "";
+    for (var i = 0; i < data.length; i++) {
+        value += data[i] + "|||";
+    }
+    document.cookie = "puppiesInCart=" + value + ";" + expires + ";path=/";
+    console.log(document.cookie);
+}
+
+
+function getCartCookie() {
+    var name = escape("puppiesInCart") + "=";  
+    var cookie = document.cookie;
+    var pos = cookie.indexOf(name);
+    if (pos == -1) return null;
+    var start = pos + name.length;
+    var end = end = cookie.length;
+    var data = cookie.substring(start, end);
+    var puppies = data.split("|||");
+    puppies.pop();
+    return puppies;
+}
+
+function deleteCartCookie() {
+    var expiresDate = new Date();
+    expiresDate.setTime(expiresDate.getTime() - 1);
+    var expires = "puppiesInCart=" + expiresDate.toGMTString();
+    document.cookie = 'puppiesInCart=;' + expires;
+    console.log(document.cookie);
+}
+
 
 
 // thees setter and getter are used for shopping cart.

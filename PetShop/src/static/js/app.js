@@ -82,7 +82,11 @@ Controller = {
     },
 
     showOnSales: function() {
+<<<<<<< HEAD
         // console.log(Controller.onSales);
+=======
+        console.log("Stored in Controller.onSales:", Controller.onSales);
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
@@ -116,23 +120,32 @@ Controller = {
         
 
         var onSalesIndex = parseInt($(event.target).data('id'));
+<<<<<<< HEAD
         console.log("index =", onSalesIndex);
         console.log("onSales:", Controller.onSales);
+=======
+        // console.log("index =", onSalesIndex);
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
         if(Controller.petInCart.length == 0){
             Controller.petInCart.push(Controller.onSales[onSalesIndex]);
             Controller.petIdInCart.push(Controller.onSales[onSalesIndex][7]);
             index.innerText++;
         }else{
             for (i = 0; i < Controller.petInCart.length; i ++){
+<<<<<<< HEAD
                 console.log("petInCart", Controller.petInCart);
                 console.log("petIdInCart", Controller.petIdInCart);
                 console.log("onSales", Controller.onSales);
                 if (Controller.petIdInCart.includes(Controller.onSales[onSalesIndex][7])){
                     console.log("======")
+=======
+                if (Controller.petInCart.includes(Controller.onSales[onSalesIndex])){
+                    // console.log("======");
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
                     alert("U can't add the same pet!")
                     break;
                 }else{
-                    console.log("wtf")
+                    // console.log("wtf")
                     Controller.petInCart.push(Controller.onSales[onSalesIndex]);
                     Controller.petIdInCart.push(Controller.onSales[onSalesIndex][7]);
                     index.innerText++;
@@ -143,8 +156,18 @@ Controller = {
         console.log("petIdInCart: ", Controller.petIdInCart);
         console.log("Items in petInCart:", Controller.petInCart);
         
-        
-        
+        // TODO: Store all puppies in shopping cart to cookie
+        setCartCookie(Controller.petInCart, 7);
+
+
+
+        var itemsInCart = getCartCookie();
+        console.log(itemsInCart);
+
+
+
+
+
     },
 
     goToShopingCartPage: function(event){
@@ -154,6 +177,7 @@ Controller = {
 
 
 window.onload = function() {  
+<<<<<<< HEAD
     // delete_cookie("YY");
     // this is cart cookie part
 
@@ -187,8 +211,17 @@ window.onload = function() {
 
 
     //this is for username
+=======
+    // var cartValue = getCartCookieValue("YY");
+    // console.log(cartValue);
+    // if (cartValue != null) {
+    //     var lengthOfCartCookie = cartValue.split(',').length;
+    // }
+    // document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
+    
+>>>>>>> 34dbfbb6713bb9d1a96e98f983aee2c5dccef649
     var value = getCookieValue("userName");  
-    // console.log(value);
+    console.log(value);
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
     } else {
@@ -198,6 +231,7 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
+
     Controller.initWeb3();
 
 }
