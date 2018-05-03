@@ -34,10 +34,10 @@ Controller = {
     },
 
     showBalance: function() {
-        var ControllerInstance;
         Controller.contracts.Controller.deployed().then(function(instance) {
-        ControllerInstance = instance;
-            return ControllerInstance.getAccount(Controller.userId);
+            var userId = Controller.userId;
+            console.log("userID = ", userId);
+            return instance.getAccount(userId);
         }).then(function(result) {
             console.log("stored on block chain:", result);
             $("#userEmail").html(Controller.username);

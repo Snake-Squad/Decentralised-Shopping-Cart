@@ -81,7 +81,7 @@ Controller = {
     },
 
     showOnSales: function() {
-        console.log(Controller.onSales);
+        console.log("Stored in Controller.onSales:", Controller.onSales);
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
@@ -136,8 +136,16 @@ Controller = {
         
         console.log("Items in petInCart:", Controller.petInCart);
         
-        
-        
+        // TODO: Store all puppies in shopping cart to cookie
+
+
+
+
+
+
+
+
+
     },
 
     goToShopingCartPage: function(event){
@@ -147,15 +155,15 @@ Controller = {
 
 
 window.onload = function() {  
-    alert('hello');
     var cartValue = getCartCookieValue("YY");
     console.log(cartValue);
-    if (cartValue != null)
+    if (cartValue != null) {
         var lengthOfCartCookie = cartValue.split(',').length;
+    }
     document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
     
     var value = getCookieValue("userName");  
-    // console.log(value);
+    console.log(value);
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
     } else {
