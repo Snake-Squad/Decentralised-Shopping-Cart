@@ -94,7 +94,19 @@ Controller = {
             petTemplate.find('.btn-add').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
-        return Controller.bindEvents();
+        return Controller.handleAdded();
+    },
+
+    handleAdded: function() {
+        console.log(Controller.petInCart);
+        for (var i = Controller.petInCart.length - 1; i >= 0; i--) {
+            var data = Controller.petInCart[i].split(",");
+            var id = parseInt(data[8]);
+            console.log(id);
+            $('.panel-pet').eq(id).find('button')
+                .text('Added').attr('disabled', true);
+        }
+        return Controller.bindEvents();  
     },
 
     bindEvents: function() {
@@ -106,8 +118,10 @@ Controller = {
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
         var onSalesIndex = parseInt($(event.target).data('id'));
-        Controller.petInCart.push(Controller.onSales[onSalesIndex]);
-        $(event.target).attr('disabled', true);
+        var data = Controller.onSales[onSalesIndex];
+        data += "," + onSalesIndex;
+        Controller.petInCart.push(data);
+        $(event.target).text('Added').attr('disabled', true);
         index.innerText++;
         console.log("Items in petInCart:", Controller.petInCart);
         setCartCookie(Controller.petInCart, 7);
@@ -131,9 +145,7 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
-    // deleteCartCookie();
     var petInCart = getCartCookie();
-    console.log("itemsInCart:", petInCart);
     Controller.petInCart = petInCart;
     $("#shop-cart-index").html(petInCart.length);
     Controller.initWeb3();
