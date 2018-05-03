@@ -81,13 +81,11 @@ Controller = {
     },
 
     showOnSales: function() {
-<<<<<<< HEAD
 
         // console.log(Controller.onSales);
         console.log("Stored in Controller.onSales:", Controller.onSales);
 
-=======
->>>>>>> ceb52b1faa8e893df8345287e72b153864fec278
+
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
@@ -113,7 +111,6 @@ Controller = {
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
         var onSalesIndex = parseInt($(event.target).data('id'));
-<<<<<<< HEAD
 
         console.log("index =", onSalesIndex);
         console.log("onSales:", Controller.onSales);
@@ -148,11 +145,9 @@ Controller = {
             } 
         } 
         console.log("petIdInCart: ", Controller.petIdInCart);
-=======
         Controller.petInCart.push(Controller.onSales[onSalesIndex]);
         $(event.target).attr('disabled', true);
         index.innerText++;
->>>>>>> ceb52b1faa8e893df8345287e72b153864fec278
         console.log("Items in petInCart:", Controller.petInCart);
         setCartCookie(Controller.petInCart, 7);
     },
@@ -164,11 +159,9 @@ Controller = {
 
 
 window.onload = function() {  
-<<<<<<< HEAD
 
     // delete_cookie("YY");
     // this is cart cookie part
-
     var cartValue = getCartCookieValue("YY");
     // console.log("cartValue", cartValue);
     if (cartValue != null){
@@ -192,8 +185,7 @@ window.onload = function() {
                 }else{   
                     adoginfo.push(dogscookie[i])
                 }
-            }
-            
+            }          
         }
     }
 
@@ -207,9 +199,6 @@ window.onload = function() {
     // }
     // document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
     
-
-=======
->>>>>>> ceb52b1faa8e893df8345287e72b153864fec278
     var value = getCookieValue("userName");  
     var puppyid_list=[];
     console.log(value);
