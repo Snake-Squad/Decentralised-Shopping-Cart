@@ -85,7 +85,7 @@ Controller = {
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
-        console.log(data[0]);
+        // console.log(data[0]);
         for (i = 0; i < data.length; i ++) {
             //petTemplate.find('.pet-seller').text(data[i][0]);
             petTemplate.find('.panel-title').text(data[i][1]);
@@ -115,18 +115,18 @@ Controller = {
         
 
         var onSalesIndex = parseInt($(event.target).data('id'));
-        console.log("index =", onSalesIndex);
+        // console.log("index =", onSalesIndex);
         if(Controller.petInCart.length == 0){
             Controller.petInCart.push(Controller.onSales[onSalesIndex]);
             index.innerText++;
         }else{
             for (i = 0; i < Controller.petInCart.length; i ++){
                 if (Controller.petInCart.includes(Controller.onSales[onSalesIndex])){
-                    console.log("======")
+                    // console.log("======");
                     alert("U can't add the same pet!")
                     break;
                 }else{
-                    console.log("wtf")
+                    // console.log("wtf")
                     Controller.petInCart.push(Controller.onSales[onSalesIndex]);
                     index.innerText++;
                     break;
@@ -137,10 +137,12 @@ Controller = {
         console.log("Items in petInCart:", Controller.petInCart);
         
         // TODO: Store all puppies in shopping cart to cookie
+        setCartCookie(Controller.petInCart, 7);
 
 
 
-
+        var itemsInCart = getCartCookie();
+        console.log(itemsInCart);
 
 
 
@@ -155,12 +157,12 @@ Controller = {
 
 
 window.onload = function() {  
-    var cartValue = getCartCookieValue("YY");
-    console.log(cartValue);
-    if (cartValue != null) {
-        var lengthOfCartCookie = cartValue.split(',').length;
-    }
-    document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
+    // var cartValue = getCartCookieValue("YY");
+    // console.log(cartValue);
+    // if (cartValue != null) {
+    //     var lengthOfCartCookie = cartValue.split(',').length;
+    // }
+    // document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
     
     var value = getCookieValue("userName");  
     console.log(value);
@@ -173,6 +175,7 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
+
     Controller.initWeb3();
 
 }
