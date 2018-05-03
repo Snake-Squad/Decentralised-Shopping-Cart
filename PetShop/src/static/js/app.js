@@ -135,6 +135,9 @@ Controller = {
         } 
         
         console.log("Items in petInCart:", Controller.petInCart);
+        
+        
+        
     },
 
     goToShopingCartPage: function(event){
@@ -144,6 +147,11 @@ Controller = {
 
 
 window.onload = function() {  
+    alert('hello');
+    var cartValue = getCartCookieValue("YY");
+    var lengthOfCartCookie = cartValue.split(',').length;
+    document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
+    Controller.petInCart.push()
     var value = getCookieValue("userName");  
     // console.log(value);
     if(value === undefined || value == null || value.length == 0) {
@@ -156,4 +164,5 @@ window.onload = function() {
         Controller.userId = value[0];
     }
     Controller.initWeb3();
+
 }

@@ -8,7 +8,12 @@ var loc = location.href;
 var n1 = loc.length;//地址的总长度
 var n2 = loc.indexOf("=");//取得=号的位置
 var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
+console.log("id");
+console.log(id);
+addCartCookie("YY", id, 7);
 
+console.log("ben YY");
+console.log(getCartCookieValue("YY"));
 /* value processing */
 var petIdList =id.split(",");
 var petsInfo = [];
@@ -41,7 +46,6 @@ window.onload = function()
     cartTemplate.find('.product-description2').text("location:"+"  "+petsInfo[i][3]);
     cartTemplate.find(".product-quantity").find('input').attr("value",1);
     cartTemplate.find(".product-price").text(petsInfo[i][4]);
-    
     cartTemplate.find(".product-line-price").text(petsInfo[i][4]);
     cartRow.append(cartTemplate.html());
   };
