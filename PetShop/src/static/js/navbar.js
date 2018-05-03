@@ -184,7 +184,7 @@ function deleteEditCookie() {
  * -----------------------------------------------------------------------------
  */
 function setCartCookie(data, exdays) {
-    console.log("data", data);
+    // console.log("data", data);
     var expiresDate = new Date();
     expiresDate.setTime(expiresDate.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + expiresDate.toUTCString();
@@ -193,7 +193,7 @@ function setCartCookie(data, exdays) {
         value += data[i] + "|||";
     }
     document.cookie = "puppiesInCart=" + value + ";" + expires + ";path=/";
-    console.log(document.cookie);
+    // console.log(document.cookie);
 }
 
 

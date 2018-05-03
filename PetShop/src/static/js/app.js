@@ -136,18 +136,9 @@ Controller = {
         
         console.log("Items in petInCart:", Controller.petInCart);
         
-        // TODO: Store all puppies in shopping cart to cookie
         setCartCookie(Controller.petInCart, 7);
-
-
-
         var itemsInCart = getCartCookie();
         console.log(itemsInCart);
-
-
-
-
-
     },
 
     goToShopingCartPage: function(event){
