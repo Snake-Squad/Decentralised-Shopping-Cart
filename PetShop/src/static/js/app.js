@@ -149,7 +149,9 @@ Controller = {
 window.onload = function() {  
     alert('hello');
     var cartValue = getCartCookieValue("YY");
-    var lengthOfCartCookie = cartValue.split(',').length;
+    console.log(cartValue);
+    if (cartValue != null)
+        var lengthOfCartCookie = cartValue.split(',').length;
     document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
     Controller.petInCart.push()
     var value = getCookieValue("userName");  

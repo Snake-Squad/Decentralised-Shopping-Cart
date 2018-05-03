@@ -167,7 +167,15 @@ function getEditCookie() {
     return list;
 }
 
-<<<<<<< HEAD
+function deleteEditCookie() {
+    var expiresDate = new Date();
+    expiresDate.setTime(expiresDate.getTime() - 1);
+    var expires = "expires=" + expiresDate.toGMTString();
+    document.cookie = 'editTargets=;' + expires;
+    console.log(document.cookie);
+}
+
+
 // thees setter and getter are used for shopping cart.
 function addCartCookie(name, Information, days) {  
     var name = escape(name);
@@ -197,12 +205,5 @@ function getCartCookieValue(name) {
     return null;
 }
 
-=======
-function deleteEditCookie() {
-    var expiresDate = new Date();
-    expiresDate.setTime(expiresDate.getTime() - 1);
-    var expires = "expires=" + expiresDate.toGMTString();
-    document.cookie = 'editTargets=;' + expires;
-    console.log(document.cookie);
-}
->>>>>>> 3646d214d148487a07c514c36c6dfe3064acfb76
+
+
