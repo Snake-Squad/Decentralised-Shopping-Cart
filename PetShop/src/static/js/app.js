@@ -5,6 +5,7 @@ Controller = {
     puppyList: null,
     onSales: [],
     petInCart: [],
+    petIdInCart: [],
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -81,11 +82,11 @@ Controller = {
     },
 
     showOnSales: function() {
-        console.log(Controller.onSales);
+        // console.log(Controller.onSales);
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
-        console.log(data[0]);
+        // console.log(data[0]);
         for (i = 0; i < data.length; i ++) {
             //petTemplate.find('.pet-seller').text(data[i][0]);
             petTemplate.find('.panel-title').text(data[i][1]);
@@ -116,24 +117,30 @@ Controller = {
 
         var onSalesIndex = parseInt($(event.target).data('id'));
         console.log("index =", onSalesIndex);
+        console.log("onSales:", Controller.onSales);
         if(Controller.petInCart.length == 0){
             Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+            Controller.petIdInCart.push(Controller.onSales[onSalesIndex][7]);
             index.innerText++;
         }else{
             for (i = 0; i < Controller.petInCart.length; i ++){
-                if (Controller.petInCart.includes(Controller.onSales[onSalesIndex])){
+                console.log("petInCart", Controller.petInCart);
+                console.log("petIdInCart", Controller.petIdInCart);
+                console.log("onSales", Controller.onSales);
+                if (Controller.petIdInCart.includes(Controller.onSales[onSalesIndex][7])){
                     console.log("======")
                     alert("U can't add the same pet!")
                     break;
                 }else{
                     console.log("wtf")
                     Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+                    Controller.petIdInCart.push(Controller.onSales[onSalesIndex][7]);
                     index.innerText++;
                     break;
                 }
             } 
         } 
-        
+        console.log("petIdInCart: ", Controller.petIdInCart);
         console.log("Items in petInCart:", Controller.petInCart);
         
         
@@ -147,13 +154,39 @@ Controller = {
 
 
 window.onload = function() {  
-    alert('hello');
+    // delete_cookie("YY");
+    // this is cart cookie part
+
     var cartValue = getCartCookieValue("YY");
-    console.log(cartValue);
-    if (cartValue != null)
-        var lengthOfCartCookie = cartValue.split(',').length;
-    document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
-    
+    // console.log("cartValue", cartValue);
+    if (cartValue != null){
+        var dogscookie = cartValue.split(',');
+        var lengthOfCartCookie = dogscookie.length;
+        document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/8)
+        // Controller.petInCart.push(cartValue);
+        console.log(dogscookie);
+        adoginfo = [];
+        for(var i = 0; i < lengthOfCartCookie+1; i++){
+            console.log(i);
+            if(i == 0){
+                adoginfo.push(dogscookie[i])
+            }else{
+                if(i%8==0){
+                    Controller.petInCart.push(adoginfo)
+                    Controller.petIdInCart.push(adoginfo[7])
+                    console.log("down", Controller.petInCart)
+                    adoginfo = []
+                    adoginfo.push(dogscookie[i])
+                }else{   
+                    adoginfo.push(dogscookie[i])
+                }
+            }
+            
+        }
+    }
+
+
+    //this is for username
     var value = getCookieValue("userName");  
     // console.log(value);
     if(value === undefined || value == null || value.length == 0) {

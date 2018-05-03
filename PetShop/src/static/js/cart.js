@@ -8,12 +8,11 @@ var loc = location.href;
 var n1 = loc.length;//地址的总长度
 var n2 = loc.indexOf("=");//取得=号的位置
 var id = decodeURI(loc.substr(n2+1, n1-n2));//从=号后面的内容
-console.log("id");
-console.log(id);
+
+
 addCartCookie("YY", id, 7);
 
-console.log("ben YY");
-console.log(getCartCookieValue("YY"));
+
 /* value processing */
 var petIdList =id.split(",");
 var petsInfo = [];
@@ -21,7 +20,7 @@ var count =[];
 var apetInfo = [];
 /*get infomation of all pets*/
 for(var i=0;i<petIdList.length+1;i++){
-  if(i%7 !== 0){
+  if(i%8 !== 0){
     apetInfo.push(petIdList[i])
     // console.log(apetInfo)
   }else{
