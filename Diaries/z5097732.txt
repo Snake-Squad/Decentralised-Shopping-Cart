@@ -30,7 +30,7 @@ Week7:
 This week my scrum master changed mongo database to firebase as our server and store the user information into the database. I help my teammates to finish the  function of Search and try to solve the problem it cannot use this function in other pages.
 
 Week8:
-I found a API named filestack for import image as url and then our website can store the image into the block chain. And I also begin to write add_ puppy function.Store the puppy information into block chain
+I found a API named filestack for import image as url and then our website can store the image into the block chain. And I also begin to write add_ puppy function.Store the puppy information into block chain.I ever want to use API to send email in the html to change the password. Finally, I find it is not convinent for user. So I decide just use question to change password in the firebase.
 
 Week9:
 
