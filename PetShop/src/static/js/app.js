@@ -106,18 +106,15 @@ Controller = {
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
         var onSalesIndex = parseInt($(event.target).data('id'));
-        $(event.target)[0].disabled = true;
         Controller.petInCart.push(Controller.onSales[onSalesIndex]);
+        $(event.target).attr('disabled', true);
         index.innerText++;
         console.log("Items in petInCart:", Controller.petInCart);
-        
         setCartCookie(Controller.petInCart, 7);
-        // var itemsInCart = getCartCookie();
-        // console.log(itemsInCart);
     },
 
     goToShopingCartPage: function(event){
-        location.href="cart.html?"+"txt="+encodeURI(Controller.petInCart);
+        window.location.replace("http://localhost:3000/cart.html");
     }
 };
 
@@ -134,10 +131,10 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
         Controller.userId = value[0];
     }
-    //deleteCartCookie();
+    deleteCartCookie();
     var petInCart = getCartCookie();
     console.log("itemsInCart:", petInCart);
     Controller.petInCart = petInCart;
+    $("#shop-cart-index").html(petInCart.length);
     Controller.initWeb3();
-
 }
