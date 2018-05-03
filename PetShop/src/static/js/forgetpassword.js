@@ -46,25 +46,8 @@ function onClickForget() {
     });
     
     if (isValid) {
-      var email = require("emailjs");
-      
-      var server = email.server.connect({
-        user: 'nodejsiscool@gmail.com',
-        password: 'stackoverflow',
-        host: 'smtp.gmail.com',
-        ssl: true
-      });
 
-      server.send({
-        text: 'Hey howdy',
-        from: 'NodeJS',
-        to: 'VJ <qq471849587@gmail.com>',
-        cc: '',
-        subject: 'Greetings'
-      }, function (err, message) {
-        console.log(err || message);
-      });
-      // window.location.replace("forget_password.html");
+      window.location.replace("forget_password.html");
     } else {
       alert("Username doesn't exist, please input again");
       window.location.href="login.html";
