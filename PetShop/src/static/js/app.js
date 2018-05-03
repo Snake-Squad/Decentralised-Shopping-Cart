@@ -83,7 +83,7 @@ Controller = {
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
-
+        console.log(data[0]);
         for (i = 0; i < data.length; i ++) {
             //petTemplate.find('.pet-seller').text(data[i][0]);
             petTemplate.find('.panel-title').text(data[i][1]);
@@ -149,7 +149,7 @@ window.onload = function() {
     var cartValue = getCartCookieValue("YY");
     var lengthOfCartCookie = cartValue.split(',').length;
     document.getElementById("shop-cart-index").innerText = parseInt(lengthOfCartCookie/7)
-    Controller.petInCart.push()
+    
     var value = getCookieValue("userName");  
     // console.log(value);
     if(value === undefined || value == null || value.length == 0) {
