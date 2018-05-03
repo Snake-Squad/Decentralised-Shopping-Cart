@@ -32,39 +32,24 @@ Logout = {
     },
 
     setCurCart: function() {
-        console.log("setCurCart: ", Logout.userId, Logout.puppiesInCart);
-        // Controller.contracts.Controller.deployed().then(function(instance) {
-        //     console.log("setCurCart", Controller.userId, Controller.puppies);
-        //     //return instance.getAccount(userId);
+        var puppyIds = [];
+        for (var i = 0; i < Logout.puppiesInCart.length; i++) {
+            //var info = ; 
+            var pId = Logout.puppiesInCart[i].split(',')[7];
+            puppyIds.push(pId);
+        }
+        console.log(puppyIds);
+        console.log(Logout.userId);
+
+        // ---------------------------------------------------------------------
+        // Logout.contracts.Controller.deployed().then(function(instance) {
+        //     return instance.getAccount(userId);
         // }).then(function(result) {
         //     console.log("stored on block chain:", result);
         // }).catch(function(err) {
         //     console.log(err.message);
         // });
-    },
-
-//     recharge: function() {
-//         var userId = Controller.userId;
-//         var amount = Controller.amount;
-//         console.log(userId, amount);
-//         // -------------------------------
-//         web3.eth.getAccounts(function(error, accounts) {
-//             if (error) {
-//                 console.log(error);
-//             } else {
-//                 var account = accounts[0];
-//                 Controller.contracts.Controller.deployed()
-//                     .then(function(instance) {
-//                         return instance.recharge(userId, amount, {gas:3000000});
-//                 }).then(function(result) {
-//                     console.log("After recharge:", result);
-//                     return Controller.refresh();
-//                 }).catch(function(err) {
-//                     console.log(err.message);
-//                 });
-//             }
-//         });
-//     },
+    }
 
 //     refresh: function() {
 //         //delete_cookie("userName"); 

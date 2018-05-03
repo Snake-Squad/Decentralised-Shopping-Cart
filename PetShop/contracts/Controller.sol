@@ -69,8 +69,8 @@ contract Controller {
         account.cartId = _cartId;
         account.prodCartId = _prodCartId;
         account.balance = _balance;
-        setCart(_cartId, new address[](0));
-        setProduct(_prodCartId, new address[](0));
+        setCart(_accountId, _cartId, new address[](0));
+        setProduct(_accountId, _prodCartId, new address[](0));
     }
        
     function getAccount(address _accountId) 
@@ -95,7 +95,14 @@ contract Controller {
      * Define functions to set and get infomation of a Cart.
      *--------------------------------------------------------------------------
      */
-    function setCart(address _cartId, address[] _puppiesIds) public {
+    function setCart(
+        address _userId,
+        address _cartId,
+        address[] _puppiesIds
+    ) 
+        public 
+    {   
+        accountsOnBC[_userId].cartId = _cartId;
         cartsOnBC[_cartId].puppies =  _puppiesIds;
     }
         
@@ -107,7 +114,14 @@ contract Controller {
      * Define functions to set and get infomation of an product.
      *--------------------------------------------------------------------------
      */
-    function setProduct(address _productId, address[] _puppiesIds) public {
+    function setProduct(
+        address _userId,
+        address _productId,
+        address[] _puppiesIds
+    ) 
+        public 
+    {
+        accountsOnBC[_userId].prodCartId = _productId;
         productsOnBC[_productId].puppies =  _puppiesIds;
     }
     
@@ -240,10 +254,8 @@ contract Controller {
         accountsOnBC[_seller].transactions.push(_transId);
         accountsOnBC[_buyer].transactions.push(_transId);
         // update cart and prodcart
-        accountsOnBC[_buyer].cartId = _cartId;
-        setCart(_cartId, _cart);
-        accountsOnBC[_seller].prodCartId = _prodCartId;
-        setProduct(_prodCartId, _prodCart);
+        setCart(_buyer, _cartId, _cart);
+        setProduct(_seller, _prodCartId, _prodCart);
         // update Puppy Status will be done via JavaScript
     }
     
