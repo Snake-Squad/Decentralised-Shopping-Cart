@@ -41,8 +41,9 @@ Logout = {
         }
         var newCartId = generateAddress();
         console.log("userId = ", userId);
-        console.log("puppiesInCart = ", puppyIds);
         console.log("newCartId = ", newCartId);
+        console.log("puppiesInCart = ", puppyIds);
+        
 
         // ---------------------------------------------------------------------
         web3.eth.getAccounts(function(error, accounts) {
