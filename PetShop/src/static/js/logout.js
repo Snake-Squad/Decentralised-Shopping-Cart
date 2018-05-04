@@ -32,29 +32,41 @@ Logout = {
     },
 
     setCurCart: function() {
+        var userId = Logout.userId;
         var puppyIds = [];
         for (var i = 0; i < Logout.puppiesInCart.length; i++) {
             //var info = ; 
             var pId = Logout.puppiesInCart[i].split(',')[7];
             puppyIds.push(pId);
         }
-        console.log(puppyIds);
-        console.log(Logout.userId);
+        var newCartId = generateAddress();
+        console.log("userId = ", userId);
+        console.log("puppiesInCart = ", puppyIds);
+        console.log("newCartId = ", newCartId);
 
         // ---------------------------------------------------------------------
-        // Logout.contracts.Controller.deployed().then(function(instance) {
-        //     return instance.getAccount(userId);
-        // }).then(function(result) {
-        //     console.log("stored on block chain:", result);
-        // }).catch(function(err) {
-        //     console.log(err.message);
-        // });
-    }
+        web3.eth.getAccounts(function(error, accounts) {
+            if (error) {
+                console.log(error);
+            } else {
+                var account = accounts[0];
+                Logout.contracts.Controller.deployed().then(function(instance) {
+                    console.log("instance", instance);
+                    return instance.setCart(
+                        userId, newCartId, puppyIds, {gas:3000000});
+                }).then(function(result) {
+                    return Logout.deleteCookie();
+                }).catch(function(err) {
+                    console.log(err.message);
+                });
+            }
+        });
+    },
 
-//     refresh: function() {
-//         //delete_cookie("userName"); 
-//         location.reload();
-//     }
+    deleteCookie: function() {
+        deleteCartCookie();
+        delete_cookie("userName"); 
+    }
 };
 
 

@@ -1,5 +1,85 @@
+Login = {
+    web3Provider: null,
+    contracts: {},
+    username: null,
+    userId: null,
+    petsInCartIds: [],
+    petInCart: [],
+
+    initWeb3: function() {
+        // Is there an injected web3 instance?
+        if (typeof web3 !== 'undefined') {
+            Login.web3Provider = web3.currentProvider;
+        } else {
+            // If no injected web3 instance is detected, fall back to Ganache
+            Login.web3Provider = new Web3.providers.HttpProvider(
+                'http://localhost:7545');
+        } 
+        web3 = new Web3(Login.web3Provider);
+        // console.log("web3 initialized");
+        return Login.initContract();
+    },
+
+    initContract: function() {
+        $.getJSON('Controller.json', function(data) {
+            // Get the necessary contract artifact file
+            var LoginArtifact = data;
+            // console.log(data);
+            // Instantiate it with truffle-contract
+            Login.contracts.Controller = 
+                TruffleContract(LoginArtifact);
+            // Set the provider for our contract
+            Login.contracts.Controller.setProvider(
+                Login.web3Provider);
+            // console.log("Contract initialized");
+            return Login.getPetsIdInCart();
+        });
+    },
+
+    // -------------------------------------------------------------------------
+    getPetsIdInCart: function() {
+        Login.contracts.Controller.deployed().then(function(instance) {;
+            return instance.getAccount(Login.userId);
+        }).then(function(result) {
+            Login.petsInCartIds = result[0];
+            var limit = Login.petsInCartIds.length;
+            return Login.getPuppyDetail(0, limit);
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+    },
+
+    getPuppyDetail: function(i, limit) {
+        if (i == limit)    
+            return Login.initCookies();
+        var pid = Login.petsInCartIds[i];
+        Login.contracts.Controller.deployed().then(function(instance) {;
+            return instance.getPuppyInfo(pid);
+        }).then(function(result) {
+            result.push(Login.petsInCartIds[i]);
+            Login.petInCart.push(result);
+            return Login.getPuppyDetail(i + 1, limit);
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+    },
+
+    initCookies: function () {
+        console.log(Login.petInCart);
+        addCookie("userName", Login.username, Login.userId, 7, "/");
+        setCartCookie(Login.petInCart, 7);
+        window.location.replace("/");
+    }
+};
+
+
+
+
+
+
+
 function onClickCheckLogin() {
-    alert(" onClickCheckLogin ")
+    // alert(" onClickCheckLogin ")
      //  Initialize Firebase
     var config = {
         apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
@@ -42,10 +122,11 @@ function onClickCheckLogin() {
                 }
             }
         });
-        alert(isValid);
+        
         if (isValid) {
-            addCookie("userName", username, userId, 7, "/");
-            window.location.replace("/");
+            Login.username = username;
+            Login.userId = userId;
+            Login.initWeb3();
         } else {
             alert("Email or password is not correct, please input again");
             window.location.href="login.html";

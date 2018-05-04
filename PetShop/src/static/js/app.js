@@ -4,7 +4,9 @@ Controller = {
     userId: null,
     puppyList: null,
     onSales: [],
+    petsInCartIds: [],
     petInCart: [],
+    cartLoaded: false,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -36,6 +38,7 @@ Controller = {
         });
     },
 
+    // -------------------------------------------------------------------------
     getAllPuppiesOnBC: function() {
         Controller.contracts.Controller.deployed().then(function(instance) {;
             return instance.getPuppyList();
@@ -110,9 +113,10 @@ Controller = {
             $('.panel-pet').eq(id).find('button')
                 .text('Added').attr('disabled', true);
         }
-        return Controller.bindEvents();  
+        return Controller.bindEvents();
     },
 
+    // -------------------------------------------------------------------------
     bindEvents: function() {
         $(document).on('click', '.btn-add', Controller.handleAdd);
         $(document).on('click', '.goToShopingCartPage', Controller.goToShopingCartPage);
@@ -135,7 +139,7 @@ Controller = {
 
     goToShopingCartPage: function(event){
         window.location.replace("http://localhost:3000/cart.html");
-    }
+    }    
 };
 
 
