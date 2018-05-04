@@ -80,7 +80,7 @@ Controller = {
 function setOnFirebase(
     userIdBC,
     username, firstName, lastName, password, 
-    street, suite, country, state, zip
+    street, suite, country, state, zip,question1,question1_answer,question2,question2_answer,question3,question3_answer,
 ) {
     // Initialize Firebase
     var config = {
@@ -105,7 +105,13 @@ function setOnFirebase(
         "country": country, 
         "state": state,
         "zip": zip,
-        "user_id": userIdBC
+        "user_id": userIdBC,
+        "question1": question1,
+        "question1_answer": question1_answer,
+        "question2": question2,
+        "question2_answer": question2_answer,
+        "question3": question3,
+        "question3_answer": question3_answer,
     }).then(function(result) {
         console.log("Added on firebase.");
         Controller.username = username;
@@ -114,6 +120,7 @@ function setOnFirebase(
         return Controller.initWeb3();
     });
 }
+
 
 
 $("#btnSignUp").click(function() {
@@ -135,7 +142,23 @@ $("#btnSignUp").click(function() {
     var sid = states.selectedIndex;
     var state = states.options[sid].text; 
     var zip = document.getElementById("zip").value.trim();
-
+    
+    var questionFirsts = document.getElementById("question1");
+    var quest1 = questionFirsts.selectedIndex ;             
+    var question1= questionFirsts.options[quest1].text;
+    var question1_answer = document.getElementById("question1_answer").value.trim();
+    
+    var questionSeconds = document.getElementById("question2");
+    var quest2 = questionSeconds.selectedIndex ;             
+    var question2= questionSeconds.options[quest2].text;
+    var question2_answer = document.getElementById("question2_answer").value.trim();
+    
+    var questionThirds = document.getElementById("question3");
+    var quest3 = questionThirds.selectedIndex ;             
+    var question3 = questionThirds.options[quest3].text;
+    var question3_answer = document.getElementById("question3_answer").value.trim();
+    
+    alert(question2,question3);
     // checkValidation here
     var isValid = true;
     //check the email is right or not
@@ -189,7 +212,7 @@ $("#btnSignUp").click(function() {
             setOnFirebase(
               userIdBC,
               username, firstName, lastName, password, 
-              street, suite, country, state, zip
+              street, suite, country, state, zip,question1,question1_answer,question2,question2_answer,question3,question3_answer,
             );
         }
     }

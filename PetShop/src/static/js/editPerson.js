@@ -99,3 +99,73 @@ function editPerson() {
     }
     
 }
+
+
+
+//window.onload to change the navabar
+window.onload = function(){  
+    var userNameValue = getCookieValue("userName")[0];  
+    
+    if(userNameValue === undefined || userNameValue == null || userNameValue.length <= 0){
+        document.getElementById("login_navabar").text = "Login"; 
+        
+        }
+    else{
+      document.getElementById("loginnavbarDropdown").text = userNameValue;  
+      document.getElementById("loginnavbarDropdown").style.display = 'block';
+      document.getElementById("login_navabar").style.display = 'none';
+      document.getElementById("signup_navabar").style.display = 'none';
+      var config = {
+        apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
+        authDomain: "comp9900-4b79d.firebaseapp.com",
+        databaseURL: "https://comp9900-4b79d.firebaseio.com",
+        projectId: "comp9900-4b79d",
+        storageBucket: "comp9900-4b79d.appspot.com",
+        messagingSenderId: "445311599888"
+      };
+      firebase.initializeApp(config);
+
+      // get user's email and password from the webpage
+
+      var users = firebase.database().ref().child('users');
+      // This must be the last function of all
+      users.on("value", function(snapshot) {
+        var isValid = false;
+        var userId = "";            // this id is used in blockchain
+
+        snapshot.forEach(function(user) {
+          // retrieve data from db
+          var userKey = user.key;   // user id
+          var userVal = user.val(); // user's info (email, fn, ln, pw, role)
+          
+          // check whether it matches or not
+          if (userVal.email == userNameValue) {
+         
+              isValid = true;    
+              document.getElementById("email").innerHTML=userNameValue;
+              document.getElementById("first_name").value=userVal.first_name; 
+              document.getElementById("last_name").value=userVal.last_name;
+              document.getElementById("psw").value=userVal.psw; 
+              document.getElementById("psw-repeat").value=userVal.psw;
+              document.getElementById("address1").value=userVal.street;
+              document.getElementById("address2").value=userVal.suite;
+              
+              document.getElementById("country-option1").checked;
+              var state_options=document.getElementById("state");
+            
+              for(var i = 0; i < state_options.length; i++) {  
+                if (userVal.state == state_options[i].value) 
+                    {  
+                        state_options[i].selected=true;
+                    }  
+                } 
+              document.getElementById("zip").value=userVal.zip;
+              
+              return true;          // break the loop
+          }
+        });
+      });
+    }
+   
+    
+}   
