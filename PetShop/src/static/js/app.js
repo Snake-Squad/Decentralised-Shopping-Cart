@@ -16,7 +16,7 @@ Controller = {
                 'http://localhost:7545');
         } 
         web3 = new Web3(Controller.web3Provider);
-        console.log("web3 initialized");
+        // console.log("web3 initialized");
         return Controller.initContract();
     },
 
@@ -31,7 +31,7 @@ Controller = {
             // Set the provider for our contract
             Controller.contracts.Controller.setProvider(
                 Controller.web3Provider);
-            console.log("Contract initialized");
+            // console.log("Contract initialized");
             return Controller.getAllPuppiesOnBC();
         });
     },
@@ -41,7 +41,7 @@ Controller = {
             return instance.getPuppyList();
         }).then(function(result) {
             Controller.puppyList = result;
-            console.log("p on bc ->", result);
+            // console.log("p on bc ->", result);
             if (result.length > 0) 
                 return Controller.isOnSale(0);
         }).catch(function(err) {
@@ -85,7 +85,7 @@ Controller = {
 
     showOnSales: function() {
         var data = Controller.onSales;
-        console.log(data);
+        // console.log(data);
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
         for (i = 0; i < data.length; i ++) {
@@ -102,7 +102,7 @@ Controller = {
     },
 
     handleAdded: function() {
-        console.log(Controller.petInCart);
+        // console.log(Controller.petInCart);
         for (var i = Controller.petInCart.length - 1; i >= 0; i--) {
             var data = Controller.petInCart[i].split(",");
             var id = parseInt(data[8]);

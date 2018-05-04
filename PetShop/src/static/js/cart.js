@@ -85,6 +85,17 @@ function showPuppies(puppies) {
  * -----------------------------------------------------------------------------
  */
 window.onload = function() {
+    var value = getCookieValue("userName");
+    console.log(value);
+    if(value === undefined || value == null || value.length == 0) {
+        document.getElementById("login_navabar").text = "Login";     
+    } else {
+        document.getElementById("loginnavbarDropdown").text = value[0];  
+        document.getElementById("loginnavbarDropdown").style.display = 'block';
+        document.getElementById("login_navabar").style.display = 'none';
+        document.getElementById("signup_navabar").style.display = 'none';
+    }
+
     var puppies = getCartCookie();
     console.log(puppies);
     showPuppies(puppies);

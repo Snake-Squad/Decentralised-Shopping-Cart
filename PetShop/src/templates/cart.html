@@ -15,59 +15,58 @@
 </head>
 
 <body>
-  <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- Logo, which is home -->
-    <a class="navbar-brand" href="#">
+  <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+      <!-- Logo, which is home -->
+      <a class="navbar-brand" href="#">
       <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
-    </a>
+      </a>
 
-    <!-- Add bar items -->
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
-        <!-- Go to Login Page -->
-        <li class="nav-item">
-          <a class="nav-link" id="login_navabar" onclick="onClickLogin()">Login</a>
+      <!-- Add bar items -->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+          <!-- Go to Login Page -->
+          
+          <li class="nav-item">
+            <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
+          </li>
+          
+          <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" 
+            data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+          login
+            </a>
+            <!--onclick functions can be found in navabar.js-->
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" id="navProfile">Profile</a>
+              <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
+              <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
+              <a class="dropdown-item" id="navRecharge">Recharge</a>
+              <a class="dropdown-item" id="navTrasactions">Transactions</a>
+              <a class="dropdown-item" id="navLogout">Log Out</a>
+            </div>
+          </li>
 
-        </li>
+          <!-- Go to Sign Up Page -->
+          <li class="nav-item">
+            <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
+          </li>
+                    
+          <!-- Check what is in the Cart -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="onClickCart()">Cart</a>
+          </li>
+        </ul>
 
-
-        <!-- Go to Sign Up Page -->
-        <li class="nav-item">
-          <a class="nav-link" onclick="onClickSignUp()">Sign Up</a>
-        </li>
-
-
-        <!-- Check what is in the Cart -->
-        <li class="nav-item">
-          <a class="nav-link" onclick="onClickCart()">Cart</a>
-        </li>
-
-        <!-- Add a Filter to Search Item -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Breed
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Polos</a>
-            <a class="dropdown-item" href="#">Casual Shirts</a>
-            <a class="dropdown-item" href="#">Casual Trousers</a>
-            <a class="dropdown-item" href="#">Jeans</a>
-            <a class="dropdown-item" href="#">Shorts & 3/4th</a>
-            <a class="dropdown-item" href="#">Formal Shirts</a>
-            <a class="dropdown-item" href="#">Formal Trousers</a>
-            <a class="dropdown-item" href="#">Suits & Blazers</a>
-            <a class="dropdown-item" href="#">Track Wear</a>
-            <a class="dropdown-item" href="#">Inner Wear</a>
-          </div>
-        </li>
-      </ul>
-      <!-- Add search Buttom here -->
-      <!-- <form class="form-inline my-2 my-lg-0"> -->
-        <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
-        <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
+        <!-- Add search Buttom here -->
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+          <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
         <!-- </form> -->
       </div>
     </nav>
+
+    
 
   <!-- Here starts the main page -->
   <main role="main" class="container">
