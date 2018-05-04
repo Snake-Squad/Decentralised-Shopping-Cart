@@ -42,7 +42,7 @@ $("#navTransactions").click(function() {
 });
 
 $("#navLogout").click(function() {
-    logout();
+    // logout();
     delete_cookie("userName"); 
 });
 
@@ -195,7 +195,7 @@ function getCartCookie() {
     var name = escape("puppiesInCart") + "=";  
     var cookie = document.cookie;
     var pos = cookie.indexOf(name);
-    if (pos == -1) return null;
+    if (pos == -1) return [];
     var start = pos + name.length;
     var end = end = cookie.length;
     var data = cookie.substring(start, end);

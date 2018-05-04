@@ -16,6 +16,7 @@ Controller = {
                 'http://localhost:7545');
         } 
         web3 = new Web3(Controller.web3Provider);
+        console.log("web3 initialized");
         return Controller.initContract();
     },
 
@@ -30,6 +31,7 @@ Controller = {
             // Set the provider for our contract
             Controller.contracts.Controller.setProvider(
                 Controller.web3Provider);
+            console.log("Contract initialized");
             return Controller.getAllPuppiesOnBC();
         });
     },
@@ -39,6 +41,7 @@ Controller = {
             return instance.getPuppyList();
         }).then(function(result) {
             Controller.puppyList = result;
+            console.log("p on bc ->", result);
             if (result.length > 0) 
                 return Controller.isOnSale(0);
         }).catch(function(err) {
@@ -82,6 +85,7 @@ Controller = {
 
     showOnSales: function() {
         var data = Controller.onSales;
+        console.log(data);
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
         for (i = 0; i < data.length; i ++) {
@@ -148,9 +152,8 @@ window.onload = function() {
         Controller.userId = value[0];
     }
     var petInCart = getCartCookie();
+    console.log(petInCart);
     Controller.petInCart = petInCart;
-    if(petInCart!=null){
-        $("#shop-cart-index").html(petInCart.length);
-    }
+    $("#shop-cart-index").html(petInCart.length);
     Controller.initWeb3();
 }
