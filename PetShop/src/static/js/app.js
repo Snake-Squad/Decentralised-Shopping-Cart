@@ -77,9 +77,9 @@ Controller = {
         Controller.contracts.Controller.deployed().then(function(instance) {
             return instance.getPuppyInfo(puppyId);
         }).then(function(info) {
-            // console.log(info);
             info.push(puppyId);
             Controller.onSales.push(info);
+            // console.log(info);
             return Controller.isOnSale(i + 1);
         }).catch(function(err) {
             console.log(err.message);
@@ -88,7 +88,6 @@ Controller = {
 
     showOnSales: function() {
         var data = Controller.onSales;
-        // console.log(data);
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
         for (i = 0; i < data.length; i ++) {
@@ -98,20 +97,27 @@ Controller = {
             petTemplate.find('.pet-location').text(data[i][4]);
             petTemplate.find('.pet-price').text(data[i][5]);
             petTemplate.find('img').attr('src', data[i][6]);
-            petTemplate.find('.btn-add').attr('data-id', i);
+            petTemplate.find('.btn-add').attr('data-id', i).attr('id', data[i][7]);
             petsRow.append(petTemplate.html());
         }
-        return Controller.handleAdded();
+        return Controller.markAdded();
     },
 
-    handleAdded: function() {
-        // console.log(Controller.petInCart);
-        for (var i = Controller.petInCart.length - 1; i >= 0; i--) {
-            var data = Controller.petInCart[i].split(",");
-            var id = parseInt(data[8]);
-            console.log(id);
-            $('.panel-pet').eq(id).find('button')
-                .text('Added').attr('disabled', true);
+    markAdded: function() {
+        var onSales = Controller.onSales;
+        var petInCart = Controller.petInCart;
+        console.log(petInCart);
+
+        for (var i = 0; i < petInCart.length; i++) {
+            var petAddr = petInCart[i].split(',')[7];
+            for (var j = 0; j < onSales.length; j++) {
+                console.log(onSales[j][7]);
+                if (petAddr == onSales[j][7]) {
+                    console.log("added", petAddr);
+                    $('#'+petAddr).text('Added').attr('disabled', true);
+                    break;
+                }
+            }
         }
         return Controller.bindEvents();
     },
@@ -123,13 +129,10 @@ Controller = {
     },
 
     handleAdd: function(event) {
-        console.log("add to cart");
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
         var onSalesIndex = parseInt($(event.target).data('id'));
-        var data = Controller.onSales[onSalesIndex];
-        data += "," + onSalesIndex;
-        console.log('data',data);
+        var data = Controller.onSales[onSalesIndex].toString();
         Controller.petInCart.push(data);
         $(event.target).text('Added').attr('disabled', true);
         index.innerText++;
