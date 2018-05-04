@@ -73,7 +73,8 @@
 
         <div class="col-md-8 order-md-1">
           <h3 class="mb-3">Personal Information</h3>
-          <!-- <form class="needs-validation" novalidate> -->    
+          <!-- <form class="needs-validation" novalidate> -->  
+
              <div class="mb-3">
               
               <label for="email">Email</label>
@@ -157,7 +158,48 @@
             </div>
 
           <hr>
+          
+          <h3 class="mb-3">Security Questions</h3>
+            <div class="mb-3">
+              <label for="question1">Question1</label>
+               <div class="mb-3">
+          
+               <select class="custom-select d-block w-100" id="question1">
+                  <option value="" id="q1_option1">What's your name?</option>
+                  <option value="" id="q1_option2">What's your favorite food?</option>
+                  <option value="" id="q1_option3">What's your favorite animal?</option>
+                </select> 
+              </div>
+              <input type="text" class="form-control" id="question1_answer" placeholder="answer" required> 
+            </div>
 
+            <div class="mb-3">
+              <label for="question2">Question2</label>
+               <div class="mb-3">
+               <select class="custom-select d-block w-100" id="question2">
+                  <option value="" id="q2_option1">Where is your home?</option>
+                  <option value="" id="q2_option2">Which country you like most?</option>
+                  <option value="" id="q2_option3">What's your dream?</option>
+                </select>  
+              </div>
+              <input type="text" class="form-control" id="question2_answer" placeholder="answer" required> 
+            </div>
+            
+            <div class="mb-3">
+              <label for="question3">Question3</label>
+               <div class="mb-3">
+               <select class="custom-select d-block w-100" id="question3">
+                  <option value="" id="q3_option1">What's your mother's name?</option>
+                  <option value="" id="q3_option2">What's your father's name?</option>
+                  <option value="" id="q3_option3">Which color you like most?</option>
+                </select>  
+              </div>
+              <input type="text" class="form-control" id="question3_answer" placeholder="answer" required> 
+            </div>
+           
+
+          <hr>
+          
           <button class="btn btn-secondary btn-lg btn-block" type="submit" id="btnSignUp">Sign up</button>
          </div>
 
