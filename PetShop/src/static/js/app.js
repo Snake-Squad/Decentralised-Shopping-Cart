@@ -147,6 +147,8 @@ window.onload = function() {
     }
     var petInCart = getCartCookie();
     Controller.petInCart = petInCart;
-    $("#shop-cart-index").html(petInCart.length);
+    if(petInCart!=null){
+        $("#shop-cart-index").html(petInCart.length);
+    }
     Controller.initWeb3();
 }

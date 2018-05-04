@@ -42,7 +42,7 @@ $("#navTransactions").click(function() {
 });
 
 $("#navLogout").click(function() {
-    // logout();
+    logout();
     delete_cookie("userName"); 
 });
 
