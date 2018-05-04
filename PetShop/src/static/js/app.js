@@ -115,11 +115,13 @@ Controller = {
     },
 
     handleAdd: function(event) {
+        console.log("add to cart");
         event.preventDefault();
         var index = document.getElementById("shop-cart-index");
         var onSalesIndex = parseInt($(event.target).data('id'));
         var data = Controller.onSales[onSalesIndex];
         data += "," + onSalesIndex;
+        console.log('data',data);
         Controller.petInCart.push(data);
         $(event.target).text('Added').attr('disabled', true);
         index.innerText++;
