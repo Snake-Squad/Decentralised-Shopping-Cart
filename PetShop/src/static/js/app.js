@@ -91,7 +91,7 @@ Controller = {
         // console.log("localStorage", localStorage);
         var searchkey = localStorage.getItem("searchKey");
         var searchResult = [];
-        if (searchkey != "null") {
+        if (searchkey != "") {
             var data= Controller.onSales;
             for (var i = 0; i < data.length; i++) {
                 for (var j = 0; j < data[i].length; j++) {
@@ -110,7 +110,7 @@ Controller = {
             }
             // console.log(searchResult);
             Controller.onSales = searchResult;
-            localStorage.setItem("searchKey", null);
+            localStorage.setItem("searchKey", "");
         }
         return Controller.showOnSales();
     },

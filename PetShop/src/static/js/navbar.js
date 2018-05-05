@@ -43,13 +43,11 @@ $("#navTransactions").click(function() {
 
 $("#navLogout").click(function() {
     logout();
-    // delete_cookie("userName"); 
 });
 
 
 /* -----------------------------------------------------------------------------
  * search function 
- * This function is really bad now.
  * -----------------------------------------------------------------------------
  */
 function searchPet() {
