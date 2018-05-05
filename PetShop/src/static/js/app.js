@@ -55,7 +55,7 @@ Controller = {
     isOnSale: function(i) {
         // console.log(i);
         if (i == Controller.puppyList.length) {
-            return Controller.showOnSales();
+            return Controller.handleSearch();
         }
 
         var puppyId = Controller.puppyList[i];
@@ -86,6 +86,36 @@ Controller = {
         });
     },
 
+    handleSearch: function () {
+        // console.log("all onSales", Controller.onSales);
+        // console.log("localStorage", localStorage);
+        var searchkey = localStorage.getItem("searchKey");
+        var searchResult = [];
+        if (searchkey != "null") {
+            var data= Controller.onSales;
+            for (var i = 0; i < data.length; i++) {
+                for (var j = 0; j < data[i].length; j++) {
+                    if (typeof(data[i][j]) == "string") {
+                        if(data[i][j].toLowerCase() == searchkey) {
+                            searchResult.push(data[i]);
+                            break
+                        }
+                    } else {
+                        if(Object.values(data[i][j])[2][0] == searchkey) {
+                            searchResult.push(data[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+            // console.log(searchResult);
+            Controller.onSales = searchResult;
+            localStorage.setItem("searchKey", null);
+        }
+        return Controller.showOnSales();
+    },
+
+    // -------------------------------------------------------------------------
     showOnSales: function() {
         var data = Controller.onSales;
         var petsRow = $('#petsRow');
@@ -106,14 +136,12 @@ Controller = {
     markAdded: function() {
         var onSales = Controller.onSales;
         var petInCart = Controller.petInCart;
-        console.log(petInCart);
-
         for (var i = 0; i < petInCart.length; i++) {
             var petAddr = petInCart[i].split(',')[7];
             for (var j = 0; j < onSales.length; j++) {
-                console.log(onSales[j][7]);
+                // console.log(onSales[j][7]);
                 if (petAddr == onSales[j][7]) {
-                    console.log("added", petAddr);
+                    // console.log("added", petAddr);
                     $('#'+petAddr).text('Added').attr('disabled', true);
                     break;
                 }

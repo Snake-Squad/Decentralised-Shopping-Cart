@@ -54,49 +54,12 @@ $("#navLogout").click(function() {
  */
 function searchPet() {
     var van = document.getElementById("searchPetsRow");
-    van.innerHTML = "";
-    var input = document.getElementById("searchInput").value.toLowerCase();
-    console.log(input);
-    var searchP=[];
-    //取出pets json中的数据，然后循环item，如果其中的name或者品种中的string包含
-    //这个formValue，就存入一个新的list，然后显示这个新的list
-    var data= Controller.onSales
-    for(i=0;i<data.length;i++){
-        for(j=0;j<data[i].length;j++){
-            if(typeof(data[i][j])=="string"){
-                if(data[i][j].toLowerCase()==input){
-                    searchP.push(data[i]);
-                    break
-                }
-            }else{
-                   if(Object.values(data[i][j])[2][0]==input){
-                   searchP.push(data[i]);
-                   break
-                   }
-                }
-            }
-        }
-//    var searchP = showOnSales();
-    console.log(searchP);
-    //将这个serchP里的元素在index页面里显示出来，或者替换之前循环显示的那个list
-    var petsRow = document.getElementById("petsRow");
-    var searchPetsRow =$("#searchPetsRow");
-    var petTemplate = $("#petTemplate");
-    petsRow.style.display = "none";
-    for (i = 0; i < searchP.length; i ++) {
-        petTemplate.find('.panel-title').text(searchP[i][1]);
-        petTemplate.find('img').attr('src', searchP[i][6]);
-        petTemplate.find('.pet-breed').text(searchP[i][2]);
-        petTemplate.find('.pet-age').text(searchP[i][3]);
-        petTemplate.find('.pet-location').text(searchP[i][4]);
-        petTemplate.find('.pet-price').text(searchP[i][5]);
-        petTemplate.find('.btn-add').attr('data-id', searchP[i][0]);
-        searchPetsRow.append(petTemplate.html());
+    var searchKey = document.getElementById("searchInput").value.toLowerCase();
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("searchKey", searchKey);
+        window.location.replace("http://localhost:3000/");
     }
-    console.log(searchPetsRow);
-
   }
-
 
 
 /* -----------------------------------------------------------------------------
