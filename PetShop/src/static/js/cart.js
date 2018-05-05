@@ -8,20 +8,19 @@ var fadeTime = 300;
 var puppies = [];
 
 
-
 /* -----------------------------------------------------------------------------
  * Calculate the total cost.
  * -----------------------------------------------------------------------------
  */
 function recalculateCart() {
-    console.log(puppies);
-
     var sellerIds =[]; 
     for (var i = 0; i < puppies.length; i++) {
         var sId = puppies[i].split(',')[0];
         sellerIds.push(sId);
     }
     var uniqueSIds = new Set(sellerIds);
+    let usIds = Array.from(uniqueSIds);
+    Controller.usIds = usIds;
     shippingRate = shippingRate * uniqueSIds.size;
 
     var subtotal = 0;
@@ -99,11 +98,11 @@ function showPuppies(puppies) {
  */
 window.onload = function() {
     var value = getCookieValue("userName");
-    console.log(value);
     if(value === undefined || value == null || value.length == 0) {
         document.getElementById("login_navabar").text = "Login";     
     } else {
-        document.getElementById("loginnavbarDropdown").text = value[0];  
+        document.getElementById("loginnavbarDropdown").text = value[0];
+        Controller.userId = value[1];
         document.getElementById("loginnavbarDropdown").style.display = 'block';
         document.getElementById("login_navabar").style.display = 'none';
         document.getElementById("signup_navabar").style.display = 'none';

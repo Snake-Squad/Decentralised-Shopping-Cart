@@ -2,6 +2,7 @@ Controller = {
     web3Provider: null,
     contracts: {},
     userId: null,
+    usIds: null,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -19,97 +20,95 @@ Controller = {
     initContract: function() {
         $.getJSON('Controller.json', function(data) {
             // Get the necessary contract artifact file and instantiate it with truffle-contract
-            var ControllerArtifact = data;
-            Controller.contracts.Controller = TruffleContract(ControllerArtifact);
-
+            Controller.contracts.Controller = TruffleContract(data);
             // Set the provider for our contract
-            Controller.contracts.Controller.setProvider(Controller.web3Provider);
-
-            alert("Contract Initialized");
+            Controller.contracts.Controller.setProvider(
+                Controller.web3Provider);
             // Use our contract to retrieve and mark the adopted pets
-            return Controller.pay();
+            return Controller.fillter(0);
         }); 
     },
 
-    pay: function(event) {
-        // ---------------   retrieve data from webpage
-        Controller.userId = getCookieValue("userName")[1];
-        console.log(Controller.userId);
-
-        // load itme address as a list here
-        var items = [];
-        var names = document.getElementsByClassName("product-title");
-        // console.log(names);
-        console.log("userId = ", Controller.userId);
-
-        for (var i = 0; i < names.length - 1; i++) {
-            items.push(names[i].childNodes[0].data);
+    fillter: function(iter) {
+        if (iter == Controller.usIds.length) {
+            return Controller.backToHome();
         }
+        var curSId = Controller.usIds[iter];
+        var curPrice = 0;
+        var sellingPuppies = []; // store puppies sold by current saler
+        var onSalePuppies = [];  // store puppies sold by others
+        var inCartPuppyId = [];
+        for (var i = 0; i < puppies.length; i++) {
+            var puppyInfo = puppies[i].split(',');
+            // console.log(puppyInfo);
+            if (curSId == puppyInfo[0]) {
+                curPrice += parseInt(puppyInfo[5]);
+                sellingPuppies.push(puppyInfo[7]);
+            } else {
+                onSalePuppies.push(puppies[i]);
+                inCartPuppyId.push(puppyInfo[7])
+            }
+        }
+        puppies = onSalePuppies;
+        console.log(curSId, sellingPuppies, curPrice * 1.05 + 15, puppies);
+        return Controller.getSellerProdCart(
+            iter, curSId, sellingPuppies, curPrice * 1.05 + 15, inCartPuppyId
+        );
+    },
 
-        console.log(items);
+    getSellerProdCart: function(iter, sellId, sellingPuppies, price, inCartPuppyId) {
+        Controller.contracts.Controller.deployed().then(function(instance) {
+            return instance.getAccount(sellId);
+        }).then(function(result) {
+            console.log(result);
+            var prodCart = result[1];
+            return Controller.pay(
+                iter, sellId, sellingPuppies, price, prodCart, inCartPuppyId
+            );
+        }).catch(function(err) {
+            console.log(err.message);
+        });
+    },
 
-        // retrieve seller address, we can store this info in session
-        var seller = "0x2c6315b775d00007935b3760af5f48f0a9f5a950";
-
-        // retrieve buyer address, we can store this info in cookie
-        var buyer = "0x2c6315b775d00007935b3760af5f48f0a9f5a951";
-
-        // retrieve total prise;
-        var totalDiv = $('.totals-value');
-        var total = parseFloat(totalDiv[3].childNodes[0].data);
-
-        console.log(items, seller, buyer, total);
-
+    pay: function(iter, sellId, sellingPuppies, price, prodCart, inCartPuppyId) {
+        console.log(sellId, sellingPuppies, price, prodCart, inCartPuppyId);
+        var transId = generateAddress();
+        var newCartId = generateAddress();
+        var newProdCartId = generateAddress();
+        // remove puppy from prodCart if the puppy is in sellingPuppies
+        for (var i = sellingPuppies.length - 1; i >= 0; i--) {
+            var index = prodCart.indexOf(sellingPuppies[i]);
+            prodCart.splice(index, 1);
+        }
+        console.log(sellId, sellingPuppies, price, prodCart, inCartPuppyId);
         // -------------------------------
         web3.eth.getAccounts(function(error, accounts) {
             if (error) {
                 console.log(error);
             }
-
             var account = accounts[0];
-            // alert(account);
-
             Controller.contracts.Controller.deployed().then(function(instance) {
-                alert("Here ");
-                ControllerInstance = instance;
-                return ControllerInstance.recharge(
-                    "0x2c6315b775d00007935b3760af5f48f0a9f5a960", 10000, {gas:3000000}
+                return instance.checkOut(
+                    transId, sellingPuppies, sellId, Controller.userId, price, 
+                    newCartId, newProdCartId, inCartPuppyId, prodCart, 
+                    {gas:3000000}
                 );
             }).then(function(result) {
-                return Controller.showTransaction("0x2c6315b775d00007935b3760af5f48f0a9f5a960");
+                return Controller.fillter(iter + 1);
             }).catch(function(err) {
                 console.log(err.message);
             });
         });
     },
 
-    showTransaction: function(address) {
-        alert(address)
-        var ControllerInstance;
-
-        Controller.contracts.Controller.deployed().then(function(instance) {
-        ControllerInstance = instance;
-            return ControllerInstance.getAccount(address);
-        }).then(function(result) {
-            console.log(result);
-            // if (result[0] != "") {
-            // var balence1 = 1000 - parseInt(result[3]);
-            // var balence2 = 1000 + parseInt(result[3]);
-            // $("#buyerTrans").html('Item: ' + result[0] + 
-            //     ' From: ' + result[1] + '\n' +
-            //     ' Price:' + result[3] +
-            //     ' Balence: '+' $' + balence1);
-            // $("#sellerTrans").html('Item: ' + result[0] + 
-            //     ' To: ' + result[2] + '\n' +
-            //     ' Price:' + result[3] +
-            //     ' Balence: '+' $' +  balence2);
-            // }
-        }).catch(function(err) {
-            console.log(err.message);
-        });
+    backToHome: function() {
+        setCartCookie(puppies, 7);
+        window.location.replace("http://localhost:3000/");
     }
 };
 
-function checkOut() {
+
+$("#btn-checkout").click(function() {
     Controller.initWeb3();
-}
+});
+

@@ -256,7 +256,10 @@ contract Controller {
         // update cart and prodcart
         setCart(_buyer, _cartId, _cart);
         setProduct(_seller, _prodCartId, _prodCart);
-        // update Puppy Status will be done via JavaScript
+        // update Puppy Status 
+        for (uint i = 0; i < _puppiesIds.length; i++) {
+            markSoldPuppy(_puppiesIds[i]);
+        }
     }
     
     function addPuppy(
