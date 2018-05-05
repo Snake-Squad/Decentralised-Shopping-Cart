@@ -5,6 +5,8 @@
 var taxRate = 0.05;
 var shippingRate = 15.00; 
 var fadeTime = 300;
+var puppies = [];
+
 
 
 /* -----------------------------------------------------------------------------
@@ -12,6 +14,16 @@ var fadeTime = 300;
  * -----------------------------------------------------------------------------
  */
 function recalculateCart() {
+    console.log(puppies);
+
+    var sellerIds =[]; 
+    for (var i = 0; i < puppies.length; i++) {
+        var sId = puppies[i].split(',')[0];
+        sellerIds.push(sId);
+    }
+    var uniqueSIds = new Set(sellerIds);
+    shippingRate = shippingRate * uniqueSIds.size;
+
     var subtotal = 0;
     // console.log($('.product').length);
     for(var i=0;i<$('.product').length-1;i++){
@@ -27,6 +39,7 @@ function recalculateCart() {
     $('.totals-value').fadeOut(fadeTime, function() {
         $('#cart-subtotal').html(subtotal.toFixed(2));
         $('#cart-tax').html(tax.toFixed(2));
+        $('#num-seller').html(uniqueSIds.size);
         $('#cart-shipping').html(shipping.toFixed(2));
         $('#cart-total').html(total.toFixed(2));
         if(total == 0) {
@@ -96,8 +109,7 @@ window.onload = function() {
         document.getElementById("signup_navabar").style.display = 'none';
     }
 
-    var puppies = getCartCookie();
-    console.log(puppies);
+    puppies = getCartCookie();
     showPuppies(puppies);
     recalculateCart();
     $('.product-removal button').click( function() {
