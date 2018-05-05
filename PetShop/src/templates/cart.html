@@ -16,70 +16,70 @@
 
 <body>
   <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
-    <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
-      <!-- Logo, which is home -->
-      <a class="navbar-brand" href="#">
+  <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Logo, which is home -->
+    <a class="navbar-brand" href="http://localhost:3000/">
       <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
-      </a>
+  </a>
 
-      <!-- Add bar items -->
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
-          <!-- Go to Login Page -->
-          
-          <li class="nav-item">
-            <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
-          </li>
-          
-          <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
-            <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" 
-            data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
+  <!-- Add bar items -->
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
+        <!-- Go to Login Page -->
+        
+        <li class="nav-item">
+          <a class="nav-link" id="login_navabar" onclick="onClickLogin()" style="display:block;">Login</a>
+      </li>
+      
+      <li class="nav-item dropdown" id="Logindropdown" style="display:block;">
+          <a class="nav-link dropdown-toggle" href="#" id="loginnavbarDropdown" role="button" 
+          data-toggle="dropdown" style="display:none;" aria-haspopup="true" aria-expanded="false">
           login
-            </a>
-            <!--onclick functions can be found in navabar.js-->
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" id="navProfile">Profile</a>
-              <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
-              <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
-              <a class="dropdown-item" id="navRecharge">Recharge</a>
-              <a class="dropdown-item" id="navTransactions">Transactions</a>
-              <a class="dropdown-item" id="navLogout">Log Out</a>
-            </div>
-          </li>
-
-          <!-- Go to Sign Up Page -->
-          <li class="nav-item">
-            <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
-          </li>
-                    
-          <!-- Check what is in the Cart -->
-          <li class="nav-item">
-            <a class="nav-link" onclick="onClickCart()">Cart</a>
-          </li>
-        </ul>
-
-        <!-- Add search Buttom here -->
-        <!-- <form class="form-inline my-2 my-lg-0"> -->
-          <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
-          <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
-        <!-- </form> -->
+      </a>
+      <!--onclick functions can be found in navabar.js-->
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" id="navProfile">Profile</a>
+          <a class="dropdown-item" id="navAddAPuppy">Add a Puppy</a>
+          <a class="dropdown-item" id="navEditPostedPuppies">Edit Posted Puppies</a>
+          <a class="dropdown-item" id="navRecharge">Recharge</a>
+          <a class="dropdown-item" id="navTransactions">Transactions</a>
+          <a class="dropdown-item" id="navLogout">Log Out</a>
       </div>
-    </nav>
+  </li>
 
-    
+  <!-- Go to Sign Up Page -->
+  <li class="nav-item">
+    <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
+</li>
 
-  <!-- Here starts the main page -->
-  <main role="main" class="container">
-  <h1>Shopping Cart</h1>
+<!-- Check what is in the Cart -->
+<li class="nav-item">
+    <a class="nav-link" onclick="onClickCart()">Cart</a>
+</li>
+</ul>
 
-  <div class="shopping-cart">
-    <div class="column-labels">
-      <label class="product-image">Image</label>
-      <label class="product-details">Product</label>
-      <label class="product-price">Price</label>
-      <label class="product-quantity">Quantity</label>
-      <label class="product-removal">Remove</label>
-      <label class="product-line-price">Total</label>
+<!-- Add search Buttom here -->
+<!-- <form class="form-inline my-2 my-lg-0"> -->
+  <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+  <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
+  <!-- </form> -->
+</div>
+</nav>
+
+
+
+<!-- Here starts the main page -->
+<main role="main" class="container">
+    <h1>Shopping Cart</h1>
+
+    <div class="shopping-cart">
+      <div class="column-labels">
+        <label class="product-image">Image</label>
+        <label class="product-details">Product</label>
+        <label class="product-price">Price</label>
+        <label class="product-quantity">Quantity</label>
+        <label class="product-removal">Remove</label>
+        <label class="product-line-price">Total</label>
     </div>
 
     <div id="productRow">
@@ -89,88 +89,67 @@
     <div id="product-none" style="display: none">
      <div class="product">
 
-      <div class="product-image">
-        <img>
+        <div class="product-image">
+          <img>
       </div>
 
       <div class="product-details">
-        <div class="product-title"></div>
+          <div class="product-title"></div>
           <p class="product-description"></p>
           <p class="product-description1"></p>
           <p class="product-description2"></p>
-        </div>
+      </div>
       <div class="product-price" id="product-price">0</div>
 
       <div class="product-quantity" id="quantity">1</div>
       <!-- <div class="product-quantity">
         <input type="number" value="1" max="1" min="1" id="quantity">
-      </div> -->
+    </div> -->
 
-      <div class="product-removal">
+    <div class="product-removal">
         <button class="remove-product" data-id="0">
           Remove
-        </button>
-      </div>
-      
-      <div class="product-line-price" id="product-line-price">0</div>
-    </div>
+      </button>
   </div>
+  
+  <div class="product-line-price" id="product-line-price">0</div>
+</div>
+</div>
 
-  <div class="totals">
+<div class="totals">
     <div class="totals-item">
       <label>Subtotal</label>
       <div class="totals-value" id="cart-subtotal">0</div>
-    </div>
-    <div class="totals-item">
+  </div>
+  <div class="totals-item">
       <label>Tax (5%)</label>
       <div class="totals-value" id="cart-tax">0</div>
-    </div>
-    <div class="totals-item">
+  </div>
+  <div class="totals-item">
       <label>Shipping</label>
       <div class="totals-value" id="cart-shipping">0</div>
-    </div>
-    <div class="totals-item totals-item-total">
+  </div>
+  <div class="totals-item totals-item-total">
       <label>Grand Total</label>
       <div class="totals-value" id="cart-total">0</div>
-    </div>
   </div>
+</div>
 
-  <button class="checkout" id="checkout-btn" onclick="checkOut()">Checkout</button>
+<button class="checkout" id="checkout-btn" onclick="checkOut()">Checkout</button>
 </div>
 </main>
-<hr>
-
-<!-- the rest part are only used for testing -->
-
-<div class="container">
-
-  <h1>Buyer Transaction</h1>
-
-  <h2 id="buyerTrans"></h2>
-
-  <br>
-  <hr>
-
-  <h1>Seller Transaction</h1>
-
-  <h2 id="sellerTrans"></h2>
-
-  <br>
-  <hr>
-
-<!--   <label for="name" class="col-lg-2 control-label">Price</label>
-  <input id="price" type="text">
-  
-  <button id="button">Check Out</button> -->
 
 </div>
 
+
+<!-- Load .js files here  -->
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/web3.min.js"></script>
 <script src="js/truffle-contract.js"></script>
 <script src="js/navbar.js"></script>
+<script src="js/logout.js"></script>
 <script src="js/cart.js"></script>
 
 </body>
