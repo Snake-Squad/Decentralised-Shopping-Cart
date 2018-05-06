@@ -11,12 +11,15 @@
 
 
 
-
-
+// set transaction
+"0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8c0", ["0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8f0"],
+"0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8a0", "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b0",
+1000
 
 
 // set cart
-"0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b1", []
+"0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b0", "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b1", ["0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8b1"]
+
 "0xd27a96ba2ea99d026e7e7acfdc42347f07b4a8c1", []
 
 //set products

@@ -40,6 +40,7 @@ contract Controller {
         address seller;          // address of the seller
         address buyer;           // address of the buyer
         uint256 price;           // total price in the trade
+        uint256 date;            // trade date
     }
         
     /*--------------------------------------------------------------------------
@@ -205,6 +206,7 @@ contract Controller {
         transaction.seller = _seller;
         transaction.buyer = _buyer;
         transaction.price = _price;
+        transaction.date = now;
     }
        
     function getTransaction(address _transId) 
@@ -214,6 +216,7 @@ contract Controller {
             address[], 
             address, 
             address,
+            uint256,
             uint256
         ) 
     {
@@ -221,7 +224,8 @@ contract Controller {
             transactionsOnBC[_transId].puppiesIds, 
             transactionsOnBC[_transId].seller, 
             transactionsOnBC[_transId].buyer,
-            transactionsOnBC[_transId].price
+            transactionsOnBC[_transId].price,
+            transactionsOnBC[_transId].date
         );
     }
     
