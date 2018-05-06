@@ -81,22 +81,20 @@
         </div>
       </div>
 
-      <!-- load and show all transactions here -->
-      <div id="allTransactions">
-        <!-- ... -->
-      </div>
-
-
-      <div class="my-3 p-3 bg-white rounded box-shadow" id="transTemplate" data-id="">
-        <h6 class="border-bottom border-gray pb-2 mb-0" id="h6UserID">From: 0x1234567890123456789012345678901234567890</h6>
+      <div class="my-3 p-3 bg-white rounded box-shadow" id="transTemplate" data-id="" style="display: none">
+        <h5 class="border-bottom border-gray pb-2 mb-0" id="h5UserID"></h5>
         <div class="media text-muted pt-3">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark" id="strongPrice">Price: 1000</strong>
+            <strong class="d-block text-gray-dark" id="strongPrice"></strong>
           </p>
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark" id="strongDate">Date: may 7th 2018</strong>
+            <strong class="d-block text-gray-dark" id="strongDate"></strong>
           </p>
         </div>
+        <small class="d-block text-right mt-3">
+          <a class="btn" id="btnTransShowDetail" data-id="">Details</a>
+        </small>
+        <br>
       </div>
 
 
@@ -132,8 +130,27 @@
               <div class="product-line-price" id="product-line-price">0</div>
             </div>
           </div>
-          <center><button class="btn btn-secondary" id="close">Back</button></center>
         </div>
+
+        <div class="totals">
+          <div class="totals-item">
+            <label>Subtotal</label>
+          <div class="totals-value" id="cart-subtotal">0</div>
+        </div>
+        <div class="totals-item">
+          <label>Tax (5%)</label>
+          <div class="totals-value" id="cart-tax">0</div>
+        </div>  
+        <div class="totals-item">
+          <label>Shipping</label>
+          <div class="totals-value" id="cart-shipping">0</div>
+        </div>
+        <div class="totals-item totals-item-total">
+          <label>Grand Total</label>
+          <div class="totals-value" id="cart-total">0</div>
+        </div>
+
+        <center><button class="btn btn-secondary" id="close">Back</button></center>
       </main>
     </div>
 

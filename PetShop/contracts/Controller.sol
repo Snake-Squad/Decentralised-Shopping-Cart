@@ -79,7 +79,8 @@ contract Controller {
         returns (
             address[], 
             address[], 
-            uint256
+            uint256,
+            address[]
         ) 
     {
         address cId = accountsOnBC[_accountId].cartId;
@@ -87,7 +88,8 @@ contract Controller {
         return (
             cartsOnBC[cId].puppies, 
             productsOnBC[pId].puppies,
-            accountsOnBC[_accountId].balance
+            accountsOnBC[_accountId].balance,
+            accountsOnBC[_accountId].transactions
         );
     } 
         
