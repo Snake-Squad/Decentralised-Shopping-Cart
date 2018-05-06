@@ -63,12 +63,16 @@ Controller = {
 
         for (var j = Controller.transInfo.length - 1; j >= 0; j--) {
             if (Controller.transInfo[j][1] == Controller.userId) {
-                transTemplate.find('#h5UserID').text("From: " + Controller.transInfo[j][2]);
+                transTemplate.find('#h5UserID').text(
+                    "From: " + Controller.transInfo[j][2]);
             } else {
-                transTemplate.find('#h5UserID').text("To: " + Controller.transInfo[j][1]);
+                transTemplate.find('#h5UserID').text(
+                    "To: " + Controller.transInfo[j][1]);
             }
-            transTemplate.find('#strongPrice').text("Price:");
-            transTemplate.find('#strongDate').text(Controller.transInfo[j][3]);
+            transTemplate.find('#strongPrice').text(
+                "Price: " + Controller.transInfo[j][3]);
+            transTemplate.find('#strongDate').text(
+                "Date: " + Controller.transInfo[j][4]);
             transTemplate.find('#btnTransShowDetail').attr('data-id', j);
             container.append(transTemplate.html());
         }
@@ -82,14 +86,14 @@ Controller = {
     showDetail: function(event) {
         event.preventDefault();
         var index = parseInt($(event.target).data('id'));
-        $("#transDetail").css("display", "block");
+        var petsIds = Controller.transInfo[index][0];
+        localStorage.setItem('transId', Controller.transList[index]);
+        localStorage.setItem('transPuppyIds', petsIds);
+        console.log(localStorage);
+        window.location.replace("http://localhost:3000/trans_detail.html");
     }
 }
 
-// close the current page.
-$("#close").click(function() {
-    $("#transDetail").css("display", "none");
-});
 
 // onload function.
 window.onload = function() {  

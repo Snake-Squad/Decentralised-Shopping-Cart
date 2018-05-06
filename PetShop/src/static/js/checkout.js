@@ -89,9 +89,7 @@ Controller = {
             var account = accounts[0];
             Controller.contracts.Controller.deployed().then(function(instance) {
                 var now = getTime();
-                console.log(now);
                 now.toString();
-                console.log(now);
                 return instance.checkOut(
                     transId, sellingPuppies, sellId, Controller.userId, price, 
                     newCartId, newProdCartId, inCartPuppyId, prodCart, now,

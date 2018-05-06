@@ -55,11 +55,6 @@
           <li class="nav-item">
             <a class="nav-link" id="signup_navabar" onclick="onClickSignUp()" style="display:block;">Sign Up</a>
           </li>
-                    
-          <!-- Check what is in the Cart -->
-          <li class="nav-item">
-            <a class="nav-link" onclick="onClickCart()">Cart</a>
-          </li>
         </ul>
 
         <!-- Add search Buttom here -->
@@ -90,72 +85,12 @@
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark" id="strongDate"></strong>
           </p>
+          <small class="d-block text-right mt-3">
+            <strong class="d-block text-gray-dark" id="btnTransShowDetail" data-id="">Details</strong>
+          </small>
         </div>
-        <small class="d-block text-right mt-3">
-          <a class="btn" id="btnTransShowDetail" data-id="">Details</a>
-        </small>
         <br>
       </div>
-
-
-      <!-- Here is the detail for a trasaction -->
-      <div class="modal" id="transDetail" style="display: none">
-        <main role="main" class="container">
-        <h4>Transaction ID</h4>
-        <p id="transId">0x0123456789012345678901234567890123456789</p>
-        <div class="shopping-cart">
-          <div class="column-labels">
-            <label class="product-image">Image</label>
-            <label class="product-details">Product</label>
-            <label class="product-price">Price</label>
-            <label class="product-quantity">Quantity</label>
-            <label class="product-line-price">Total</label>
-          </div>
-
-          <div id="productRow">
-            <!-- ... -->
-          </div>
-
-          <div id="product-none">
-            <div class="product">
-              <div class="product-image"><img></div>
-              <div class="product-details">
-                <div class="product-title">title</div>
-                <p class="product-description">description</p>
-                <p class="product-description1">descrip1</p>
-                <p class="product-description2">descrip2</p>
-              </div>
-              <div class="product-price" id="product-price">0</div>
-              <div class="product-quantity" id="quantity">1</div>
-              <div class="product-line-price" id="product-line-price">0</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="totals">
-          <div class="totals-item">
-            <label>Subtotal</label>
-          <div class="totals-value" id="cart-subtotal">0</div>
-        </div>
-        <div class="totals-item">
-          <label>Tax (5%)</label>
-          <div class="totals-value" id="cart-tax">0</div>
-        </div>  
-        <div class="totals-item">
-          <label>Shipping</label>
-          <div class="totals-value" id="cart-shipping">0</div>
-        </div>
-        <div class="totals-item totals-item-total">
-          <label>Grand Total</label>
-          <div class="totals-value" id="cart-total">0</div>
-        </div>
-
-        <center><button class="btn btn-secondary" id="close">Back</button></center>
-      </main>
-    </div>
-
-
-
     </main>
 
 
