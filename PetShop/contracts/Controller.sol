@@ -40,7 +40,7 @@ contract Controller {
         address seller;          // address of the seller
         address buyer;           // address of the buyer
         uint256 price;           // total price in the trade
-        uint256 date;            // trade date
+        string date;            // trade date
     }
         
     /*--------------------------------------------------------------------------
@@ -197,7 +197,8 @@ contract Controller {
         address[] _puppiesIds, 
         address _seller, 
         address _buyer, 
-        uint256 _price
+        uint256 _price,
+        string _now
     ) 
         public 
     { 
@@ -206,7 +207,7 @@ contract Controller {
         transaction.seller = _seller;
         transaction.buyer = _buyer;
         transaction.price = _price;
-        transaction.date = now;
+        transaction.date = _now;
     }
        
     function getTransaction(address _transId) 
@@ -217,7 +218,7 @@ contract Controller {
             address, 
             address,
             uint256,
-            uint256
+            string
         ) 
     {
         return (
@@ -248,7 +249,9 @@ contract Controller {
         address _cartId,
         address _prodCartId,
         address[] _cart,
-        address[] _prodCart
+        address[] _prodCart,
+        // tradeTime
+        string _now
     ) 
         public
     {
@@ -256,7 +259,7 @@ contract Controller {
         accountsOnBC[_seller].balance = accountsOnBC[_seller].balance + _price;
         accountsOnBC[_buyer].balance = accountsOnBC[_buyer].balance - _price;
         // record transaction
-        setTransaction(_transId, _puppiesIds, _seller, _buyer, _price);
+        setTransaction(_transId, _puppiesIds, _seller, _buyer, _price, _now);
         accountsOnBC[_seller].transactions.push(_transId);
         accountsOnBC[_buyer].transactions.push(_transId);
         // update cart and prodcart
