@@ -1,4 +1,3 @@
- 
 
 Week2
 We have formed a group and I created the Trello and Bitbucket accounts for the team. 
@@ -23,3 +22,9 @@ This week, I have follow the instruction of pet-shop-tutorial and know the basic
 
 week 8
 This week, I have learnt how to connect the firebase to store data into it and My major job is  to complete the UI funciton.I have edited the signup and forgetpassword and login page but It seems that I need to make it more beautiful later and I need to complete more page and deal with the interaction with firebase.
+
+week 9
+This week, I have finised the signup and successfully store user info into firebase and I already finish update person info functions. Besides, I have design several other pages and I need to complete their function.
+
+week 10
+This week, I have improve my sign up and update person Info page and I have successfully realised the function of forget password and reset. Besides, I have fix some bugs in some pages. 
