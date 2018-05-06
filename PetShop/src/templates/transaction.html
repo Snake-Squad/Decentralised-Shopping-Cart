@@ -5,20 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Home Page</title>
+    <title>Transactions</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- custom style -->
     <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cart.css">
   </head>
+
+
 
   <body>
     <!-- ~~~~~~~~~~~~~~~~~ Navigation Bar ~~~~~~~~~~~~~~~~~ -->
-     <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class=" navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <!-- Logo, which is home -->
-      <a class="navbar-brand" href="#">
-      <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
+      <a class="navbar-brand" href="http://localhost:3000/">
+        <img class="d-block mx-auto mb-0" src="images/Logo-light.png" alt="" width="auto" height="30">
       </a>
 
       <!-- Add bar items -->
@@ -64,8 +69,81 @@
         <!-- </form> -->
       </div>
     </nav>
+
+
+
+
     <!-- Here starts the main page -->
-    <p>transactions</p>
+    <main role="main" class="container">
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-dark rounded box-shadow">
+        <div class="lh-125">
+            <h3 class="mb-0 text-white lh-125">Transactions</h3>
+        </div>
+      </div>
+
+      <!-- load and show all transactions here -->
+      <div id="allTransactions">
+        <!-- ... -->
+      </div>
+
+
+      <div class="my-3 p-3 bg-white rounded box-shadow" id="transTemplate" data-id="">
+        <h6 class="border-bottom border-gray pb-2 mb-0" id="h6UserID">From: 0x1234567890123456789012345678901234567890</h6>
+        <div class="media text-muted pt-3">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark" id="strongPrice">Price: 1000</strong>
+          </p>
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark" id="strongDate">Date: may 7th 2018</strong>
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Here is the detail for a trasaction -->
+      <div class="modal" id="transDetail" style="display: none">
+        <main role="main" class="container">
+        <h4>Transaction ID</h4>
+        <p id="transId">0x0123456789012345678901234567890123456789</p>
+        <div class="shopping-cart">
+          <div class="column-labels">
+            <label class="product-image">Image</label>
+            <label class="product-details">Product</label>
+            <label class="product-price">Price</label>
+            <label class="product-quantity">Quantity</label>
+            <label class="product-line-price">Total</label>
+          </div>
+
+          <div id="productRow">
+            <!-- ... -->
+          </div>
+
+          <div id="product-none">
+            <div class="product">
+              <div class="product-image"><img></div>
+              <div class="product-details">
+                <div class="product-title">title</div>
+                <p class="product-description">description</p>
+                <p class="product-description1">descrip1</p>
+                <p class="product-description2">descrip2</p>
+              </div>
+              <div class="product-price" id="product-price">0</div>
+              <div class="product-quantity" id="quantity">1</div>
+              <div class="product-line-price" id="product-line-price">0</div>
+            </div>
+          </div>
+          <center><button class="btn btn-secondary" id="close">Back</button></center>
+        </div>
+      </main>
+    </div>
+
+
+
+    </main>
+
+
+
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -76,9 +154,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/signup.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/transactions.js"></script>
+    
   </body>
 </html>
