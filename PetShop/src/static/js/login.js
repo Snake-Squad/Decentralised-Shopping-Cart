@@ -42,6 +42,7 @@ Login = {
             return instance.getAccount(Login.userId);
         }).then(function(result) {
             Login.petsInCartIds = result[0];
+            localStorage.setItem("curBalance", parseInt(result[2]));
             var limit = Login.petsInCartIds.length;
             return Login.getPuppyDetail(0, limit);
         }).catch(function(err) {

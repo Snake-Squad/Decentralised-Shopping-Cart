@@ -33,6 +33,7 @@ function recalculateCart() {
     var tax = subtotal * taxRate;
     var shipping = (subtotal > 0 ? shippingRate : 0);
     var total = subtotal + tax + shipping;
+    Controller.total = total;
   
     /* Update totals display */
     $('.totals-value').fadeOut(fadeTime, function() {

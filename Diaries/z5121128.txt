@@ -63,4 +63,4 @@ on localhost:7545.
 week 10
 
 Together with Minzhen, we updated sign_up part. I help Minzhen to fix one bug so that data can be saved on firebase before
-jumping to another webpage. I also edited so many fils to link block chain with our server. Currently, on block chain, I finished sign up users, recharge ...
+jumping to another webpage. I also edited so many fils to link block chain with our server. Currently, on block chain, I finished sign up, login, recharge, add a puppy, edit a puppy, add puppy to cart, delete puppies from cart, search puppies, checkout, show transactions and logout. All of the codes that setting or getting data on blockchain are coded by my own.

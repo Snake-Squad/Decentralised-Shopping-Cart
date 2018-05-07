@@ -3,6 +3,8 @@ Controller = {
     contracts: {},
     userId: null,
     usIds: null,
+    total: 0,
+    curBalance: null,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -104,6 +106,8 @@ Controller = {
     },
 
     backToHome: function() {
+        localStorage.setItem(
+            "curBalance", Controller.curBalance - Controller.total);
         setCartCookie(puppies, 7);
         window.location.replace("http://localhost:3000/");
     }
@@ -130,6 +134,12 @@ function getTime(){
 
 
 $("#btn-checkout").click(function() {
-    Controller.initWeb3();
+    Controller.curBalance = parseInt(localStorage.getItem("curBalance"));
+    if (Controller.curBalance >= Controller.total) {
+        Controller.initWeb3();
+    } else {
+        alert("Insufficient Funds! Please recharge first.");
+        window.location.replace("http://localhost:3000/recharge.html");
+    }
 });
 

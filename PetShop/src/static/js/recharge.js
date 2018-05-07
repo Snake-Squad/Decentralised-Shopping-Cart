@@ -3,7 +3,7 @@ Controller = {
     contracts: {},
     username: null,
     userId: null,
-    amount: null,
+    amount: 0,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -42,6 +42,8 @@ Controller = {
             console.log("stored on block chain:", result);
             $("#userEmail").html(Controller.username);
             $("#userBalance").html("Balance: $" + result[2]["c"][0]);
+            localStorage.setItem("curBalance", result[2]["c"][0]);
+            console.log(localStorage);
         }).catch(function(err) {
             console.log(err.message);
         });
