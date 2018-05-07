@@ -38,3 +38,6 @@ week 8
 
 This week i found some bugs at cart page, search page and fixed them. I learned how to transfer eth-coins between Metamask accounts, then i found it unnecessary to our project because my team designed to use our own coins. After that, we had a meeting that each member talked about their job schedule.
 
+week 9
+
+This week i got the data(user, product information) from BC(which coded by my scrum master), then i updated the function of cart and search. Moreover, I tested our websites for users and found many bugs that need to fixed. I think every member of our team has completed their work, we really work together. 
