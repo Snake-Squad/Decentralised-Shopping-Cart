@@ -79,8 +79,8 @@ Controller = {
             petTemplate.find('.pet-location').text(data[i][4]);
             petTemplate.find('.pet-price').text(data[i][5]);
             petTemplate.find('img').attr('src', data[i][6]);
-
-            petTemplate.find('.btn-add').attr('data-id', i);
+            console.log(i);
+            petTemplate.find('.btn-edit').attr('data-id', i);
             petsRow.append(petTemplate.html());
         }
         console.log("Details of all puppies:", data);
