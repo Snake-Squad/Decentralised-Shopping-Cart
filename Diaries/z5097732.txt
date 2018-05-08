@@ -33,4 +33,5 @@ Week8:
 I found a API named filestack for import image as url and then our website can store the image into the block chain. And I also begin to write add_ puppy function.Store the puppy information into block chain.I ever want to use API to send email in the html to change the password. Finally, I find it is not convinent for user. So I decide just use question to change password in the firebase.
 
 Week9:
+This week, I write edit function and I try to just display the puppy which the user added into block Chain. And then, I try to write the search function and let it can be used in the every html page. However, it can just search by accurate keywords.
 
