@@ -7,12 +7,10 @@ function onClickLogin() {
 }
 
 function onClickSignUp() {
-    alert("Sign Up");
     window.location.href="signup.html";
 }
 
 function onClickCart() {
-    alert("Cart");
     window.location.href="http://localhost:3000/cart.html";
 }
 
