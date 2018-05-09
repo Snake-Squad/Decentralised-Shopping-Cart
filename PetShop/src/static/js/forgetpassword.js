@@ -23,12 +23,13 @@ function answerQuestions() {
          
                 if((userVal.question1_answer == question1_answer)&&(userVal.question2_answer == question2_answer)&&(userVal.question3_answer == question3_answer))
                 {
-                    //addCookie("userName", username, userId, 7, "/");
-                    
-                    alert("you can reset");
+
                     document.getElementById("questionsForm").style.display = 'none';
                     document.getElementById("resetPassword").style.display = 'block';
                     //window.location.replace("resetPassword.html");
+                }
+                else{
+                    alert("Answer is incorrect, Please input again.");
                 }
             return true; // break the loop
             }
@@ -46,7 +47,6 @@ function resetPassword(){
     var confirm_password = document.getElementById("psw-repeat").value.trim();
     // checkValidation here
     var checkValid = 1;
-    alert("fighting");
     var users = firebase.database().ref().child('users');
     console.log(getCookieValue("userName"));
     // This must be the last function of all

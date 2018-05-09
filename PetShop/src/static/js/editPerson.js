@@ -16,6 +16,22 @@ function editPerson() {
     var sid = states.selectedIndex;
     var state = states.options[sid].text; 
     var zip = document.getElementById("zip").value.trim();
+    
+    
+    var questionFirsts = document.getElementById("question1");
+    var quest1 = questionFirsts.selectedIndex ;             
+    var question1= questionFirsts.options[quest1].text;
+    var question1_answer = document.getElementById("question1_answer").value.trim();
+    
+    var questionSeconds = document.getElementById("question2");
+    var quest2 = questionSeconds.selectedIndex ;             
+    var question2= questionSeconds.options[quest2].text;
+    var question2_answer = document.getElementById("question2_answer").value.trim();
+    
+    var questionThirds = document.getElementById("question3");
+    var quest3 = questionThirds.selectedIndex ;             
+    var question3 = questionThirds.options[quest3].text;
+    var question3_answer = document.getElementById("question3_answer").value.trim();
     // get the database
     var users = firebase.database().ref().child('users');
     
@@ -24,7 +40,7 @@ function editPerson() {
     
     // checkValidation here
     var checkValid = 1;
-   
+
 
     //check password and confirmPassword are not empty
     if(password == "" ||confirmPassword == "") {
@@ -43,6 +59,11 @@ function editPerson() {
             alert("Please enter a valid address for shipping updates.");
             window.location.replace("/signup.html");
         }
+    }
+    
+    if(question1_answer=="" || question2_answer==""|| question3_answer==""){
+        checkValid = 0;
+        alert("Security question's answers cannot be empty.");
     }
     if(checkValid==1){
         // This must be the last function of all
@@ -73,7 +94,13 @@ function editPerson() {
                     "suite": suite, 
                     "country": country, 
                     "state": state,
-                    "zip": zip
+                    "zip": zip,
+                    "question1": question1,
+                    "question1_answer": question1_answer,
+                    "question2": question2,
+                    "question2_answer": question2_answer,
+                    "question3": question3,
+                    "question3_answer": question3_answer,
         
                  
                 });
@@ -84,7 +111,6 @@ function editPerson() {
                
                 }
             });
-            alert("Success Update");
             window.location.replace("/");
             /*if (isValid) {
                 window.location.replace("/");
@@ -152,13 +178,42 @@ window.onload = function(){
               
               document.getElementById("country-option1").checked;
               var state_options=document.getElementById("state");
-            
+              
               for(var i = 0; i < state_options.length; i++) {  
                 if (userVal.state == state_options[i].value) 
                     {  
+
                         state_options[i].selected=true;
                     }  
                 } 
+                
+              var question1_options=document.getElementById("question1");
+
+              for(var i = 0; i < question1_options.length; i++) {  
+                if (userVal.question1 == question1_options[i].value) 
+                    {  
+                        question1_options[i].selected=true;
+                    }  
+                } 
+              document.getElementById("question1_answer").value=userVal.question1_answer;
+              var question2_options=document.getElementById("question2");
+            
+              for(var i = 0; i < question2_options.length; i++) {  
+                if (userVal.question2 == question2_options[i].value) 
+                    {  
+                        question2_options[i].selected=true;
+                    }  
+                }
+              document.getElementById("question2_answer").value=userVal.question2_answer;
+              var question3_options=document.getElementById("question3");
+            
+              for(var i = 0; i < question3_options.length; i++) {  
+                if (userVal.question3 == question3_options[i].value) 
+                    {  
+                        question3_options[i].selected=true;
+                    }  
+                }
+              document.getElementById("question3_answer").value=userVal.question3_answer;
               document.getElementById("zip").value=userVal.zip;
               
               return true;          // break the loop

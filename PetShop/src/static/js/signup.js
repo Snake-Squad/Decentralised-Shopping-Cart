@@ -122,10 +122,9 @@ function setOnFirebase(
 }
 
 
-
 $("#btnSignUp").click(function() {
     // get personal information from the webpage
-    alert("in signup");
+   
     var username = document.getElementById("email").value.trim();
     var firstName = document.getElementById("first_name").value.trim();
     var lastName = document.getElementById("last_name").value.trim();
@@ -158,39 +157,39 @@ $("#btnSignUp").click(function() {
     var question3 = questionThirds.options[quest3].text;
     var question3_answer = document.getElementById("question3_answer").value.trim();
     
-    alert(question2,question3);
     // checkValidation here
-    var isValid = true;
+    var isValid = 1;
     //check the email is right or not
     if (username != "") {
         var reg = /^[0-9a-zA-Z_]{1,24}@(163|126|qq|yahoo|gmail|sina|hotmail)\.(com|com\.cn|cn|la)$/;
         isok = username.search(reg);
         if (isok < 0) {
-            isValid = false;
+            isValid = 0;
             alert("Please enter a valid email address for shipping updates." + 
                 "\n" +
                 "[0-9a-zA-Z_]{1,24}@(163/126/qq/yahoo/gmail/sina/hotmail).(com/com.cn/cn/la");
             //window.location.replace("/signup.html");
         }
     } else {
-        isValid = false;
+        isValid = 0;
         alert("Email address cannot be empty, please input again.");
         //window.location.replace("/signup.html");
     }
 
     //check password and confirmPassword are not empty
     if(password == "" ) {
-        isValid = false;
+        isValid = 0;
         alert("Password cannot be empty," +
             " please input again.");
         //window.location.replace("/signup.html");   
     }
     if(password !=confirmPassword) {
-        isValid = false;
-        alert("ConfirmPassword cannot be the same with Password"+
+        isValid = 0;
+        alert("ConfirmPassword cannot be the same with Password, "+
         "Please input ConfirmPassword again.");
         //window.location.replace("/signup.html");
     }
+    
 
     //check address is valid
     if (street != "" && suite != "") {      
@@ -202,8 +201,18 @@ $("#btnSignUp").click(function() {
             //window.location.replace("/signup.html");
         }
     }
+    else{
+        isValid = 0;
+        alert("Address cannot be empty.");
+    }
+    
+    if(question1_answer=="" || question2_answer==""|| question3_answer==""){
+        isValid = 0;
+        alert("Security question's answers cannot be empty.");
+    }
 
     if (isValid) {
+      
         // if all inputs are validate
         if (password != confirmPassword) {
             alert("Password and confirm password are not same, sign up again");

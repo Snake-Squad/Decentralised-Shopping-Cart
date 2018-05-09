@@ -161,7 +161,12 @@
                  <select class="custom-select d-block w-100" id="state">
                   <option value="" id="state-option1"></option>
                   <option name="state" id="state-option2" value="NSW">NSW</option>
-                  <option name="state" id="state-option3" value="California">Queensland</option>            
+                  <option name="state" id="state-option3" value="Queensland">Queensland</option>
+                  <option name="state" id="state-option4" value="Victoria">Victoria</option>
+                  <option name="state" id="state-option5" value="ACT">ACT</option>   
+                  <option name="state" id="state-option6" value="South Australia">South Australia</option>
+                  <option name="state" id="state-option7" value="Northern Territory">Northern Territory</option> 
+                  <option name="state" id="state-option8" value="Western Australia">Western Australia</option>                  
                 </select> 
               </div>
               
@@ -172,7 +177,45 @@
             </div>
 
           <hr>
+          
+          <h3 class="mb-3">Security Questions</h3>
+            <div class="mb-3">
+              <label for="question1">Question1</label>
+               <div class="mb-3"> 
+               <select class="custom-select d-block w-100" id="question1">
+                  <option id="q1_option1" value="What's your name?">What's your name?</option>
+                  <option id="q1_option2" value="What's your favorite food?">What's your favorite food?</option>
+                  <option id="q1_option3" value="What's your favorite animal?">What's your favorite animal?</option>
+                </select> 
+              </div>
+              <input type="text" class="form-control" id="question1_answer" placeholder="answer" required> 
+            </div>
 
+            <div class="mb-3">
+              <label for="question2">Question2</label>
+               <div class="mb-3">
+               <select class="custom-select d-block w-100" id="question2">
+                  <option id="q2_option1" value="Where is your home?">Where is your home?</option>
+                  <option id="q2_option2" value="Which country you like most?">Which country you like most?</option>
+                  <option id="q2_option3" value="What's your dream?">What's your dream?</option>
+                </select>  
+              </div>
+              <input type="text" class="form-control" id="question2_answer" placeholder="answer" required> 
+            </div>
+            
+            <div class="mb-3">
+              <label for="question3">Question3</label>
+               <div class="mb-3">
+               <select class="custom-select d-block w-100" id="question3">
+                  <option id="q3_option1" value="What's your mother's name?">What's your mother's name?</option>
+                  <option id="q3_option2" value="What's your father's name?">What's your father's name?</option>
+                  <option id="q3_option3" value="Which color you like most?">Which color you like most?</option>
+                </select>  
+              </div>
+              <input type="text" class="form-control" id="question3_answer" placeholder="answer" required> 
+            </div>
+          
+          <hr>
           <button class="btn btn-secondary btn-lg btn-block" type="submit" 
             id="editPersonBtn" name="editPerson" onclick="editPerson()">Confirm Personal Information
           </button>
@@ -196,6 +239,7 @@
   <script src="js/truffle-contract.js"></script>
   <script src="js/simpleCart.min.js"> </script>
   <script src="js/editPerson.js"> </script>
+  <script src="js/logout.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/signup.js"></script>
   <script src="js/generators.js"></script>
