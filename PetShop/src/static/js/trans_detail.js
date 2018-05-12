@@ -75,8 +75,8 @@ Controller = {
             cartTemplate.find(".product-line-price").text(info[5]);
             cartRow.append(cartTemplate.html());
             subTotal += parseInt(info[5]);
+            tax += Math.round(parseInt(info[5]) * 0.05);
         };
-        tax = Math.round(subTotal * 0.05);
         grandTotal = subTotal + tax + 15;
         return Controller.showCost(subTotal, tax, grandTotal);
     },
