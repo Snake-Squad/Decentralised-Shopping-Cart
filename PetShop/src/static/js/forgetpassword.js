@@ -67,7 +67,7 @@ function resetPassword(){
                 if (userVal.email == value) {
    
                     firebase.database().ref().child('users/' + userKey).update({                 
-                        "password": password,
+                        "password": md5(password),
                     });
                     window.location.replace("/");
                     return true;

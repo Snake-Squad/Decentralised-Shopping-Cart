@@ -7,7 +7,6 @@ Controller = {
     validOnSales: [],
     petsInCartIds: [],
     petInCart: [],
-    cartLoaded: false,
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -126,19 +125,6 @@ Controller = {
                 if(petName.includes(searchkey) || petBreed.includes(searchkey) || petLocation.includes(searchkey)){
                     searchResult.push(data[i]);
                 }
-                // for (var j = 1; j < data[i].length-1; j++) {
-                //     if (typeof(data[i][j]) == "string") {
-                //         if(data[i][j].toLowerCase() == searchkey) {
-                //             searchResult.push(data[i]);
-                //             break
-                //         }
-                //     } else {
-                //         if(Object.values(data[i][j])[2][0] == searchkey) {
-                //             searchResult.push(data[i]);
-                //             break;
-                //         }
-                //     }
-                // }
             }
             // console.log(searchResult);
             Controller.onSales = searchResult;
