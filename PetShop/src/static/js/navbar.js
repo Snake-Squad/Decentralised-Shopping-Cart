@@ -54,6 +54,45 @@ function searchPet() {
     var value = e.options[e.selectedIndex].value;
     var searchKey = document.getElementById("searchInput").value.toLowerCase();
     var searchItems = [];
+    var regString = /^[A-Za-z]+$/;
+    var regNumber = /^\d+$/; 
+    if(value!="Price"){
+        if(!regString.test(searchKey)){
+            alert(value+" cannot contain number!");
+            window.location.replace("http://localhost:3000/");
+        }
+    }
+    else{
+        //alert(','searchKey);
+        if(searchKey.indexOf(",")<0){
+            alert("Search should like 'number1,number2' and number < number2");
+            window.location.replace("http://localhost:3000/");
+        }
+        else{
+            var price=searchKey.split(",");
+            if(price.length!=2)
+            {
+                alert("Search should only have two numbers: 'number1,number2' and number < number2");
+                window.location.replace("http://localhost:3000/");
+            }
+            else{
+                if(!regNumber.test(price[0])||!regNumber.test(price[1]))
+                {
+                    alert("Price should be an Integer!");
+                    window.location.replace("http://localhost:3000/");
+                }
+                else{
+                    if(price[0]>price[1])
+                    {
+                        alert("The left number should less than the right number!");
+                        window.location.replace("http://localhost:3000/");
+                    }
+                }
+            }
+        }
+    }
+
+    
     searchItems.push(searchKey);
     searchItems.push(value);
     if (typeof(Storage) !== "undefined") {
