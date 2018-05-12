@@ -134,12 +134,19 @@ function getTime(){
 
 
 $("#btn-checkout").click(function() {
-    Controller.curBalance = parseInt(localStorage.getItem("curBalance"));
-    if (Controller.curBalance >= Controller.total) {
-        Controller.initWeb3();
+    var value = getCookieValue("userName"); 
+    console.log(value);
+    if(value.length == 0) {
+        alert("You need to login first.")
+        window.location.replace("http://localhost:3000/login.html");
     } else {
-        alert("Insufficient Funds! Please recharge first.");
-        window.location.replace("http://localhost:3000/recharge.html");
+        Controller.curBalance = parseInt(localStorage.getItem("curBalance"));
+        if (Controller.curBalance >= Controller.total) {
+            Controller.initWeb3();
+        } else {
+            alert("Insufficient Funds! Please recharge first.");
+            window.location.replace("http://localhost:3000/recharge.html");
+        }
     }
 });
 
