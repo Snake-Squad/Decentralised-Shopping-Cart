@@ -118,6 +118,7 @@ Controller = {
     // -------------------------------------------------------------------------
     showOnSales: function() {
         var data = Controller.onSales;
+        console.log("Data: ",data);
         var userId = getCookieValue("userName");
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
