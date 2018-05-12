@@ -11,10 +11,7 @@ var puppies = [];
  * Find Mailling address
  * ------------------------------------------------------
 */
-function findMaillingAddress(){
-    //alert("forget password--------------in login.js");
-     //  Initialize Firebase
-    
+function findMaillingAddress() {    
     var config = {
         apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
         authDomain: "comp9900-4b79d.firebaseapp.com",
@@ -23,33 +20,29 @@ function findMaillingAddress(){
         storageBucket: "comp9900-4b79d.appspot.com",
         messagingSenderId: "445311599888"
     };
-    
     firebase.initializeApp(config);
     
     // get user's email and password from the webpage
     var username = getCookieValue("userName")[0];
-
-    
     var users = firebase.database().ref().child('users');
 
-    
     // This must be the last function of all
     users.on("value", function(snapshot) {
         snapshot.forEach(function(user) {
             var userVal = user.val(); // user's info (email, fn, ln, pw, role)
             // check whether it matches or not
             if (userVal.email == username) {
-                
-                document.getElementById("address").innerHTML=userVal.suite+" "+userVal.street+" "+userVal.state+","+userVal.country;
-                return userVal.suite+" "+userVal.street+" "+userVal.state
-                //print("hhd")
-
+                var mailingAddr = userVal.suite + ", " + userVal.street + ", " +
+                    userVal.state + ", " + userVal.country + ", " + userVal.zip;
+                $("#address").html(mailingAddr);
+                Controller.mailing = mailingAddr;
+                return true;
             }
         });
-  
     });
-    
 }
+
+
 /* -----------------------------------------------------------------------------
  * Calculate the total cost.
  * -----------------------------------------------------------------------------

@@ -93,6 +93,7 @@ Controller = {
             Controller.contracts.Controller.deployed().then(function(instance) {
                 var now = getTime();
                 now.toString();
+                console.log(Controller.mailing);
                 return instance.checkOut(
                     transId, sellingPuppies, sellId, Controller.userId, price, 
                     newCartId, newProdCartId, inCartPuppyId, prodCart, now,
