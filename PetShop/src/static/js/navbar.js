@@ -49,10 +49,15 @@ $("#navLogout").click(function() {
  * -----------------------------------------------------------------------------
  */
 function searchPet() {
-    var van = document.getElementById("searchPetsRow");
+    /*store search tpye and input value into localStorage */
+    var e = document.getElementById("searchType");
+    var value = e.options[e.selectedIndex].value;
     var searchKey = document.getElementById("searchInput").value.toLowerCase();
+    var searchItems = [];
+    searchItems.push(searchKey);
+    searchItems.push(value);
     if (typeof(Storage) !== "undefined") {
-        localStorage.setItem("searchKey", searchKey);
+        localStorage.setItem("searchItems", searchItems);
         window.location.replace("http://localhost:3000/");
     }
   }
