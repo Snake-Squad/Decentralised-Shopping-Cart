@@ -118,7 +118,7 @@ Controller = {
     // -------------------------------------------------------------------------
     showOnSales: function() {
         var data = Controller.onSales;
-        console.log("Data: ",data);
+        // console.log("Data: ",data);
         var userId = getCookieValue("userName");
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
@@ -140,17 +140,30 @@ Controller = {
     markAdded: function() {
         var onSales = Controller.onSales;
         var petInCart = Controller.petInCart;
+        console.log("onSales: ",onSales);
+        console.log("petInCart: ",petInCart);
+
         for (var i = 0; i < petInCart.length; i++) {
             var petAddr = petInCart[i].split(',')[7];
+            console.log(petAddr);
+            if(onSales.length == 0){
+                petInCart.splice(i,1);
+                $("#shop-cart-index").html(petInCart.length);
+            }
+            
             for (var j = 0; j < onSales.length; j++) {
                 // console.log(onSales[j][7]);
                 if (petAddr == onSales[j][7]) {
                     // console.log("added", petAddr);
                     $('#'+petAddr).text('Added').attr('disabled', true);
                     break;
+                }else{
+                    petIncart.splice(i,1);
+                    $("#shop-cart-index").html(petInCart.length);
                 }
             }
         }
+        Controller.petInCart = petInCart;
         return Controller.bindEvents();
     },
 
@@ -178,7 +191,7 @@ Controller = {
 };
 
 
-window.onload = function() {  
+window.onload = function() {
     var value = getCookieValue("userName");
     console.log(value);
     if(value === undefined || value == null || value.length == 0) {
