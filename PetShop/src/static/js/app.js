@@ -87,11 +87,12 @@ Controller = {
     },
 
     handleSearch: function () {
-        // console.log("all onSales", Controller.onSales);
-        // console.log("localStorage", localStorage);
-        var searchItems = localStorage.getItem("searchItems").split(',');
+        if(localStorage.getItem("searchItems") == null){
+            var searchItems = "";
+        }else{
+            var searchItems = localStorage.getItem("searchItems").split(',');
+        }
         var data= Controller.onSales;
-        console.log(data);
         var searchResult = [];
         if(searchItems != ""){
             if (searchItems.length == 2) {
