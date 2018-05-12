@@ -220,7 +220,7 @@ $("#btnSignUp").click(function() {
             var userIdBC = generateAddress();
             setOnFirebase(
               userIdBC,
-              username, firstName, lastName, password, 
+              username, firstName, lastName, md5(password), 
               street, suite, country, state, zip,question1,question1_answer,question2,question2_answer,question3,question3_answer,
             );
         }
