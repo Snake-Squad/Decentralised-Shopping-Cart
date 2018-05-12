@@ -94,7 +94,7 @@ function onClickCheckLogin() {
 
     // get user's email and password from the webpage
     var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+    var password = md5(document.getElementById("password").value);
 
     // get the database
     var users = firebase.database().ref().child('users');
