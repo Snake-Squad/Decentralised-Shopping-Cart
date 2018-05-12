@@ -118,17 +118,20 @@ Controller = {
     // -------------------------------------------------------------------------
     showOnSales: function() {
         var data = Controller.onSales;
+        var userId = getCookieValue("userName");
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
         for (i = 0; i < data.length; i ++) {
-            petTemplate.find('.panel-title').text(data[i][1]);
-            petTemplate.find('.pet-breed').text(data[i][2]);
-            petTemplate.find('.pet-age').text(data[i][3]);
-            petTemplate.find('.pet-location').text(data[i][4]);
-            petTemplate.find('.pet-price').text(data[i][5]);
-            petTemplate.find('img').attr('src', data[i][6]);
-            petTemplate.find('.btn-add').attr('data-id', i).attr('id', data[i][7]);
-            petsRow.append(petTemplate.html());
+            if(data[i][0] != userId[1]){
+                petTemplate.find('.panel-title').text(data[i][1]);
+                petTemplate.find('.pet-breed').text(data[i][2]);
+                petTemplate.find('.pet-age').text(data[i][3]);
+                petTemplate.find('.pet-location').text(data[i][4]);
+                petTemplate.find('.pet-price').text(data[i][5]);
+                petTemplate.find('img').attr('src', data[i][6]);
+                petTemplate.find('.btn-add').attr('data-id', i).attr('id', data[i][7]);
+                petsRow.append(petTemplate.html());
+            }           
         }
         return Controller.markAdded();
     },
