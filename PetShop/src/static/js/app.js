@@ -91,23 +91,37 @@ Controller = {
         // console.log("all onSales", Controller.onSales);
         // console.log("localStorage", localStorage);
         var searchkey = localStorage.getItem("searchKey");
+        console.log(searchkey);
         var searchResult = [];
         if (searchkey != "") {
+            // var searchkey = searchkey.toLowerCase();
+            // console.log(searchkey);
             var data= Controller.onSales;
+            console.log(data);
             for (var i = 0; i < data.length; i++) {
-                for (var j = 0; j < data[i].length; j++) {
-                    if (typeof(data[i][j]) == "string") {
-                        if(data[i][j].toLowerCase() == searchkey) {
-                            searchResult.push(data[i]);
-                            break
-                        }
-                    } else {
-                        if(Object.values(data[i][j])[2][0] == searchkey) {
-                            searchResult.push(data[i]);
-                            break;
-                        }
-                    }
+                var petName = data[i][1].toLowerCase();
+                var petBreed = data[i][2].toLowerCase();
+                var petAge = parseInt(data[i][3]);
+                var petLocation = data[i][4].toLowerCase();
+                var petPrice = parseInt(data[i][5]);
+                console.log(petName,petBreed,petAge,petLocation,petPrice);
+                
+                if(petName.includes(searchkey) || petBreed.includes(searchkey) || petLocation.includes(searchkey)){
+                    searchResult.push(data[i]);
                 }
+                // for (var j = 1; j < data[i].length-1; j++) {
+                //     if (typeof(data[i][j]) == "string") {
+                //         if(data[i][j].toLowerCase() == searchkey) {
+                //             searchResult.push(data[i]);
+                //             break
+                //         }
+                //     } else {
+                //         if(Object.values(data[i][j])[2][0] == searchkey) {
+                //             searchResult.push(data[i]);
+                //             break;
+                //         }
+                //     }
+                // }
             }
             // console.log(searchResult);
             Controller.onSales = searchResult;
