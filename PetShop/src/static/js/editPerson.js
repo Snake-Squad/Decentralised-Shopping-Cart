@@ -87,7 +87,7 @@ function editPerson() {
               
                 firebase.database().ref().child('users/' + userKey).update({
                    
-                    "password": password,
+                    "password": md5(password),
                     "first_name": firstName,
                     "last_name":lastName,
                     "street": street, 
