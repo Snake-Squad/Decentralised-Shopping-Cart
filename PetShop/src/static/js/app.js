@@ -91,44 +91,60 @@ Controller = {
         // console.log("localStorage", localStorage);
         var searchItems = localStorage.getItem("searchItems").split(',');
         var data= Controller.onSales;
-        if (searchItems.length == 2) {
-            var searchkey = searchItems[0];
-            var searchtype = searchItems[1];
-            console.log(searchkey,searchtype);
-            if(searchtype = "Name"){
-
-            }
-        }else{
-            var minPrice = searchItems[0];
-            var maxPrice = searchItems[1];
-            var searchtype = searchItems[2];
-            console.log(minPrice,maxPrice,searchtype);
-        }
-        
-        
-        
-        // if(searchItems[1] == "Name" || searchItems[1] == "Breed" || searchItems[1] == "Age" || searchItems[1] == )
+        console.log(data);
         var searchResult = [];
-        if (searchkey != "") {
-            // var searchkey = searchkey.toLowerCase();
-            // console.log(searchkey);
-            var data= Controller.onSales;
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                var petName = data[i][1].toLowerCase();
-                var petBreed = data[i][2].toLowerCase();
-                var petAge = parseInt(data[i][3]);
-                var petLocation = data[i][4].toLowerCase();
-                var petPrice = parseInt(data[i][5]);
-                console.log(petName,petBreed,petAge,petLocation,petPrice);
-                
-                if(petName.includes(searchkey) || petBreed.includes(searchkey) || petLocation.includes(searchkey)){
-                    searchResult.push(data[i]);
+        if(searchItems != ""){
+            if (searchItems.length == 2) {
+                var searchkey = searchItems[0];
+                var searchtype = searchItems[1];
+                if(searchtype == "Name"){
+                    //Name fuzzy match
+                    for (var i = 0; i < data.length; i++) {
+                        var petName = data[i][1].toLowerCase();
+                        if (petName.includes(searchkey)) {
+                            searchResult.push(data[i]);
+                        }
+                    }
+                }else if (searchtype == "Breed") {
+                    //breed fuzzy match
+                    for (var i = 0; i < data.length; i++) {
+                        var petBreed = data[i][2].toLowerCase();
+                        if (petBreed.includes(searchkey)) {
+                            searchResult.push(data[i]);
+                        }
+                    }
+                }else if (searchtype == "Age") {
+                    //age 100% match
+                    for (var i = 0; i < data.length; i++) {
+                        var petAge = parseInt(data[i][3]);
+                        if (petAge == searchkey) {
+                            searchResult.push(data[i]);
+                        }
+                    }
+                }else{
+                    //location fuzzy match
+                    for (var i = 0; i < data.length; i++) {
+                        var petLocation = data[i][4].toLowerCase();
+                        if (petLocation.includes(searchkey)) {
+                            searchResult.push(data[i]);
+                        }
+                    }
+                }
+            }else{
+                // price between minPrice and maxPrice
+                var minPrice = searchItems[0];
+                var maxPrice = searchItems[1];
+                var searchtype = searchItems[2];
+                // console.log(minPrice,maxPrice,searchtype);
+                for (var i = 0; i < data.length; i++) {
+                    var petPrice = parseInt(data[i][5]);
+                    if((petPrice >= minPrice)&&(petPrice <= maxPrice)){
+                        searchResult.push(data[i]);
+                    }
                 }
             }
-            // console.log(searchResult);
             Controller.onSales = searchResult;
-            localStorage.setItem("searchItems", "");
+            localStorage.setItem("searchItems", "");  
         }
         return Controller.showOnSales();
     },
@@ -136,7 +152,7 @@ Controller = {
     // -------------------------------------------------------------------------
     showOnSales: function() {
         var data = Controller.onSales;
-        // console.log("Data: ",data);
+        console.log("Data: ",data);
         var userId = getCookieValue("userName");
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
