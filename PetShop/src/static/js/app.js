@@ -90,8 +90,25 @@ Controller = {
     handleSearch: function () {
         // console.log("all onSales", Controller.onSales);
         // console.log("localStorage", localStorage);
-        var searchkey = localStorage.getItem("searchKey");
-        console.log(searchkey);
+        var searchItems = localStorage.getItem("searchItems").split(',');
+        var data= Controller.onSales;
+        if (searchItems.length == 2) {
+            var searchkey = searchItems[0];
+            var searchtype = searchItems[1];
+            console.log(searchkey,searchtype);
+            if(searchtype = "Name"){
+
+            }
+        }else{
+            var minPrice = searchItems[0];
+            var maxPrice = searchItems[1];
+            var searchtype = searchItems[2];
+            console.log(minPrice,maxPrice,searchtype);
+        }
+        
+        
+        
+        // if(searchItems[1] == "Name" || searchItems[1] == "Breed" || searchItems[1] == "Age" || searchItems[1] == )
         var searchResult = [];
         if (searchkey != "") {
             // var searchkey = searchkey.toLowerCase();
@@ -125,7 +142,7 @@ Controller = {
             }
             // console.log(searchResult);
             Controller.onSales = searchResult;
-            localStorage.setItem("searchKey", "");
+            localStorage.setItem("searchItems", "");
         }
         return Controller.showOnSales();
     },
@@ -214,7 +231,7 @@ window.onload = function() {
         Controller.userId = value[0];
     }
     var petInCart = getCartCookie();
-    console.log(petInCart);
+    // console.log(petInCart);
     Controller.petInCart = petInCart;
     Controller.initWeb3();
 }
