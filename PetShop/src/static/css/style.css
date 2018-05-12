@@ -194,7 +194,7 @@ ul.multi-column-dropdown h6 {
 	    margin: 5px 0;
 }
 .multi-column-dropdown li a {
-        display: block;
+    display: block;
     clear: both;
     line-height: 1.428571429;
     color: #000;
@@ -203,7 +203,7 @@ ul.multi-column-dropdown h6 {
 }
 .multi-column-dropdown li a.list {
     font-weight: 600;
-	    margin-bottom: 7px;
+	margin-bottom: 7px;
 }
 .dropdown-menu .divider {
     height: 0px;

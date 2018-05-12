@@ -1,4 +1,10 @@
 
+select {
+    height: 40px;
+    color: red; 
+    margin-right: 5px;
+}
+
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
@@ -103,7 +109,9 @@ hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
- 
+
+
+
 /* The Close Button (x) */
 .close {
     position: absolute;
