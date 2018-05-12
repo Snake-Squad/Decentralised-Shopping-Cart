@@ -16,6 +16,7 @@
   <!-- Custom styles for this template -->
   <link href="css/sign_up.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="css/navbar.css" rel="stylesheet">
   <!-- Load online javascripts -->
 
 
@@ -72,6 +73,15 @@
         <!-- Add search Buttom here -->
         <!-- <form class="form-inline my-2 my-lg-0"> -->
           <input class="form-control mr-sm-2" style="width: 20%" type="search" placeholder="Search" id = "searchInput">
+          <!-- selection for search type -->
+          <select id = "searchType">
+            <option value="Name">Name</option>
+            <option value="Breed">Breed</option>
+            <option value="Age">Age</option>
+            <option value="Location">Location</option>
+            <option value="Price">Price</option>
+          </select>          
+
           <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchPet()" >Search</button>
         <!-- </form> -->
       </div>
