@@ -61,18 +61,10 @@ Controller = {
 
     getAUserOnBC: function() {
         addCookie("userName", Controller.username, Controller.userId, 7, "/"); 
+        localStorage.setItem("searchItems", "");
+        localStorage.setItem("searchKey", "");
         console.log("Added On Block Chain.");               
         window.location.href = "http://localhost:3000/";
-    //     var ControllerInstance;
-    //     Controller.contracts.Controller.deployed().then(function(instance) {
-    //     ControllerInstance = instance;
-    //         return ControllerInstance.getAccount(Controller.userId);
-    //     }).then(function(result) {
-    //         console.log("stored on block chain:", result);
-    //         alert(result[0]);
-    //     }).catch(function(err) {
-    //         console.log(err.message);
-    //     });
     }
 };
 

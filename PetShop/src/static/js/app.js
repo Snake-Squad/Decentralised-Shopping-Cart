@@ -53,7 +53,6 @@ Controller = {
     },
 
     isOnSale: function(i) {
-        // console.log(i);
         if (i == Controller.puppyList.length) {
             return Controller.handleSearch();
         }
@@ -73,7 +72,6 @@ Controller = {
     },
 
     getPuppyInfo: function(puppyId, i) {
-        // console.log(puppyId);
         Controller.contracts.Controller.deployed().then(function(instance) {
             return instance.getPuppyInfo(puppyId);
         }).then(function(info) {
@@ -89,7 +87,7 @@ Controller = {
     handleSearch: function () {
         if(localStorage.getItem("searchItems") == null){
             var searchItems = "";
-        }else{
+        } else {
             var searchItems = localStorage.getItem("searchItems").split(',');
         }
         var data= Controller.onSales;
@@ -234,7 +232,6 @@ window.onload = function() {
         Controller.userId = value[0];
     }
     var petInCart = getCartCookie();
-    // console.log(petInCart);
     Controller.petInCart = petInCart;
     Controller.initWeb3();
 }

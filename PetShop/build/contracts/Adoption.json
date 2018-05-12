@@ -1191,5 +1191,9 @@
     }
   },
   "schemaVersion": "2.0.0",
+<<<<<<< HEAD
   "updatedAt": "2018-05-12T09:22:53.336Z"
+=======
+  "updatedAt": "2018-05-12T12:31:25.612Z"
+>>>>>>> 611c6c00397b5adde4b57b1d812bffdbf9ab54fd
 }
