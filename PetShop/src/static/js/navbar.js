@@ -57,9 +57,17 @@ function searchPet() {
     var regString = /^[A-Za-z]+$/;
     var regNumber = /^\d+$/; 
     if(value!="Price"){
-        if(!regString.test(searchKey)){
-            alert(value+" cannot contain number!");
-            window.location.replace("http://localhost:3000/");
+        if(value=="Age"){
+            if(!regNumber.test(searchKey)){
+                alert(value+" should be an integer!");
+                window.location.replace("http://localhost:3000/");
+            }
+        }
+        else{
+            if(!regString.test(searchKey)){
+                alert(value+" cannot contain number!");
+                window.location.replace("http://localhost:3000/");
+            }
         }
     }
     else{
