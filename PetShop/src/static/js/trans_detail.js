@@ -83,10 +83,12 @@ Controller = {
 
     showCost: function(subTotal, tax, grandTotal) {
         console.log(subTotal, tax, grandTotal);
+        var mailing = localStorage.transMailing;
         $('#cart-subtotal').html(subTotal);
         $('#cart-tax').html(tax);
         $('#cart-shipping').html(15.00);
         $('#cart-total').html(grandTotal);
+        $('#cart-mailing').html(mailing);
         return Controller.bindEvents();
     },
 
