@@ -5,6 +5,7 @@ Controller = {
     usIds: null,
     total: 0,
     curBalance: null,
+    mailing: "",
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -54,7 +55,7 @@ Controller = {
         puppies = onSalePuppies;
         console.log(curSId, sellingPuppies, curPrice * 1.05 + 15, puppies);
         return Controller.getSellerProdCart(
-            iter, curSId, sellingPuppies, curPrice * 1.05 + 15, inCartPuppyId
+            iter, curSId, sellingPuppies, Math.round(curPrice * 1.05) + 15, inCartPuppyId
         );
     },
 
@@ -95,7 +96,7 @@ Controller = {
                 return instance.checkOut(
                     transId, sellingPuppies, sellId, Controller.userId, price, 
                     newCartId, newProdCartId, inCartPuppyId, prodCart, now,
-                    {gas:3000000}
+                    Controller.mailing, {gas:3000000}
                 );
             }).then(function(result) {
                 return Controller.fillter(iter + 1);

@@ -5,6 +5,7 @@ Login = {
     userId: null,
     petsInCartIds: [],
     petInCart: [],
+    mailing: "",
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -72,11 +73,6 @@ Login = {
         window.location.replace("/");
     }
 };
-
-
-
-
-
 
 
 function onClickCheckLogin() {
@@ -150,8 +146,8 @@ function onClickForget(){
 
     // get user's email and password from the webpage
     var username = document.getElementById("username").value;
-    var checkUser=1;
-    if(username==""){
+    var checkUser =1 ;
+    if(username == ""){
         checkUser=0;
         alert("username cannot be empty");
         window.location.replace("login.html");
@@ -160,7 +156,6 @@ function onClickForget(){
     {
         var users = firebase.database().ref().child('users');
 
-        
         // This must be the last function of all
         users.on("value", function(snapshot) {
             var isValid = false;
@@ -171,13 +166,11 @@ function onClickForget(){
                 var userKey = user.key;   // user id
                 var userVal = user.val(); // user's info (email, fn, ln, pw, role)
               
-                
                 // check whether it matches or not
                 if (userVal.email == username) {
                     isValid = true;
                     //alert("find the username");
                     addCookie("userName", username, userVal.user_id, 7, "/");
-                    console.log(getCookieValue("userName")[0]);
                     window.location.replace("forget_password.html");
 
                 }
@@ -185,7 +178,7 @@ function onClickForget(){
             //alert(isValid);
             if (!isValid) {
                 alert("No such user in the DB, please check your username");
-                window.location.href="login.html";
+                window.location.href = "login.html";
             }
         });
     }

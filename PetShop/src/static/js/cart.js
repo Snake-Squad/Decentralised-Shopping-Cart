@@ -24,13 +24,14 @@ function recalculateCart() {
     shippingRate = shippingRate * uniqueSIds.size;
 
     var subtotal = 0;
+    var tax = 0;
     // console.log($('.product').length);
-    for(var i=0;i<$('.product').length-1;i++){
-        subtotal += parseFloat($($('.product')[i]).children(
-            '.product-line-price').text());
+    for(var i=0;i<$('.product').length-1;i++) {
+        var sub = parseFloat($($('.product')[i]).children('.product-line-price').text());
+        subtotal += sub;
+        tax += Math.round(sub * taxRate);
     }
     /* Calculate totals */
-    var tax = subtotal * taxRate;
     var shipping = (subtotal > 0 ? shippingRate : 0);
     var total = subtotal + tax + shipping;
     Controller.total = total;
