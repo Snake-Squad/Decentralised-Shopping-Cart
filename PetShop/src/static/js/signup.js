@@ -61,8 +61,6 @@ Controller = {
 
     getAUserOnBC: function() {
         addCookie("userName", Controller.username, Controller.userId, 7, "/"); 
-        localStorage.setItem("searchItems", "");
-        localStorage.setItem("searchKey", "");
         console.log("Added On Block Chain.");               
         window.location.href = "http://localhost:3000/";
     }
