@@ -145,12 +145,6 @@ Controller = {
         for (var i = petInCart.length - 1; i >= 0; i--) {
             var isBad = true;
             var petAddr = petInCart[i].split(',')[7];
-            console.log(petAddr);
-            if(onSales.length == 0){
-                petInCart.splice(i,1);
-                $("#shop-cart-index").html(petInCart.length);
-            }
-            
             for (var j = 0; j < onSales.length; j++) {
                 // console.log(onSales[j][7]);
                 if (petAddr == onSales[j][7]) {
@@ -158,9 +152,6 @@ Controller = {
                     $('#'+petAddr).text('Added').attr('disabled', true);
                     isBad = false;
                     break;
-                }else{
-                    petIncart.splice(i,1);
-                    $("#shop-cart-index").html(petInCart.length);
                 }
             }
             if (isBad) {
