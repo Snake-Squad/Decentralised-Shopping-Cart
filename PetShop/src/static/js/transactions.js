@@ -81,6 +81,7 @@ Controller = {
 
     bindEvents: function() {
         $(document).on('click', '#btnTransShowDetail', Controller.showDetail);
+        $(document).on('click', '#navCart', Controller.showCart);
     },
 
     showDetail: function(event) {
@@ -91,7 +92,11 @@ Controller = {
         localStorage.setItem('transPuppyIds', petsIds);
         console.log(localStorage);
         window.location.replace("http://localhost:3000/trans_detail.html");
-    }
+    },
+
+    showCart: function(event) {
+        window.location.replace("http://localhost:3000/cart.html");
+    } 
 }
 
 

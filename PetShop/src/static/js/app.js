@@ -4,6 +4,7 @@ Controller = {
     userId: null,
     puppyList: null,
     onSales: [],
+    validOnSales: [],
     petsInCartIds: [],
     petInCart: [],
     cartLoaded: false,
@@ -122,7 +123,8 @@ Controller = {
         var petsRow = $('#petsRow');
         var petTemplate = $('#petTemplate');
         for (i = 0; i < data.length; i ++) {
-            if(data[i][0] != userId[1]){
+            if(data[i][0] != userId[1]) {
+                Controller.validOnSales.push(data[i]);
                 petTemplate.find('.panel-title').text(data[i][1]);
                 petTemplate.find('.pet-breed').text(data[i][2]);
                 petTemplate.find('.pet-age').text(data[i][3]);
@@ -137,19 +139,25 @@ Controller = {
     },
 
     markAdded: function() {
-        var onSales = Controller.onSales;
+        var onSales = Controller.validOnSales;
         var petInCart = Controller.petInCart;
-        for (var i = 0; i < petInCart.length; i++) {
+        for (var i = petInCart.length - 1; i >= 0; i--) {
+            var isBad = true;
             var petAddr = petInCart[i].split(',')[7];
             for (var j = 0; j < onSales.length; j++) {
                 // console.log(onSales[j][7]);
                 if (petAddr == onSales[j][7]) {
                     // console.log("added", petAddr);
                     $('#'+petAddr).text('Added').attr('disabled', true);
+                    isBad = false;
                     break;
                 }
             }
+            if (isBad) {
+                Controller.petInCart.pop();
+            }
         }
+        setCartCookie(Controller.petInCart, 7);
         return Controller.bindEvents();
     },
 
@@ -157,6 +165,7 @@ Controller = {
     bindEvents: function() {
         $(document).on('click', '.btn-add', Controller.handleAdd);
         $(document).on('click', '.goToShopingCartPage', Controller.goToShopingCartPage);
+        $("#shop-cart-index").html(Controller.petInCart.length);
     },
 
     handleAdd: function(event) {
@@ -192,6 +201,5 @@ window.onload = function() {
     var petInCart = getCartCookie();
     console.log(petInCart);
     Controller.petInCart = petInCart;
-    $("#shop-cart-index").html(petInCart.length);
     Controller.initWeb3();
 }
