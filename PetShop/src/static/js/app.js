@@ -53,7 +53,6 @@ Controller = {
     },
 
     isOnSale: function(i) {
-        console.log(i);
         if (i == Controller.puppyList.length) {
             return Controller.handleSearch();
         }
@@ -73,7 +72,6 @@ Controller = {
     },
 
     getPuppyInfo: function(puppyId, i) {
-        console.log(puppyId, i);
         Controller.contracts.Controller.deployed().then(function(instance) {
             return instance.getPuppyInfo(puppyId);
         }).then(function(info) {
@@ -87,12 +85,12 @@ Controller = {
     },
 
     handleSearch: function () {
-        console.log("all onSales", Controller.onSales);
-        console.log("localStorage", localStorage);
-        var searchItems = localStorage.getItem("searchItems").split(',');
-        console.log("searchItems", searchItems);
-        var data = Controller.onSales;
-        console.log("data -> ", data);
+        if(localStorage.getItem("searchItems") == null){
+            var searchItems = "";
+        } else {
+            var searchItems = localStorage.getItem("searchItems").split(',');
+        }
+        var data= Controller.onSales;
         var searchResult = [];
         if(searchItems != ""){
             if (searchItems.length == 2) {
