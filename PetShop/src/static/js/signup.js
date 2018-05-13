@@ -85,30 +85,63 @@ function setOnFirebase(
     // Add a user to firebase
     var users = firebase.database().ref().child('users');
     var userIdFB = firebase.database().ref().child('users').push().key;
-    return users.child(userIdFB).set({
-        "email": username, 
-        "password": password,
-        "first_name": firstName,
-        "last_name":lastName,
-        "street": street, 
-        "suite": suite, 
-        "country": country, 
-        "state": state,
-        "zip": zip,
-        "user_id": userIdBC,
-        "question1": question1,
-        "question1_answer": question1_answer,
-        "question2": question2,
-        "question2_answer": question2_answer,
-        "question3": question3,
-        "question3_answer": question3_answer,
-    }).then(function(result) {
-        console.log("Added on firebase.");
-        Controller.username = username;
-        Controller.userId = userIdBC;
-        console.log(Controller.userId, Controller.username);
-        return Controller.initWeb3();
-    });
+    var sig=0;
+    // This must be the last function of all
+    users.on("value", function(snapshot) {
+        var isValid = false;
+        var userId = "";            // this id is used in blockchain
+          
+        snapshot.forEach(function(user) {
+            // retrieve data from db
+            var userKey = user.key;   // user id
+            var userVal = user.val(); // user's info (email, fn, ln, pw, role)
+          
+            
+            // check whether it matches or not
+            if (userVal.email == username) {    
+                //alert(userVal.password);
+                isValid = true;
+                if(sig==0){
+                    alert("User already exist, Please login!");
+                    window.location.href="login.html";
+                }
+                return true; // break the loop
+                }
+            
+        });
+        
+        if (isValid==false) {
+       
+            sig=1;
+
+         return users.child(userIdFB).set({
+            "email": username, 
+            "password": password,
+            "first_name": firstName,
+            "last_name":lastName,
+            "street": street, 
+            "suite": suite, 
+            "country": country, 
+            "state": state,
+            "zip": zip,
+            "user_id": userIdBC,
+            "question1": question1,
+            "question1_answer": question1_answer,
+            "question2": question2,
+            "question2_answer": question2_answer,
+            "question3": question3,
+            "question3_answer": question3_answer,
+        }).then(function(result) {
+            console.log("Added on firebase.");
+            Controller.username = username;
+            Controller.userId = userIdBC;
+            console.log(Controller.userId, Controller.username);
+            return Controller.initWeb3();
+        });
+                       
+            }
+        });
+    
 }
 
 
