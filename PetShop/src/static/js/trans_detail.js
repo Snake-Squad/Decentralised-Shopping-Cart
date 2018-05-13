@@ -140,9 +140,6 @@ Controller = {
 }
 
 
-
-
-
 // onload function.
 window.onload = function() {  
     var value = getCookieValue("userName");

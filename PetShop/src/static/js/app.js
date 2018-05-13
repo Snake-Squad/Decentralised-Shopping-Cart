@@ -176,7 +176,8 @@ Controller = {
         var petInCart = Controller.petInCart;
         for (var i = petInCart.length - 1; i >= 0; i--) {
             var isBad = true;
-            var petAddr = petInCart[i].split(',')[7];
+            var petData = petInCart[i].split(',');
+            var petAddr = petData[7];
             for (var j = 0; j < onSales.length; j++) {
                 // console.log(onSales[j][7]);
                 if (petAddr == onSales[j][7]) {
@@ -187,6 +188,7 @@ Controller = {
                 }
             }
             if (isBad) {
+                alert(petData[1] + " is sold out.");
                 Controller.petInCart.pop();
             }
         }
