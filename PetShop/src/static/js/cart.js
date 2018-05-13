@@ -10,7 +10,7 @@ var puppies = [];
 /*------------------------------------------------------------------------------
  * Find Mailling address
  * ------------------------------------------------------
-*/
+ */
 function findMaillingAddress() {    
     var config = {
         apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
@@ -35,7 +35,7 @@ function findMaillingAddress() {
                 var mailingAddr = userVal.suite + ", " + userVal.street + ", " +
                     userVal.state + ", " + userVal.country + ", " + userVal.zip;
                 $("#address").html(mailingAddr);
-                Controller.mailing = mailingAddr;
+                //Controller.mailing = mailingAddr;
                 return true;
             }
         });

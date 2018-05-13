@@ -5,7 +5,6 @@ Controller = {
     usIds: null,
     total: 0,
     curBalance: null,
-    mailing: "",
 
     initWeb3: function() {
         // Is there an injected web3 instance?
@@ -59,11 +58,11 @@ Controller = {
         );
     },
 
-    getSellerProdCart: function(iter, sellId, sellingPuppies, price, inCartPuppyId) {
+    getSellerProdCart: function(
+            iter, sellId, sellingPuppies, price, inCartPuppyId) {
         Controller.contracts.Controller.deployed().then(function(instance) {
             return instance.getAccount(sellId);
         }).then(function(result) {
-            console.log(result);
             var prodCart = result[1];
             return Controller.pay(
                 iter, sellId, sellingPuppies, price, prodCart, inCartPuppyId
@@ -73,8 +72,8 @@ Controller = {
         });
     },
 
-    pay: function(iter, sellId, sellingPuppies, price, prodCart, inCartPuppyId) {
-        console.log(sellId, sellingPuppies, price, prodCart, inCartPuppyId);
+    pay: function(
+            iter, sellId, sellingPuppies, price, prodCart, inCartPuppyId) {
         var transId = generateAddress();
         var newCartId = generateAddress();
         var newProdCartId = generateAddress();
@@ -97,7 +96,7 @@ Controller = {
                 return instance.checkOut(
                     transId, sellingPuppies, sellId, Controller.userId, price, 
                     newCartId, newProdCartId, inCartPuppyId, prodCart, now,
-                    Controller.mailing, {gas:3000000}
+                    {gas:3000000}
                 );
             }).then(function(result) {
                 return Controller.fillter(iter + 1);

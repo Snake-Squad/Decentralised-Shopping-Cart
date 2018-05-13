@@ -41,7 +41,6 @@ contract Controller {
         address buyer;           // address of the buyer
         uint256 price;           // total price in the trade
         string date;             // trade date
-        string mailing;          // mailing address
     }
         
     /*--------------------------------------------------------------------------
@@ -199,8 +198,7 @@ contract Controller {
         address _seller, 
         address _buyer, 
         uint256 _price,
-        string _now,
-        string _mailing
+        string _now
     ) 
         public 
     { 
@@ -210,7 +208,6 @@ contract Controller {
         transaction.buyer = _buyer;
         transaction.price = _price;
         transaction.date = _now;
-        transaction.mailing = _mailing;
     }
        
     function getTransaction(address _transId) 
@@ -221,7 +218,6 @@ contract Controller {
             address, 
             address,
             uint256,
-            string,
             string
         ) 
     {
@@ -230,8 +226,7 @@ contract Controller {
             transactionsOnBC[_transId].seller, 
             transactionsOnBC[_transId].buyer,
             transactionsOnBC[_transId].price,
-            transactionsOnBC[_transId].date,
-            transactionsOnBC[_transId].mailing
+            transactionsOnBC[_transId].date
         );
     }
     
@@ -256,9 +251,7 @@ contract Controller {
         address[] _cart,
         address[] _prodCart,
         // tradeTime
-        string _now,
-        // mailing address
-        string _mailing
+        string _now
     ) 
         public
     {
@@ -266,7 +259,7 @@ contract Controller {
         accountsOnBC[_seller].balance = accountsOnBC[_seller].balance + _price;
         accountsOnBC[_buyer].balance = accountsOnBC[_buyer].balance - _price;
         // record transaction
-        setTransaction(_transId, _puppiesIds, _seller, _buyer, _price, _now, _mailing);
+        setTransaction(_transId, _puppiesIds, _seller, _buyer, _price, _now);
         accountsOnBC[_seller].transactions.push(_transId);
         accountsOnBC[_buyer].transactions.push(_transId);
         // update cart and prodcart

@@ -78,12 +78,46 @@ Controller = {
             tax += Math.round(parseInt(info[5]) * 0.05);
         };
         grandTotal = subTotal + tax + 15;
-        return Controller.showCost(subTotal, tax, grandTotal);
+        return Controller.getMailing(
+            Controller.userId, subTotal, tax, grandTotal
+        );
     },
 
-    showCost: function(subTotal, tax, grandTotal) {
+
+    getMailing: function(userId, subTotal, tax, grandTotal) {
+        var config = {
+            apiKey: "AIzaSyBzvcZDres2eUAUX6PBHRlo858ftMznDKs",
+            authDomain: "comp9900-4b79d.firebaseapp.com",
+            databaseURL: "https://comp9900-4b79d.firebaseio.com",
+            projectId: "comp9900-4b79d",
+            storageBucket: "comp9900-4b79d.appspot.com",
+            messagingSenderId: "445311599888"
+        };
+        firebase.initializeApp(config);
+        
+        // get user's email and password from the webpage
+        var users = firebase.database().ref().child('users');
+
+        // This must be the last function of all
+        users.on("value", function(snapshot) {
+            snapshot.forEach(function(user) {
+                var userVal = user.val(); // user's info (email, fn, ln, pw, role)
+                // check whether it matches or not
+                if (userVal.user_id == userId) {
+                    var mailingAddr = userVal.suite + ", " + userVal.street + ", " +
+                        userVal.state + ", " + userVal.country + ", " + userVal.zip;
+                    console.log(mailingAddr);
+                    return Controller.showCost(
+                        subTotal, tax, grandTotal, mailingAddr
+                    );
+                }
+            });
+        });
+    },
+
+
+    showCost: function(subTotal, tax, grandTotal, mailing) {
         console.log(subTotal, tax, grandTotal);
-        var mailing = localStorage.transMailing;
         $('#cart-subtotal').html(subTotal);
         $('#cart-tax').html(tax);
         $('#cart-shipping').html(15.00);
@@ -104,6 +138,9 @@ Controller = {
         window.location.replace("http://localhost:3000/transaction.html");
     }
 }
+
+
+
 
 
 // onload function.

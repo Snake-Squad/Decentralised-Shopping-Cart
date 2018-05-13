@@ -90,8 +90,6 @@ Controller = {
         var petsIds = Controller.transInfo[index][0];
         localStorage.setItem('transId', Controller.transList[index]);
         localStorage.setItem('transPuppyIds', petsIds);
-        localStorage.setItem('transMailing', Controller.transInfo[index][5]);
-        console.log(localStorage);
         window.location.replace("http://localhost:3000/trans_detail.html");
     },
 
