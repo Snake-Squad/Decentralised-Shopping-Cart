@@ -37,6 +37,7 @@ Controller = {
         }
         var curSId = Controller.usIds[iter];
         var curPrice = 0;
+        var curTax = 0;
         var sellingPuppies = []; // store puppies sold by current saler
         var onSalePuppies = [];  // store puppies sold by others
         var inCartPuppyId = [];
@@ -45,6 +46,7 @@ Controller = {
             // console.log(puppyInfo);
             if (curSId == puppyInfo[0]) {
                 curPrice += parseInt(puppyInfo[5]);
+                curTax += Math.round(parseInt(puppyInfo[5]) * 0.05);
                 sellingPuppies.push(puppyInfo[7]);
             } else {
                 onSalePuppies.push(puppies[i]);
@@ -52,9 +54,9 @@ Controller = {
             }
         }
         puppies = onSalePuppies;
-        console.log(curSId, sellingPuppies, curPrice * 1.05 + 15, puppies);
+        console.log(curSId, sellingPuppies, curPrice + curTax + 15, puppies);
         return Controller.getSellerProdCart(
-            iter, curSId, sellingPuppies, Math.round(curPrice * 1.05) + 15, inCartPuppyId
+            iter, curSId, sellingPuppies, curPrice + curTax + 15, inCartPuppyId
         );
     },
 
