@@ -79,7 +79,7 @@ Controller = {
         };
         grandTotal = subTotal + tax + 15;
         return Controller.getMailing(
-            Controller.userId, subTotal, tax, grandTotal
+            localStorage.buyerId, subTotal, tax, grandTotal
         );
     },
 
