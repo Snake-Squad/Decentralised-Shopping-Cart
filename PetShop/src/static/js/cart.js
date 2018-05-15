@@ -36,7 +36,7 @@ function findMaillingAddress() {
                     userVal.state + ", " + userVal.country + ", " + userVal.zip;
                 $("#address").html(mailingAddr);
                 //Controller.mailing = mailingAddr;
-                return true;
+                return;
             }
         });
     });
@@ -48,6 +48,7 @@ function findMaillingAddress() {
  * -----------------------------------------------------------------------------
  */
 function recalculateCart() {
+    console.log("now");
     var sellerIds =[]; 
     for (var i = 0; i < puppies.length; i++) {
         var sId = puppies[i].split(',')[0];
@@ -70,7 +71,6 @@ function recalculateCart() {
     var shipping = (subtotal > 0 ? shippingRate : 0);
     var total = subtotal + tax + shipping;
     Controller.total = total;
-    findMaillingAddress();
     /* Update totals display */
     $('.totals-value').fadeOut(fadeTime, function() {
         $('#cart-subtotal').html(subtotal.toFixed(2));
@@ -101,6 +101,7 @@ function removeItem(removeButton, puppies) {
         puppies.splice(i, 1);
         console.log(i, puppies);
         setCartCookie(puppies, 7);
+        console.log("here 2");
         recalculateCart();
     });
 }
@@ -147,9 +148,9 @@ window.onload = function() {
 
     puppies = getCartCookie();
     showPuppies(puppies);
+    findMaillingAddress();
     recalculateCart();
     $('.product-removal button').click( function() {
         removeItem(this, puppies);
     });
-
 }
