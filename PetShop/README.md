@@ -25,8 +25,13 @@ cd PetShop
 
 3. Launch Ganache
 
+![]()
 
 4. Login Metamask and Choose a Valid account on <b>Private Network</b>
+
+If you have no idea how to do it, read our report of check [here]()
+
+If everything is correct, you will get ![]()
 
 
 5. ￼Migrate the Project on Terminal
