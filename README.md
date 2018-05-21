@@ -30,7 +30,7 @@ As there are a pile of things you need to install, you can check [Installations]
 
 ## Environment Setting Up
 
-As the the whole project has mainly three layer and the way to link these layers are not that simple, you can check [Environment Setting Up](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Environment-Setting-Up) in Wiki to get clear guidelines. 
+As the the whole project has mainly three layer and the way to link these layers are not that simple, you can check [Environment Setting Up](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/blob/master/ForWiki/Setting%20Up%20Environment.pdf).
 
 ## Run the Project 
 
