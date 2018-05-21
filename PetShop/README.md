@@ -25,13 +25,17 @@ cd PetShop
 
 3. Launch Ganache
 
-![]()
+  ![](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/blob/master/ForWiki/Ganache.png)
+
 
 4. Login Metamask and Choose a Valid account on <b>Private Network</b>
 
-If you have no idea how to do it, read our report of check [here]()
+  If you have no idea how to do it, read our report of check [here]()
 
-If everything is correct, you will get ![]()
+
+  If everything is correct, you will get 
+  
+  ![](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/blob/master/ForWiki/Good%20Meta.png)
 
 
 5. ￼Migrate the Project on Terminal
