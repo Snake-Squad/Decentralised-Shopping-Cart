@@ -14,11 +14,17 @@ Before using this APP, you need to install a plie of things on your machine:
 
 * web3.js
 
-* testrpc
+* truffle
 
-* Solidity
+* Ganache
+
+* Solidity (Remix IDE)
 
 * MetaMask
+
+* filebase
+
+* filestack
 
 As there are a pile of things you need to install, you can check [Installations](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Installations) in Wiki to help you install all prerequsits step by step.
 
@@ -26,40 +32,45 @@ As there are a pile of things you need to install, you can check [Installations]
 
 As the the whole project has mainly three layer and the way to link these layers are not that simple, you can check [Environment Setting Up](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/wiki/Environment-Setting-Up) in Wiki to get clear guidelines. 
 
-## Running the tests
+## Run the Project 
 
-Explain how to run the automated tests for this system
+Once you have installed all of the installations, you can run the project as follows in terminal.
 
-### Break down into end to end tests
-
-Explain what these tests test and why
+1. Clone the repo by
 
 ```
-Give an example
+git clone https://github.com/Snake-Squad/Decentralised-Shopping-Cart.git
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+2. Go to PetShop folder
 
 ```
-Give an example
+cd PetShop
 ```
 
-## Deployment
+3. Open Ganache
 
-Add additional notes about how to deploy this on a live system
+4. Open Metamask and Set It Up
+
+5. ￼Migrate the Project on Terminal
+
+```
+truffle migrate --reset
+```
+
+6. Start the Project
+
+```
+npm run dev
+```
 
 ## Built With
 
 * [HTML/CSS/Javascript](https://www.w3schools.com/) - The web framework used
 * [boostrap](https://getbootstrap.com/) - UI design used
-* [java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html) - Server code running used
+* [firebase](https://firebase.google.com/)
+* [filestack](https://www.filestack.com/)
 * [blockchain](https://en.wikipedia.org/wiki/Blockchain) - Etherum Vertual Machine used
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Snake-Squad/Decentralised-Shopping-Cart/). 
 
 ## Authors
 
@@ -92,6 +103,5 @@ This project is licensed under the GNU GPL License - see the [LICENSE.md](LICENS
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
-* [Creating Your First Blockchain with Java Part I](https://medium.com/programmers-blockchain/create-simple-blockchain-java-tutorial-from-scratch-6eeed3cb03fa)
-* [A Decentralized Online Grocery Marketplace: How it Works for Consumers](https://blog.ins.world/a-decentralized-online-grocery-marketplace-how-it-works-for-consumers-290702184f40)
+* [pet_shop](http://truffleframework.com/tutorials/pet-shop)
 * [Developing Ethereum Smart Contracts for Beginners](https://coursetro.com/courses/20/Developing-Ethereum-Smart-Contracts-for-Beginners)
