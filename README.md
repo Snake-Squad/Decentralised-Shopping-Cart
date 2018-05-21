@@ -68,8 +68,8 @@ npm run dev
 
 * [HTML/CSS/Javascript](https://www.w3schools.com/) - The web framework used
 * [boostrap](https://getbootstrap.com/) - UI design used
-* [firebase](https://firebase.google.com/)
-* [filestack](https://www.filestack.com/)
+* [firebase](https://firebase.google.com/) - Centralized Database
+* [filestack](https://www.filestack.com/) - Uploading Image API
 * [blockchain](https://en.wikipedia.org/wiki/Blockchain) - Etherum Vertual Machine used
 
 ## Authors
@@ -100,8 +100,5 @@ This project is licensed under the GNU GPL License - see the [LICENSE.md](LICENS
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 * [pet_shop](http://truffleframework.com/tutorials/pet-shop)
 * [Developing Ethereum Smart Contracts for Beginners](https://coursetro.com/courses/20/Developing-Ethereum-Smart-Contracts-for-Beginners)
